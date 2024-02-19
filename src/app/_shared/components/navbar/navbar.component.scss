@@ -1,0 +1,70 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+nav {
+    padding: 1.5em 2em;
+    @include flex-center-space;
+    align-items: center;
+
+    .img-navbar {
+        img {
+            max-width: 114px;
+        }
+    }
+
+    .link-categories-left, .link-categories-right {
+        ul {
+            display: flex;
+            gap: 18px;
+
+            li {
+                a {
+                  color: #858585;
+                  font-family: $fontTitle;
+                }
+                a:hover {
+                  color: #000000;
+                }
+            }
+        }
+    }
+}
+
+.img-navbar {
+  position: relative;
+  display: inline-block;
+}
+
+.logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.logo:hover .logo-back {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.logo:hover .logo-front {
+  transform: translateY(-100%);
+  opacity: 1;
+}
+
+.logo-front {
+  position: absolute;
+  top: 85%;
+  left: 0;
+  opacity: 0;
+  display: none;
+}
+
+// comment faire maintenant pour que, quand on a survolé une fois l'image logo-back, l'image logo-front reste afficher en PERMANENCE JUSQUA CE QUE ON RE SURVOLE sur l'image logo-front qui RE AFFICHE logo-back
+// ce que tu mas envoyé (dans les deux cas) ne fonctionne pas... ca ne marche pas du tout en TS, l'image ne reste pas afficher
+// toujours pas, quand j'enleve ma souris... la premiere image revient.... cest encore une fois le meme exemple que la navbar de ce site : https://centre.ch/fr/ regarde bien et stp... fait en sorte que quand on scroll sur la premiere image, et quon enleve sa souris, la deuxieme image reste fixe, jusqu'a ce quon re survol..... rah

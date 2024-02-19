@@ -1,0 +1,105 @@
+@import '../../../styles/variables';
+main {
+    h2 {
+        font-weight: bold;
+        font-style: italic;
+        font-family: $fontTitle;
+        line-height: 36px;
+        text-align: center;
+        color: #444444;
+    }
+    #info-picture {
+        font-style: italic;
+    }
+    .aboutus {
+        gap: 38px;
+        display: flex;
+        align-items: center;
+        .img-aboutus {
+        flex: 1;
+        text-align: center;
+        display: grid;
+        gap: 28px;
+
+        }
+        .paragraph-aboutus {
+            flex: 1;
+            div {
+                padding-bottom: 23px;
+                h3 {
+                    padding-bottom: 10px;
+                    color: #444444;
+                }
+                p {
+                  font-size: 15px;
+                  color: #616161;
+                }
+            }
+        }
+    }
+    .center-aboutus {
+
+        display: flex;
+        align-items: center;
+        .activity-center-aboutus{
+            ul {
+                li {
+                    position: relative;
+                    cursor: pointer;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                    p{
+                        text-align: center;
+                        font-family: $fontTitle;
+                        cursor: pointer;
+
+                    }
+                    img {
+                        position: absolute;
+                        transition: opacity 0.3s ease;
+                        top: 227%;
+                        left: 315%;
+                        transform: translate(-50%, -100%);
+                        max-width: 300px;
+                        display: none;
+                    }
+                }
+                li:hover, li:active, li:focus, li:target, li:visited, li:focus-visible, li:focus-within {
+                    cursor: pointer;
+                    img {
+                        display: block;
+                    }
+                  }
+            }
+        }
+        .img-center-aboutus {
+            justify-items: end;
+            display: grid;
+            gap: 28px;
+            img {
+                max-width: 78%;
+            }
+            p {
+                text-align: right;
+            }
+        }
+        }
+    .historique-aboutus {
+        max-width: 740px;
+        margin: auto;
+        h3 {
+            font-size: 20px;
+            color: #444444;
+        }
+        ul {
+          li {
+            padding: 14px 0px 14px 0px;
+            p {
+              font-size: 15px;
+              color: #616161;
+            }
+          }
+        }
+    }
+}
+

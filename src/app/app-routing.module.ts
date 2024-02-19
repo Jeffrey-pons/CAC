@@ -6,6 +6,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { NextexpositionComponent } from './components/nextexposition/nextexposition.component';
 import { ArchivesComponent } from './components/archives/archives.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
+import { ActualiteComponent } from './components/actualite/actualite.component';
+import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'prochaine-exposition', component: NextexpositionComponent },
   { path: 'archives', component: ArchivesComponent },
   { path: 'mentions-legales', component: LegalnoticeComponent },
+  { path: 'actualite', component: ActualiteComponent },
+  { path: 'collection-permanente', component: CollectionpermanenteComponent },
 ];
 
 @NgModule({

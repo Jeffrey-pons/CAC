@@ -8,17 +8,18 @@
         font-weight: bold;
         font-style: italic;
       }
+@font-face {
+  font-family: 'Nimbus Mono L Bold';
+  src: url('../assets/fonts/Nimbus\ Mono\ L\ Bold.ttf') format('truetype');
+}
 
 body,
 html {
-        margin: 0;
+  max-width: 1145px;
+  margin: auto;
         padding: 0;
 }
 
-main {
-        max-width: 1145px;
-        margin: auto;
-}
 
 h1 {
         font-size: 2em;
