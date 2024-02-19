@@ -6,27 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  isBackHovered: boolean = false;
-  isFrontHovered: boolean = false;
+  isFirstImageHovered: boolean = true;
 
   handleHover() {
-    if (!this.isBackHovered) {
-      this.isBackHovered = true;
-    }
-    if (!this.isFrontHovered && this.isBackHovered) {
-      this.isFrontHovered = true;
-    }
+    this.isFirstImageHovered = !this.isFirstImageHovered;
   }
 
-  handleBackMouseOut() {
-    if (!this.isFrontHovered) {
-      this.isBackHovered = false;
-    }
-  }
-
-  handleFrontMouseOut() {
-    if (!this.isBackHovered) {
-      this.isFrontHovered = false;
-    }
+  handleMouseOut() {
   }
 }

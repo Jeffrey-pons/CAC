@@ -11,12 +11,15 @@
         </div>
         <div class="img-navbar">
           <a [routerLink]="['/']" class="logo-container">
-            <div class="logo">
-              <img (mouseover)="handleHover()" (mouseout)="handleBackMouseOut()" src="../../../../assets/img/raymondfarbos-logo (2).png" alt="" class="logo-back">
-              <img (mouseover)="handleHover()" (mouseout)="handleFrontMouseOut()" src="../../../../assets/img/raymondfarbos-logo (1).png" alt="" class="logo-front">
+            <div class="logo" (mouseover)="handleHover()" (mouseout)="handleMouseOut()">
+              <img src="../../../../assets/img/raymondfarbos-logo (2).png" alt="" class="logo-back" [class.hidden]="isFirstImageHovered">
+              <img src="../../../../assets/img/raymondfarbos-logo (1).png" alt="" class="logo-front" [class.hidden]="!isFirstImageHovered">
             </div>
           </a>
         </div>
+
+
+
 
 
         <div class="link-categories-right">
