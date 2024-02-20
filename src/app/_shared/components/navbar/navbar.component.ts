@@ -13,5 +13,6 @@ export class NavbarComponent {
   }
 
   handleMouseOut() {
+    //none
   }
 }

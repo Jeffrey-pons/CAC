@@ -1,6 +1,6 @@
 @import '_mixins';
 @import '_variables';
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @font-face {
         font-family: 'News Gothic MT Std Bold Italic';
@@ -12,6 +12,12 @@
   font-family: 'Nimbus Mono L Bold';
   src: url('../assets/fonts/Nimbus\ Mono\ L\ Bold.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'BaselBook Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('BaselBook Bold'), url('../assets/fonts/Baselbkn.woff') format('woff');
+  }
 
 body,
 html {
@@ -78,6 +84,8 @@ img {
 .bloc-separation {
         padding: 60px 0px 60px 0px;
 }
-section{
+main {
+  section{
         padding: 28px 0px 12px 0px;
+}
 }

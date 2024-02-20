@@ -33,15 +33,24 @@ nav {
 
 .logo img {
   transition: transform 0.3 ease, opacity 0.3s ease;
-  transform: translateY(100%);
+  // transform: translateY(100%);
 
 }
 
 .logo img.visible {
-  transform: translateY(0%);
+  // transform: translateY(0%);
 }
 
 .hidden {
   opacity: 0;
   transition: opacity 1s ease;
+
+}
+.logo-front, .logo-back {
+  // // position: absolute;
+  // top: 4%;
+  // left: 46%;
+  // z-index: 10px;
+  // // opacity: 0;
+  // // display: none;
 }
