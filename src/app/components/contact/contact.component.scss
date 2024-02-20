@@ -1,0 +1,58 @@
+main {
+  .pratique_center {
+    .bloc-separation {
+      padding: 30px 0px 30px 0px;
+    }
+    h1 {
+      text-align: center;
+    }
+  }
+  .info_contact {
+    display: flex;
+    gap: 40px;
+    .horaire_contact {
+      flex: 1;
+      display: grid;
+      width: 30px;
+      gap: 20px;
+      .adresse_contact, .horaire_bloc_contact {
+        background-color: #f1f1f1;
+        border-radius: 6px;
+        padding: 22px;
+        max-width: 300px;
+        p {
+          font-size: 13px;
+          font-weight: 550;
+        }
+      }
+    }
+    .infos_visite_contact {
+      flex: 1;
+      p {
+        font-size: 13px;
+      }
+      .nous_rendre_visite {
+        padding-bottom: 38px;
+        div {
+          display: flex;
+          gap: 40px;
+        }
+        h3 {
+          padding-bottom: 28px;
+        }
+      }
+      .tarif_contact {
+        div {
+          display: flex;
+          gap: 40px;
+          align-items: center;
+        }
+        h3 {
+          padding-bottom: 28px;
+        }
+      }
+
+    }
+  }
+}
+
