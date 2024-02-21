@@ -1,7 +1,7 @@
 main {
   .pratique_center {
     .bloc-separation {
-      padding: 30px 0px 30px 0px;
+      padding: 26px 0px 26px 0px;
     }
     h1 {
       text-align: center;
@@ -10,6 +10,7 @@ main {
   .info_contact {
     display: flex;
     gap: 40px;
+    padding-bottom: 48px;
     .horaire_contact {
       flex: 1;
       display: grid;
@@ -17,9 +18,10 @@ main {
       gap: 20px;
       .adresse_contact, .horaire_bloc_contact {
         background-color: #f1f1f1;
-        border-radius: 6px;
+        border-radius: 8px;
         padding: 22px;
-        max-width: 300px;
+        max-width: 266px;
+        height: 123px;
         p {
           font-size: 13px;
           font-weight: 550;
@@ -27,9 +29,13 @@ main {
       }
     }
     .infos_visite_contact {
+      h4 {
+        width: 66px;
+      }
       flex: 1;
       p {
         font-size: 13px;
+        font-weight: 500;
       }
       .nous_rendre_visite {
         padding-bottom: 38px;
@@ -42,10 +48,12 @@ main {
         }
       }
       .tarif_contact {
+        padding-bottom: 32px;
+      }
+      .tarif_contact, .info_contact_centre {
         div {
           display: flex;
           gap: 40px;
-          align-items: center;
         }
         h3 {
           padding-bottom: 28px;
@@ -53,6 +61,10 @@ main {
       }
 
     }
+  }
+  .maps-google {
+    padding-bottom: 72px;
+    filter: grayscale(100%);
   }
 }
 
