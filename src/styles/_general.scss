@@ -89,3 +89,18 @@ main {
         padding: 28px 0px 12px 0px;
 }
 }
+.bloc-separation-title {
+  .bloc-separation {
+    padding: 26px 0px 26px 0px;
+  }
+  h1 {
+    text-align: center;
+  }
+}
+.active {
+  a {
+    color: black!important;
+  }
+  border-bottom: 0.1px rgba(0, 0, 0, 0.315) solid;
+  padding-bottom: 5px;
+}

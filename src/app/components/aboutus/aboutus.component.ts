@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
+import { AdhesionComponent } from '../../_shared/components/adhesion/adhesion.component';
 
 @Component({
   selector: 'app-aboutus',
-  standalone: true,
-  imports: [],
   templateUrl: './aboutus.component.html',
   styleUrl: './aboutus.component.scss'
 })

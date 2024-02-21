@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +9,10 @@ export class LoaderService {
   private loading: boolean = false;
 
   setLoading(loading: boolean) {
-    console.log(this.setLoading);
     this.loading = loading;
-    console.log(this.setLoading);
   }
 
-  getLoading(): boolean {
-    console.log(this.getLoading);
+  isLoading(): boolean {
     return this.loading;
   }
 }

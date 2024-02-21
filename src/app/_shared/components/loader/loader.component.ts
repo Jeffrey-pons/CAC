@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoaderService } from '../../../services/loader/loader.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { LoaderService } from '../../../services/loader/loader.service';
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class LoaderComponent {
-  constructor(public loader: LoaderService) {
-    console.log(LoaderComponent);
+   constructor(public loader: LoaderService, public router: Router) {
+
   }
 }

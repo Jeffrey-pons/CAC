@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './nextexposition.component.html',
-  styleUrl: './nextexposition.component.css'
+  styleUrl: './nextexposition.component.scss'
 })
 export class NextexpositionComponent {
 

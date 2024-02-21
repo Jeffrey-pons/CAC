@@ -10,6 +10,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { OuvertureFermetureComponent } from './_shared/components/ouverture-fermeture/ouverture-fermeture.component';
 import { LoaderComponent } from './_shared/components/loader/loader.component';
 import { LoadingInterceptor } from './interceptor/loading';
+import { AdhesionComponent } from './_shared/components/adhesion/adhesion.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { LoadingInterceptor } from './interceptor/loading';
     FooterComponent,
     HomepageComponent,
     OuvertureFermetureComponent,
-    LoaderComponent
+    LoaderComponent,
+    AdhesionComponent,
+    AboutusComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,7 @@ import { LoadingInterceptor } from './interceptor/loading';
     BrowserModule],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
 
 

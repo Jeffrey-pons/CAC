@@ -3,9 +3,9 @@
 
         <div class="link-categories-left">
             <ul>
-                <li><a [routerLink]="['/actualite']">Actualité</a></li>
-                <li><a [routerLink]="['/prochaine-exposition']">Prochainement</a></li>
-                <li><a [routerLink]="['/a-propos']">Qui sommes-nous</a></li>
+                <li [class.active]="isLinkActive('/actualite')"><a [routerLink]="['/actualite']">Actualité</a></li>
+                <li [class.active]="isLinkActive('/prochaine-exposition')"><a [routerLink]="['/prochaine-exposition']">Prochainement</a></li>
+                <li [class.active]="isLinkActive('/a-propos')"><a [routerLink]="['/a-propos']">Qui sommes-nous</a></li>
             </ul>
 
         </div>
@@ -24,9 +24,9 @@
 
         <div class="link-categories-right">
           <ul>
-              <li><a [routerLink]="['/collection-permanente']">Collection permanente</a></li>
-              <li><a [routerLink]="['/archives']">Archives</a></li>
-              <li><a [routerLink]="['/contact']">Contact</a></li>
+              <li [class.active]="isLinkActive('/collection-permanente')"><a [routerLink]="['/collection-permanente']">Collection permanente</a></li>
+              <li [class.active]="isLinkActive('/archives')"><a [routerLink]="['/archives']">Archives</a></li>
+              <li [class.active]="isLinkActive('/contact')"><a [routerLink]="['/contact']">Contact</a></li>
           </ul>
 
       </div>
