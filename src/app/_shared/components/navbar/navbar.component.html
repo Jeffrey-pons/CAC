@@ -1,0 +1,36 @@
+<header>
+    <nav>
+
+        <div class="link-categories-left">
+            <ul>
+                <li><a [routerLink]="['/actualite']">Actualité</a></li>
+                <li><a [routerLink]="['/prochaine-exposition']">Prochainement</a></li>
+                <li><a [routerLink]="['/a-propos']">Qui sommes-nous</a></li>
+            </ul>
+
+        </div>
+        <div class="img-navbar">
+          <a [routerLink]="['/']" class="logo-container">
+            <div class="logo" (mouseover)="handleHover()" (mouseout)="handleMouseOut()">
+              <img src="../../../../assets/img/raymondfarbos-logo (2).png" alt="" class="logo-back" [class.hidden]="isFirstImageHovered">
+              <img src="../../../../assets/img/raymondfarbos-logo (1).png" alt="" class="logo-front" [class.hidden]="!isFirstImageHovered">
+            </div>
+          </a>
+        </div>
+
+
+
+
+
+        <div class="link-categories-right">
+          <ul>
+              <li><a [routerLink]="['/collection-permanente']">Collection permanente</a></li>
+              <li><a [routerLink]="['/archives']">Archives</a></li>
+              <li><a [routerLink]="['/contact']">Contact</a></li>
+          </ul>
+
+      </div>
+    </nav>
+</header>
+
+
