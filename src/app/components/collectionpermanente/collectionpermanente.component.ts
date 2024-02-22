@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './collectionpermanente.component.html',
-  styleUrl: './collectionpermanente.component.css'
+  styleUrl: './collectionpermanente.component.scss'
 })
 export class CollectionpermanenteComponent {
 

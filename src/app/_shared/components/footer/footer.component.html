@@ -53,7 +53,7 @@
 
         </div>
         <div class="adherer_centre">
-          <p><a [routerLink]="['/mentions-legales']">Mentions légales</a></p>
+          <p><a [routerLink]="['/mentions-legales']" (click)="scrollToTop()">Mentions légales</a></p>
         </div>
         </div>
 
@@ -67,7 +67,7 @@
               <a href=""> © Centre d'Art Contemporain Raymond Farbos</a>
           </p>
       </div>
-      <div class="backToTop" id="backToTop">
+      <div class="backToTop" id="backToTop" (click)="scrollToTop()">
         <img src="../../../../assets/img/arrow_backToTop.svg" alt="up">
       </div>
       <div class="socialMedia_Link">

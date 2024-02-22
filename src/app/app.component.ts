@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 
 @Component({
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cac';
+
+//   @HostListener('contextmenu', ['$event'])
+//   onRightClick(event: MouseEvent) {
+//     event.preventDefault();
+//   }
 }

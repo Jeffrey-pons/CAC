@@ -1,15 +1,15 @@
 <main>
   <section class="citation-cac">
       <h2>
-      <i>“Pour etre eclaire et creer quelque chose d’extraordinaire, l’artiste doit d’abord apprendre a se liberer de la tyrannie de la logique et des traditions.” </i>
+      <i>“Pour être éclairé et créer quelque chose d’extraordinaire, l’artiste doit d’abord apprendre à se libérer de la tyrannie de la logique et des traditions.” </i>
   </h2>
   </section>
   <div class="bloc-separation">
   <div class="separation"></div>
 </div>
   <section class="aboutus">
-      <div class="img-aboutus">
-          <img src="../../../assets/img/raymondfarbos.jpg" alt="">
+      <div class="img-aboutus" (click)="toggleImage('raymondfarbos')">
+          <img src="../../../assets/img/centre-pictures/raymondfarbos.png" alt="">
           <p id="info-picture">Raymond Farbos préparant une exposition, 1986 </p>
       </div>
       <div class="paragraph-aboutus">
@@ -34,39 +34,44 @@
   <section class="center-aboutus">
       <div class="activity-center-aboutus">
           <ul>
-              <li>
-                  <p >Expositions</p>
-
-              <img  src="../../../assets/img/centre-pictures/exposition .png" alt="">
+              <li (click)="toggleImage('exposition')">
+                  <p>Expositions</p>
+              <img  src="../../../assets/img/centre-pictures/exposition.png" alt="">
 
               </li>
-              <li>
+              <li (click)="toggleImage('boutique')">
                   <p>Boutique sur place</p>
               <img  src="../../../assets/img/centre-pictures/boutique.png" alt="">
               </li>
-              <li >
-                  <p>Vernissage</p>
-                  <img  src="../../../assets/img/centre-pictures//vernissage.png" alt="">
+              <li (click)="toggleImage('vernissage')">
+                  <p>Vernissages</p>
+                  <img  src="../../../assets/img/centre-pictures/vernissage.png" alt="">
               </li>
-              <li>
-                  <p>Résidence d'artiste</p>
+              <li (click)="toggleImage('residente-artite')">
+                  <p>Résidence d'artistes</p>
                   <img src="../../../assets/img/centre-pictures/residente-artite.png" alt="">
               </li>
-              <li >
-                  <p>Montage d'exposition</p>
+              <li (click)="toggleImage('montage-expo')">
+                  <p>Montage d'expositions</p>
                   <img src="../../../assets/img/centre-pictures/montage-expo.png" alt="">
               </li>
-              <li >
-                  <p>Atelier créatif</p>
+              <li (click)="toggleImage('atelier-creatif')">
+                  <p>Ateliers créatifs</p>
                   <img  src="../../../assets/img/centre-pictures/atelier-creatif.png" alt="">
               </li>
-              <li >
+              <li (click)="toggleImage('atelier-scolaires')">
                   <p>Ateliers scolaires </p>
                   <img  src="../../../assets/img/centre-pictures/atelier-scolaires.png" alt="">
               </li>
           </ul>
       </div>
-      <div class="img-center-aboutus">
+      <div class="image-viewer" *ngIf="showImage" (click)="toggleImage('')">
+        <div class="image-container">
+          <span class="close-btn">&times;</span>
+        <img [src]="selectedImageSrc" alt="">
+      </div>
+    </div>
+      <div (click)="toggleImage('2020-07-06')" class="img-center-aboutus">
       <img src="../../../assets/img/centre-pictures/2020-07-06.png" alt="">
       <p id="info-picture">Collection permanente du Centre d'art, 2017 </p>
   </div>
@@ -105,4 +110,5 @@
   <section>
 
   </section>
+  <app-adhesion></app-adhesion>
 </main>

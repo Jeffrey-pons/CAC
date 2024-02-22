@@ -1,20 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ScrollService } from '../../../services/scrollservice/scroll.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
-export class FooterComponent implements OnInit{
+export class FooterComponent {
 
- ngOnInit(): void {
-   const backToTopButton = document.getElementById('backToTop');
+  constructor(private scrollService: ScrollService) {}
 
-   backToTopButton?.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-   });
- }
+  scrollToTop() {
+    this.scrollService.scrollToTop();
+  }
 }
