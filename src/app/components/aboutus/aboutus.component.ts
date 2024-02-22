@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AdhesionComponent } from '../../_shared/components/adhesion/adhesion.component';
 
 @Component({
   selector: 'app-aboutus',
@@ -7,5 +6,11 @@ import { AdhesionComponent } from '../../_shared/components/adhesion/adhesion.co
   styleUrl: './aboutus.component.scss'
 })
 export class AboutusComponent {
+  showImage: boolean = false;
+  selectedImageSrc: string = '';
 
+  toggleImage(imageName: string) {
+    this.selectedImageSrc = `../../../assets/img/centre-pictures/${imageName}.png`;
+    this.showImage = !this.showImage;
+  }
 }

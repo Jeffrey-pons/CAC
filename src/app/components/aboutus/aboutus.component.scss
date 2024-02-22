@@ -20,6 +20,7 @@ main {
         text-align: center;
         display: grid;
         gap: 28px;
+        cursor: pointer;
         p {
           font-size: 13px;
         }
@@ -41,9 +42,7 @@ main {
         }
     }
     .center-aboutus {
-
         display: flex;
-        align-items: center;
         .activity-center-aboutus{
             ul {
                 li {
@@ -55,24 +54,18 @@ main {
                         text-align: center;
                         font-family: $fontTitle;
                         cursor: pointer;
+                        color: rgb(75, 74, 74);
+                        padding: 6px;
+                    }
+                    p:hover {
+                      color: black;
+                      cursor: url('../../../assets/img/loader.svg'), auto;
 
                     }
                     img {
-                        position: absolute;
-                        transition: opacity 0.3s ease;
-                        top: 227%;
-                        left: 315%;
-                        transform: translate(-50%, -100%);
-                        max-width: 300px;
                         display: none;
                     }
                 }
-                li:hover, li:active, li:focus, li:target, li:visited, li:focus-visible, li:focus-within {
-                    cursor: pointer;
-                    img {
-                        display: block;
-                    }
-                  }
             }
         }
         .img-center-aboutus {
@@ -81,6 +74,7 @@ main {
             gap: 28px;
             img {
                 max-width: 78%;
+                cursor: pointer;
             }
             p {
                 text-align: right;
@@ -108,3 +102,45 @@ main {
     }
 }
 
+.image-viewer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 101%;
+  height: 101%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #3a3a3ad2;
+  color: white;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.image-viewer img {
+  width: 800px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 4px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 33px;
+  height: 33px;
+  font-size: 28px;
+  background-color: rgb(90, 90, 90);
+  border-radius: 100px;
+  padding: 0px 7px;
+  cursor: pointer;
+  border: 2px solid white;
+}
+.close-btn:hover {
+  background-color: rgb(128, 128, 128);
+}

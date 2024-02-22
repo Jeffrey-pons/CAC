@@ -1,4 +1,18 @@
-<svg *ngIf="loader.isLoading()" xmlns="http://www.w3.org/2000/svg" version="1.0" width="32" height="32" viewBox="0 0 346.000000 445.000000" preserveAspectRatio="xMidYMid meet" class="rotate">
+<svg  xmlns="http://www.w3.org/2000/svg" version="1.0" width="32" height="32" viewBox="0 0 346.000000 445.000000" preserveAspectRatio="xMidYMid meet" class="rotate">
+<style>
+.rotate {
+  animation: spin 0.8s linear infinite;
+  transform-origin: center center;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
   <g transform="translate(0.000000,445.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
     <path d="M1560 3914 c-14 -2 -68 -12 -120 -20 -135 -23 -237 -57 -377 -125 -304 -149 -559 -416 -719 -754 -197 -416 -216 -998 -48 -1452 141 -382 432 -716 774 -888 220 -111 533 -170 771 -145 213 22 369 65 534 147 434 218 716 589 844 1108 25 100 43 213 36 224 -2 5 -180 8 -395 7 -451 -1 -410 9 -461 -117 -53 -130 -98 -200 -184 -286 -65 -64 -100 -90 -166 -122 -240 -116 -506 -103 -712 33 -263 175 -399 510 -342 847 46 280 198 495 426 604 204 96 462 85 657 -30 175 -102 303 -281 356 -496 l23 -94 406 -3 c337 -2 407 0 407 11 0 86 -44 307 -92 457 -148 470 -496 847 -930 1009 -164 62 -284 83 -488 87 -96 1 -186 0 -200 -2z">
     </path>
