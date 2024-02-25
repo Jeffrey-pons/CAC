@@ -8,6 +8,7 @@ import { ArchivesComponent } from './components/archives/archives.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 import { ActualiteComponent } from './components/actualite/actualite.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
+import { LoginComponent } from './modules/back-office/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'mentions-legales', component: LegalnoticeComponent },
   { path: 'actualite', component: ActualiteComponent },
   { path: 'collection-permanente', component: CollectionpermanenteComponent },
+  { path: 'cac-back-office-connexion', component: LoginComponent },
 ];
 
 @NgModule({
