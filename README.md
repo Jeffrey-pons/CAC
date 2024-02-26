@@ -1,28 +1,40 @@
-# CAC
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+# Centre d'Art Contemporain Raymond Farbos
 
-## Development server
+Ce projet vise à créer le site internet du centre d'art contemporain Raymond Farbos, situé à Mont-de-Marsan (40). 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Objectifs
+L'objectif principal du Centre d'Art Contemporain Raymond Farbos est de promouvoir l'art contemporain, de soutenir les artistes locaux et internationaux, et d'offrir au public un accès à des expositions, des ateliers, des conférences et d'autres événements culturels.
+## Fonctionnalités
+- Expositions d'art contemporain
+- Ateliers créatifs pour enfants et adultes
+- Conférences et débats sur l'art et la culture
+- Résidences d'artistes
+## Installation
+1. Clonez ce dépôt sur votre machine locale.
+2. Assurez-vous d'avoir Node.js et npm installés sur votre machine.
+3. Exécutez `npm install` pour installer les dépendances.
+4. Configurez les variables d'environnement nécessaires, telles que les clés d'API pour les services externes.
+5. Exécutez `ng` pour démarrer l'application côté client.
+## Contributing
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Les contributions à ce projet sont les bienvenues. Si vous souhaitez contribuer, veuillez suivre les étapes suivantes :
+1. Effectuez un fork du projet.
+2. Créez une nouvelle branche (`git checkout -b feature/feature-name`).
+3. Effectuez vos modifications et committez-les (`git commit -am 'Add new feature'`).
+4. Poussez vos modifications vers la branche (`git push origin feature/feature-name`).
+5. Créez une nouvelle demande de fusion (pull request).
 
-## Build
+## Authors
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [@jeffrey-pons](https://github.com/Jeffrey-pons?tab=repositories) - Développeur principal
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## License
 
-## Running end-to-end tests
+Ce projet est sous licence [MIT License]
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+![Logo](./src/assets/img/Logotype_cac.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# CAC
