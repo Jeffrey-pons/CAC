@@ -1,3 +1,4 @@
+![Logo](./src/assets/img/Logotype_cac.png)
 
 # Centre d'Art Contemporain Raymond Farbos
 
@@ -35,6 +36,4 @@ Les contributions à ce projet sont les bienvenues. Si vous souhaitez contribuer
 
 Ce projet est sous licence [MIT License]
 
-
-![Logo](./src/assets/img/Logotype_cac.png)
 
