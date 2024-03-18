@@ -1,0 +1,15 @@
+main {
+    .oeuvre-cp {
+        display: flex;
+        .img-oeuvre-cp {
+            flex: 1;
+            text-align: center;
+            img {
+                max-width: 80%;
+            }
+        }
+        .info-img-oeuvre-cp {
+            flex: 1;
+        }
+    }
+}

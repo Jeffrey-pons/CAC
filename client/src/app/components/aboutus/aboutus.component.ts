@@ -13,4 +13,5 @@ export class AboutusComponent {
     this.selectedImageSrc = `../../../assets/img/centre-pictures/${imageName}.png`;
     this.showImage = !this.showImage;
   }
+
 }

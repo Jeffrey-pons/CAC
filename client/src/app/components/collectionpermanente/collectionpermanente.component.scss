@@ -1,0 +1,22 @@
+main {
+    p {
+        font-size: 14px;
+    }
+    
+    .containerTwo_collectionPermanente {
+        .collection-permanente-oeuvres {
+            display: flex;
+            align-items: center;
+            div {
+                flex: 1;
+                text-align: center;
+                a {
+                    img {
+                        max-width: 50%;
+                    }
+                }
+            }
+            
+        }
+    }
+}

@@ -1,3 +1,4 @@
+// import { Oeuvre } from './../../../server/src/modules/collection-permanente/entities/oeuvres.entity';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -9,6 +10,7 @@ import { LegalnoticeComponent } from './components/legalnotice/legalnotice.compo
 import { ActualiteComponent } from './components/actualite/actualite.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
 import { LoginComponent } from './modules/back-office/login/login.component';
+import { OeuvresCollectionPermamComponent } from './components/oeuvres-collection-permam/oeuvres-collection-permam.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path: 'actualite', component: ActualiteComponent },
   { path: 'collection-permanente', component: CollectionpermanenteComponent },
   { path: 'cac-back-office-connexion', component: LoginComponent },
+  { path: 'oeuvre-collection-permanente', component: OeuvresCollectionPermamComponent },
 ];
 
 @NgModule({
