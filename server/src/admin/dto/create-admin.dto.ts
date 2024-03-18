@@ -7,7 +7,7 @@ export class CreateAdminDto  {
     @IsNotEmpty()
     readonly name: string;
 
-    @IsNumber()
+    @IsNumber() 
     @IsNotEmpty()
     readonly roleNumber: number;
     
