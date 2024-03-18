@@ -1,0 +1,56 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+nav {
+    padding: 1.5em 2em;
+    @include flex-center-space;
+    align-items: center;
+
+    .img-navbar {
+        img {
+            max-width: 114px;
+        }
+    }
+
+    .link-categories-left, .link-categories-right {
+        ul {
+            display: flex;
+            gap: 18px;
+
+            li {
+                a {
+                  color: #858585;
+                  font-family: $fontTitle;
+                }
+                a:hover {
+                  color: #000000;
+                }
+            }
+        }
+    }
+}
+
+
+.logo img {
+  transition: transform 0.3 ease, opacity 0.3s ease;
+  // transform: translateY(100%);
+
+}
+
+.logo img.visible {
+  // transform: translateY(0%);
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 1s ease;
+
+}
+.logo-front, .logo-back {
+  // // position: absolute;
+  // top: 4%;
+  // left: 46%;
+  // z-index: 10px;
+  // // opacity: 0;
+  // // display: none;
+}
