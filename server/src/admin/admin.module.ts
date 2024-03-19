@@ -18,6 +18,7 @@ export class AdminModule implements NestModule {
     consumer
       .apply(AuthorizationMiddleware)
       .forRoutes(
+        { path: 'admin/register', method: RequestMethod.POST },
         { path: 'admin/:id', method: RequestMethod.PATCH },
         { path: 'admin/', method: RequestMethod.GET },
         { path: 'admin/:id', method: RequestMethod.GET},
