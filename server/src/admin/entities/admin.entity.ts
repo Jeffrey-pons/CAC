@@ -7,9 +7,12 @@ export class Admin extends Document {
    name: string;
 
    @Prop()
-   roleNumber: number;
+   role: string;
    
    @Prop()
    email: string;
+
+   @Prop()
+   password: string;
 }
 export const AdminSchema = SchemaFactory.createForClass(Admin);

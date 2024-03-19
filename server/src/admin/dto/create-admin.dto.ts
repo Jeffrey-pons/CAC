@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { IsEmail, IsNotEmpty, IsNumber, IsString, Matches, MinLength, MaxLength } from 'class-validator';
 
 export class CreateAdminDto  {
     
@@ -7,11 +7,20 @@ export class CreateAdminDto  {
     @IsNotEmpty()
     readonly name: string;
 
-    @IsNumber() 
+    @IsString()
     @IsNotEmpty()
-    readonly roleNumber: number;
+    readonly role: string;
     
-    @IsNumber()
+    @IsString()
+    @IsEmail()
     @IsNotEmpty()
-    readonly email: number;
+    readonly email: string;
+
+    @IsString()
+    @MinLength(8)
+    @IsNotEmpty()
+    @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, {
+        message: 'password too weak',
+      })
+    readonly password: string;
 }
