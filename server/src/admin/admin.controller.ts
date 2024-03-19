@@ -2,19 +2,23 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, Res } fr
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
-import { Admin } from './entities/admin.entity';
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 @Controller('admin')
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
-  @Post()
+  @Post('/register')
   async createAdmin(@Res() response, @Body() createAdminDto: CreateAdminDto) {
     try {
-      const newAdmin = await this.adminService.createAdmin(createAdminDto);
+
+      const { newAdmin } = await this.adminService.createAdmin(createAdminDto);
+
       return response.status(HttpStatus.CREATED).json({
-        message: 'Admin has been created successfully',
-        newAdmin,
+        message: 'Admin created successfully',
+        newAdmin
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
@@ -22,6 +26,17 @@ export class AdminController {
         message: 'Error: Admin not created!',
         error: 'Bad Request',
       });
+    }
+  }
+
+  @Post('/login')
+  async login(@Res() response, @Body() loginDto: { email: string, password: string }) {
+    try {
+      const result = await this.adminService.login(loginDto.email, loginDto.password);
+
+      return response.status(HttpStatus.OK).json(result);
+    } catch (err) {
+      return response.status(err.status).json(err.response);
     }
   }
 

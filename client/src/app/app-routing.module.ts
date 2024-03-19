@@ -1,4 +1,3 @@
-// import { Oeuvre } from './../../../server/src/modules/collection-permanente/entities/oeuvres.entity';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
