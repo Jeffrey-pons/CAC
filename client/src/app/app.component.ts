@@ -15,13 +15,5 @@ export class AppComponent {
     event.preventDefault();
   }
 
-  isLoginRoute: boolean = false;
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.isLoginRoute = event.url.includes('cac-back-office-connexion'); // Mettez ici le chemin de la route de connexion au back-office
-      }
-    });
-  }
 }
