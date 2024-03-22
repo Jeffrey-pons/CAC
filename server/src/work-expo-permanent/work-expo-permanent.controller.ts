@@ -77,7 +77,6 @@ export class WorkExpoPermanentController {
   }
   }
 
-
   @Patch('/:id')
   @UseGuards(AdminGuard)
   @UseInterceptors(FileInterceptor('image', {

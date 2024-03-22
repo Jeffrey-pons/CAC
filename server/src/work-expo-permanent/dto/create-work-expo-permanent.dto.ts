@@ -6,7 +6,6 @@ export class CreateWorkExpoPermanentDto {
     @MaxLength(30)
     readonly title: string;
 
-
     public image: string;
     
     @IsString()
