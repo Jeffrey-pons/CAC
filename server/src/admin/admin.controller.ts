@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, Res } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, Res, UseGuards } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
+import { AdminGuard } from './admin.guards';
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -11,6 +12,7 @@ export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
   @Post('/register')
+  @UseGuards(AdminGuard)
   async createAdmin(@Res() response, @Body() createAdminDto: CreateAdminDto) {
     try {
 
@@ -41,6 +43,7 @@ export class AdminController {
   }
 
   @Patch('/:id')
+  @UseGuards(AdminGuard)
   async updateAdmin(@Res() response, @Param('id') adminId: string, @Body() updateAdminDto: UpdateAdminDto) {
     try {
       const existingAdmin = await this.adminService.updateAdmin(adminId, updateAdminDto);
@@ -54,6 +57,7 @@ export class AdminController {
   }
 
   @Get()
+  @UseGuards(AdminGuard)
   async getAdmins(@Res() response) {
     try {
       const adminData = await this.adminService.getAllAdmin();
@@ -67,6 +71,7 @@ export class AdminController {
   }
 
   @Get('/:id')
+  @UseGuards(AdminGuard)
   async getAdmin(@Res() response, @Param('id') adminId: string) {
     try {
       const existingAdmin = await this.adminService.getAdmin(adminId);
@@ -80,6 +85,7 @@ export class AdminController {
   }
 
   @Delete('/:id')
+  @UseGuards(AdminGuard)
   async deleteAdmin(@Res() response, @Param('id') adminId: string) {
     try {
       const deletedAdmin = await this.adminService.deleteAdmin(adminId);

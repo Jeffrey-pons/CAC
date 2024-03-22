@@ -5,7 +5,7 @@ import { AdminController } from './admin/admin.controller';
 import { AppModule } from './app.module';
 import { Admin, AdminSchema } from './admin/entities/admin.entity';
 import { MongooseModule } from '@nestjs/mongoose';
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 
 dotenv.config();
 
