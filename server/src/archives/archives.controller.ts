@@ -12,7 +12,7 @@ export class ArchivesController {
   @UseGuards(AdminGuard)
   async createArchive(@Res() response, @Body() createArchiveDto: CreateArchiveDto) {
    try {
-
+ 
     const { newArchive } = await this.archivesService.createArchive(createArchiveDto);
     return response.status(HttpStatus.CREATED).json({
       message: 'Archive created successfully',
