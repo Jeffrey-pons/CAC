@@ -12,4 +12,4 @@ import { Admin, AdminSchema } from './entities/admin.entity';
   providers: [AdminService],
 })
 export class AdminModule  {
-}
+} 

@@ -10,3 +10,4 @@ export class Archive extends Document {
     artist: string;
 }
 export const ArchiveSchema = SchemaFactory.createForClass(Archive);
+
