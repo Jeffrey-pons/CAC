@@ -26,8 +26,9 @@ L'objectif principal du Centre d'Art Contemporain Raymond Farbos est de promouvo
 6. Exécutez `npm start` pour démarrer l'application côté client.
 7. Exécutez `npm run lint` pour vérifier le code avec eslint.
 8. Exécutez `npm run build` pour créer une version de production de l'application.
-9. Docker
-10. Migration
+9. Exécutez `migrate-mongo up` pour appliquer les migrations.
+9. Exécutez `migrate-mongo down` pour désactivez les migrations.
+10. Docker
 
 
 ## Authors
