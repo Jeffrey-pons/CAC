@@ -1,4 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Res, Param, Delete,  HttpStatus, UseGuards, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Res,
+  Param,
+  Delete,
+  HttpStatus,
+  UseGuards,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 import { WorkExpoPermanentService } from './work-expo-permanent.service';
 import { CreateWorkExpoPermanentDto } from './dto/create-work-expo-permanent.dto';
 import { UpdateWorkExpoPermanentDto } from './dto/update-work-expo-permanent.dto';
@@ -9,28 +22,40 @@ import { extname } from 'path';
 
 @Controller('work-expo-permanent')
 export class WorkExpoPermanentController {
-  constructor(private readonly workExpoPermanentService: WorkExpoPermanentService) {}
+  constructor(
+    private readonly workExpoPermanentService: WorkExpoPermanentService,
+  ) {}
 
   @Post()
   @UseGuards(AdminGuard)
-  @UseInterceptors(FileInterceptor('image', {
-    storage: diskStorage({
-      destination: './uploads',
-      filename: (req: any, file, cb) => {
-        const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
-        return cb(null, `${randomName}${extname(file.originalname)}`)
-      }
-    })
-  }))
-  async createArtWork(@Res() response, @Body() createWorkExpoPermanentDto: CreateWorkExpoPermanentDto, @UploadedFile() file: Express.Multer.File) {
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: './uploads',
+        filename: (req: any, file, cb) => {
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('');
+          return cb(null, `${randomName}${extname(file.originalname)}`);
+        },
+      }),
+    }),
+  )
+  async createArtWork(
+    @Res() response,
+    @Body() createWorkExpoPermanentDto: CreateWorkExpoPermanentDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
     try {
       createWorkExpoPermanentDto.image = file.path;
-      const { newArtWork } = await this.workExpoPermanentService.createArtWork(createWorkExpoPermanentDto);
+      const { newArtWork } = await this.workExpoPermanentService.createArtWork(
+        createWorkExpoPermanentDto,
+      );
       return response.status(HttpStatus.CREATED).json({
         message: 'Artwork created successfully',
-        newArtWork
+        newArtWork,
       });
-
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
@@ -47,7 +72,7 @@ export class WorkExpoPermanentController {
       const artWorkData = await this.workExpoPermanentService.findAllArtWork();
       return response.status(HttpStatus.OK).json({
         message: 'Artworks data retrieved successfully',
-        artWorkData
+        artWorkData,
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
@@ -61,62 +86,73 @@ export class WorkExpoPermanentController {
   @Get('/:id')
   @UseGuards(AdminGuard)
   async findOneArtWork(@Res() response, @Param('id') id: string) {
-   try {
-    const artWork = await this.workExpoPermanentService.findOneArtWork(id);
-    return response.status(HttpStatus.OK).json({
-      message: 'Artwork data retrieved successfully',
-      artWork
-    });
-
-   } catch (err) {
-    return response.status(HttpStatus.BAD_REQUEST).json({
-      statusCode: 400,
-      message: 'Error: Artwork not found!',
-      error: 'Bad Request',
-    });
-  }
+    try {
+      const artWork = await this.workExpoPermanentService.findOneArtWork(id);
+      return response.status(HttpStatus.OK).json({
+        message: 'Artwork data retrieved successfully',
+        artWork,
+      });
+    } catch (err) {
+      return response.status(HttpStatus.BAD_REQUEST).json({
+        statusCode: 400,
+        message: 'Error: Artwork not found!',
+        error: 'Bad Request',
+      });
+    }
   }
 
   @Patch('/:id')
   @UseGuards(AdminGuard)
-  @UseInterceptors(FileInterceptor('image', {
-    storage: diskStorage({
-      destination: './uploads',
-      filename: (req: any, file, cb) => {
-        const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
-        return cb(null, `${randomName}${extname(file.originalname)}`)
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: './uploads',
+        filename: (req: any, file, cb) => {
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('');
+          return cb(null, `${randomName}${extname(file.originalname)}`);
+        },
+      }),
+    }),
+  )
+  async updateArtWork(
+    @Res() response,
+    @Param('id') id: string,
+    @Body() updateWorkExpoPermanentDto: UpdateWorkExpoPermanentDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    try {
+      if (file) {
+        updateWorkExpoPermanentDto.image = file.path;
       }
-    })
-  }))
-  async updateArtWork(@Res() response, @Param('id') id: string, @Body() updateWorkExpoPermanentDto: UpdateWorkExpoPermanentDto, @UploadedFile() file: Express.Multer.File) {
-  try {
-    if (file) {
-      updateWorkExpoPermanentDto.image = file.path;
+      const existingArtWork = await this.workExpoPermanentService.updateArtWork(
+        id,
+        updateWorkExpoPermanentDto,
+      );
+      return response.status(HttpStatus.OK).json({
+        message: 'Artwork updated successfully',
+        existingArtWork,
+      });
+    } catch (err) {
+      return response.status(HttpStatus.BAD_REQUEST).json({
+        statusCode: 400,
+        message: 'Error: Artwork not updated!',
+        error: 'Bad Request',
+      });
     }
-    const existingArtWork = await this.workExpoPermanentService.updateArtWork(id, updateWorkExpoPermanentDto);
-    return response.status(HttpStatus.OK).json({
-      message: 'Artwork updated successfully',
-      existingArtWork
-    });
-
-  } catch (err) {
-    return response.status(HttpStatus.BAD_REQUEST).json({
-    statusCode: 400,
-    message: 'Error: Artwork not updated!',
-    error: 'Bad Request',
-  });
-
-} 
-}
+  }
 
   @Delete('/:id')
   @UseGuards(AdminGuard)
   async removeArtWork(@Res() response, @Param('id') id: string) {
     try {
-      const removedArtWork = await this.workExpoPermanentService.removeArtWork(id);
+      const removedArtWork =
+        await this.workExpoPermanentService.removeArtWork(id);
       return response.status(HttpStatus.OK).json({
         message: 'Artwork deleted successfully',
-        removedArtWork
+        removedArtWork,
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({

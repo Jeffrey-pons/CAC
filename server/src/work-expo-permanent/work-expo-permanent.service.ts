@@ -9,16 +9,18 @@ import { Artwork } from './entities/work-expo-permanent.entity';
 export class WorkExpoPermanentService {
   constructor(@InjectModel('Artwork') private artworkModel: Model<Artwork>) {}
 
-  async createArtWork(createWorkExpoPermanentDto: CreateWorkExpoPermanentDto): Promise<{ newArtWork: Artwork}>  {
+  async createArtWork(
+    createWorkExpoPermanentDto: CreateWorkExpoPermanentDto,
+  ): Promise<{ newArtWork: Artwork }> {
     const newArtWork = new this.artworkModel(createWorkExpoPermanentDto);
     const savedArtWork = await newArtWork.save();
-    return { newArtWork: savedArtWork};
+    return { newArtWork: savedArtWork };
   }
 
-  async findAllArtWork(): Promise <Artwork[]> {
+  async findAllArtWork(): Promise<Artwork[]> {
     const artWorkData = await this.artworkModel.find().exec();
     if (!artWorkData || artWorkData.length == 0) {
-        throw new Error('Artwork data not found!');
+      throw new Error('Artwork data not found!');
     }
     return artWorkData;
   }
@@ -31,15 +33,22 @@ export class WorkExpoPermanentService {
     return artWork;
   }
 
-  async updateArtWork(id: string, updateWorkExpoPermanentDto: UpdateWorkExpoPermanentDto): Promise <Artwork> {
-    const existingArtWork = await this.artworkModel.findByIdAndUpdate(id, updateWorkExpoPermanentDto, { new: true });
+  async updateArtWork(
+    id: string,
+    updateWorkExpoPermanentDto: UpdateWorkExpoPermanentDto,
+  ): Promise<Artwork> {
+    const existingArtWork = await this.artworkModel.findByIdAndUpdate(
+      id,
+      updateWorkExpoPermanentDto,
+      { new: true },
+    );
     if (!existingArtWork) {
       throw new Error(`Artwork #${id} not found`);
     }
     return existingArtWork;
   }
 
-  async removeArtWork(id: string): Promise <Artwork> {  
+  async removeArtWork(id: string): Promise<Artwork> {
     const removedArtWork = await this.artworkModel.findByIdAndDelete(id);
     if (!removedArtWork) {
       throw new Error(`Artwork #${id} not found`);

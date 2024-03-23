@@ -6,7 +6,7 @@ import { Archive, ArchiveSchema } from './entities/archive.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Archive.name, schema: ArchiveSchema }])
+    MongooseModule.forFeature([{ name: Archive.name, schema: ArchiveSchema }]),
   ],
   controllers: [ArchivesController],
   providers: [ArchivesService],

@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AdminService } from './admin.service';
 import { Admin } from './entities/admin.entity';
 
-
 describe('AdminService', () => {
   let service: AdminService;
 
@@ -16,5 +15,4 @@ describe('AdminService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
- 
 });

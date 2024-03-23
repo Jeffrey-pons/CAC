@@ -1,9 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpStatus,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { AdminGuard } from './admin.guards';
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -15,12 +26,11 @@ export class AdminController {
   @UseGuards(AdminGuard)
   async createAdmin(@Res() response, @Body() createAdminDto: CreateAdminDto) {
     try {
-
       const { newAdmin } = await this.adminService.createAdmin(createAdminDto);
 
       return response.status(HttpStatus.CREATED).json({
         message: 'Admin created successfully',
-        newAdmin
+        newAdmin,
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
@@ -32,9 +42,15 @@ export class AdminController {
   }
 
   @Post('/login')
-  async login(@Res() response, @Body() loginDto: { email: string, password: string }) {
+  async login(
+    @Res() response,
+    @Body() loginDto: { email: string; password: string },
+  ) {
     try {
-      const { token, name } = await this.adminService.login(loginDto.email, loginDto.password);
+      const { token, name } = await this.adminService.login(
+        loginDto.email,
+        loginDto.password,
+      );
 
       return response.status(HttpStatus.OK).json({
         message: 'Logged in successfully',
@@ -48,9 +64,16 @@ export class AdminController {
 
   @Patch('/:id')
   @UseGuards(AdminGuard)
-  async updateAdmin(@Res() response, @Param('id') adminId: string, @Body() updateAdminDto: UpdateAdminDto) {
+  async updateAdmin(
+    @Res() response,
+    @Param('id') adminId: string,
+    @Body() updateAdminDto: UpdateAdminDto,
+  ) {
     try {
-      const existingAdmin = await this.adminService.updateAdmin(adminId, updateAdminDto);
+      const existingAdmin = await this.adminService.updateAdmin(
+        adminId,
+        updateAdminDto,
+      );
       return response.status(HttpStatus.OK).json({
         message: 'Admin has been successfully updated',
         existingAdmin,

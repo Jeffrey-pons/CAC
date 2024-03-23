@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AdminModule } from './admin/admin.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ArchivesModule } from './archives/archives.module';
@@ -14,8 +14,8 @@ dotenv.config();
     AdminModule,
     MongooseModule.forRoot(process.env.MONGO_URL),
     ArchivesModule,
-    WorkExpoPermanentModule
-],
+    WorkExpoPermanentModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

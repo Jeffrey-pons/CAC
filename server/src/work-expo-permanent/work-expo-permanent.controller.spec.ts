@@ -11,7 +11,9 @@ describe('WorkExpoPermanentController', () => {
       providers: [WorkExpoPermanentService],
     }).compile();
 
-    controller = module.get<WorkExpoPermanentController>(WorkExpoPermanentController);
+    controller = module.get<WorkExpoPermanentController>(
+      WorkExpoPermanentController,
+    );
   });
 
   it('should be defined', () => {

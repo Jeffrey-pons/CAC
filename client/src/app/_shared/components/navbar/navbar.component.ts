@@ -26,26 +26,14 @@ export class NavbarComponent implements OnInit{
   }
 
   isLoggedIn(): boolean {
-    // Vérifie si l'utilisateur est connecté en vérifiant la présence du token
     return !!localStorage.getItem('auth_token');
   }
-
-  // getUser(): User | null {
-  //   return this.authService.getUser();
-  // }
-
-  // getUserInitial(): string {
-  //   const user = this.getUser();
-  //   return user ? user.name[0].toUpperCase() : '';
-  // }
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   goToBackOffice(): void {
-    // Redirection vers la page Back Office
-    // À implémenter selon votre structure de routage
     this.router.navigate(['/admin/account']);
   }
 
