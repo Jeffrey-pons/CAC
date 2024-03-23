@@ -30,6 +30,15 @@
           </ul>
 
       </div>
+      <div class="auth-bubble" *ngIf="isLoggedIn()">
+        <div class="profile-initial" (click)="toggleDropdown()">{{ userInitial }}</div>
+        <div class="dropdown" *ngIf="isDropdownOpen">
+          <ul>
+            <li><a [routerLink]="['/admin/dashboard']">Back Office</a></li>
+            <li (click)="logout()">Déconnexion</li>
+          </ul>
+        </div>
+      </div>
     </nav>
 </header>
 

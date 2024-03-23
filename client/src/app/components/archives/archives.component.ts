@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ArchivesService } from '../../services/archiveservice/archives.service';
 
 @Component({
   selector: 'app-archives',
-  standalone: true,
-  imports: [],
   templateUrl: './archives.component.html',
-  styleUrl: './archives.component.css'
+  styleUrl: './archives.component.scss'
 })
-export class ArchivesComponent {
+export class ArchiveComponent implements OnInit {
+  archives: any[];
 
+  constructor(private archivesService: ArchivesService) {
+    this.archives = []; 
+   }
+
+  ngOnInit(): void {
+    this.archivesService.getArchives().subscribe(data => {
+      this.archives = data;
+    });
+  }
 }

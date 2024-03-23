@@ -12,6 +12,8 @@ import { LoaderComponent } from './_shared/components/loader/loader.component';
 import { LoadingInterceptor } from './interceptor/loading';
 import { AdhesionComponent } from './_shared/components/adhesion/adhesion.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { FormsModule } from '@angular/forms';
+import { AuthAdminComponent } from './modules/back-office/login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
     LoaderComponent,
     AdhesionComponent,
     AboutusComponent,
+    AuthAdminComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     {

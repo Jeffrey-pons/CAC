@@ -1,1 +1,6 @@
-<p>archives works!</p>
+<main>
+    <div *ngFor="let archive of archives">
+        <h2>{{ archive.date }}</h2>
+        <p>{{ archive.artist }}</p>
+    </div>
+</main>

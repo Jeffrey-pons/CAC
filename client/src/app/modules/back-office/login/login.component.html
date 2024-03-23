@@ -6,13 +6,18 @@
             </div>
             <div class="info-container-login">
                 <h2>Back Office</h2>
-                <label for="text">Username</label>
-                <input type="text" name="" id="">
-                <label for="email">Email</label>
-                <input type="email" name="" id="">
-                <label for="password">Mot de Passe</label>
-
-                <input type="password">
+                <form (ngSubmit)="submitLoginForm()">
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" [(ngModel)]="email" required>
+                    </div>
+                    <div>
+                        <label for="password">Mot de Passe</label>
+                        <input type="password" name="password" id="password" [(ngModel)]="password" required>
+                    </div>
+                    <button type="submit">Se Connecter</button>
+                </form>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
             </div>
         </div>
     </section>
