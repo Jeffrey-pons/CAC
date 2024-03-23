@@ -66,7 +66,6 @@ export class WorkExpoPermanentController {
   }
 
   @Get()
-  @UseGuards(AdminGuard)
   async findAllArtWorks(@Res() response) {
     try {
       const artWorkData = await this.workExpoPermanentService.findAllArtWork();

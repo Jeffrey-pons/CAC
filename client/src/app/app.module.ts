@@ -16,6 +16,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FormsModule } from '@angular/forms';
 import { AuthAdminComponent } from './modules/back-office/login/login.component';
 import { ArchiveComponent } from './components/archives/archives.component';
+import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ArchiveComponent } from './components/archives/archives.component';
     AdhesionComponent,
     AboutusComponent,
     AuthAdminComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    CollectionpermanenteComponent
 
   ],
   imports: [

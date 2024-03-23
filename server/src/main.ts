@@ -14,8 +14,11 @@ async function bootstrap() {
   app.use(rateLimit({ windowMs: 1 * 60 * 1000, max: 100 })); // 100 requests per minute
   app.use(helmet());
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors(); // Enable Cross-Origin Resource Sharing
-  app.useStaticAssets(join(__dirname, '..', 'uploads')); // Serving static files
+  app.enableCors({
+    origin: 'http://localhost:4200' // Allow only this domain
+  }); 
+  app.useStaticAssets(join(__dirname, '..', '..', 'uploads')); // Serving static files
+  
   await app.listen(process.env.PORT_BACKEND);
 }
 bootstrap();
