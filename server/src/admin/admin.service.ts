@@ -50,6 +50,7 @@ export class AdminService {
   return {
     message: 'Logged in successfully',
     token,
+    name: admin.name,
   };
  }
  async getAdminByEmail(email: string): Promise<Admin> {

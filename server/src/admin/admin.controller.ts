@@ -34,9 +34,13 @@ export class AdminController {
   @Post('/login')
   async login(@Res() response, @Body() loginDto: { email: string, password: string }) {
     try {
-      const result = await this.adminService.login(loginDto.email, loginDto.password);
+      const { token, name } = await this.adminService.login(loginDto.email, loginDto.password);
 
-      return response.status(HttpStatus.OK).json(result);
+      return response.status(HttpStatus.OK).json({
+        message: 'Logged in successfully',
+        token,
+        name, // Ajoutez le nom de l'utilisateur à la réponse JSON
+      });
     } catch (err) {
       return response.status(err.status).json(err.response);
     }

@@ -5,7 +5,7 @@ import { Document } from "mongoose";
 export class Archive extends Document {     
     @Prop()
     date: number;
- 
+
     @Prop()
     artist: string;
 }

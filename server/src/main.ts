@@ -10,6 +10,7 @@ dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useGlobalPipes(new ValidationPipe());
+  app.enableCors(); // Enable Cross-Origin Resource Sharing
   app.useStaticAssets(join(__dirname, '..', 'uploads')); // Serving static files
   await app.listen(process.env.PORT_BACKEND);
 }

@@ -31,7 +31,6 @@ export class ArchivesController {
   @UseGuards(AdminGuard)
   async findAllArchives(@Res() response) {
    try {
-
     const ArchivesData = await this.archivesService.findAllArchives();
     return response.status(HttpStatus.OK).json({
       message: 'Archives data retrieved successfully',
