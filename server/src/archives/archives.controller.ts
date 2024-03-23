@@ -28,7 +28,7 @@ export class ArchivesController {
   }
 
   @Get()
-  @UseGuards(AdminGuard)
+  // @UseGuards(AdminGuard)
   async findAllArchives(@Res() response) {
    try {
     const ArchivesData = await this.archivesService.findAllArchives();

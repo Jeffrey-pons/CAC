@@ -1,5 +1,6 @@
 // app.module.ts
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavbarComponent } from "./_shared/components/navbar/navbar.component";
@@ -14,6 +15,7 @@ import { AdhesionComponent } from './_shared/components/adhesion/adhesion.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FormsModule } from '@angular/forms';
 import { AuthAdminComponent } from './modules/back-office/login/login.component';
+import { ArchiveComponent } from './components/archives/archives.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,16 @@ import { AuthAdminComponent } from './modules/back-office/login/login.component'
     LoaderComponent,
     AdhesionComponent,
     AboutusComponent,
-    AuthAdminComponent
+    AuthAdminComponent,
+    ArchiveComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, 
+    CommonModule
   ],
   providers: [
     {

@@ -7,15 +7,13 @@ import { ArchivesService } from '../../services/archiveservice/archives.service'
   styleUrl: './archives.component.scss'
 })
 export class ArchiveComponent implements OnInit {
-  archives: any[];
+  archives: any[] = [];
 
-  constructor(private archivesService: ArchivesService) {
-    this.archives = []; 
-   }
+  constructor(private archivesService: ArchivesService) {}
 
   ngOnInit(): void {
     this.archivesService.getArchives().subscribe(data => {
-      this.archives = data;
+      this.archives = data.ArchivesData;
     });
   }
 }

@@ -11,6 +11,6 @@ export class ArchivesService {
   constructor(private http: HttpClient) { }
 
   getArchives(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get<any[]>(`${this.baseUrl}`);
   }
 }
