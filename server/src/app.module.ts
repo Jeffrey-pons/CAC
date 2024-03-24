@@ -8,6 +8,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ArchivesModule } from './archives/archives.module';
 import { WorkExpoPermanentModule } from './work-expo-permanent/work-expo-permanent.module';
+import { NextExpositionModule } from './next-exposition/next-exposition.module';
+
 
 dotenv.config();
 
@@ -17,6 +19,7 @@ dotenv.config();
     MongooseModule.forRoot(process.env.MONGO_URL),
     ArchivesModule,
     WorkExpoPermanentModule,
+    NextExpositionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
