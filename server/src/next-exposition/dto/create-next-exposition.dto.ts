@@ -21,4 +21,8 @@ export class CreateNextExpositionDto {
   @IsNotEmpty()
   readonly description: string;
 
+  @IsString()
+  @IsNotEmpty()
+  readonly type: string;
+
 }

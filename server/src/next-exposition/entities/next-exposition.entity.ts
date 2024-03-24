@@ -19,6 +19,9 @@ export class NextExposition extends Document {
   @Prop()
   description: string;
 
+  @Prop()
+  type: string;
+
 }
 
 export const NextExpositionSchema = SchemaFactory.createForClass(NextExposition);

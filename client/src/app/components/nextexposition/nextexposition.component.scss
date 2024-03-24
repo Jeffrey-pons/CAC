@@ -19,6 +19,22 @@ main {
             align-items: center;
             padding-top: 20px;
             .card {
+               
+                #tag {
+                    padding: 8px 16px;
+                    text-transform: uppercase;
+                    border-radius: 0.4rem;
+                    background-color: #f1f1f1;
+                    text-align: center;
+                    display: inline-block;
+                    margin-top: -1rem;
+                    transition: all ease 0.4s;
+                    cursor: pointer;
+                    max-width: 12.4rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
                 h3 {
                     padding: 5px;
                 }

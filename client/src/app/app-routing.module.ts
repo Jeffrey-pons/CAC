@@ -10,6 +10,8 @@ import { CollectionpermanenteComponent } from './components/collectionpermanente
 import { OeuvresCollectionPermamComponent } from './components/oeuvres-collection-permam/oeuvres-collection-permam.component';
 import { AuthAdminComponent } from './modules/back-office/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MediationComponent } from './components/mediation/mediation.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 const routes: Routes = [
   { path: '', component: ActualiteComponent },
@@ -21,6 +23,10 @@ const routes: Routes = [
   { path: 'collection-permanente', component: CollectionpermanenteComponent },
   { path: 'cac-back-office-connexion', component: AuthAdminComponent },
   { path: 'oeuvre-collection-permanente', component: OeuvresCollectionPermamComponent },
+  { path: 'mediation', component: MediationComponent },
+  { path: 'amis', component: FriendsComponent },
+
+
     { path: '**', component: NotFoundComponent },
 ];
 
