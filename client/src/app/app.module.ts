@@ -7,7 +7,6 @@ import { NavbarComponent } from "./_shared/components/navbar/navbar.component";
 import { FooterComponent } from "./_shared/components/footer/footer.component";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomepageComponent } from './components/homepage/homepage.component';
 import { OuvertureFermetureComponent } from './_shared/components/ouverture-fermeture/ouverture-fermeture.component';
 import { LoaderComponent } from './_shared/components/loader/loader.component';
 import { LoadingInterceptor } from './interceptor/loading';
@@ -17,20 +16,21 @@ import { FormsModule } from '@angular/forms';
 import { AuthAdminComponent } from './modules/back-office/login/login.component';
 import { ArchiveComponent } from './components/archives/archives.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomepageComponent,
     OuvertureFermetureComponent,
     LoaderComponent,
     AdhesionComponent,
     AboutusComponent,
     AuthAdminComponent,
     ArchiveComponent,
-    CollectionpermanenteComponent
+    CollectionpermanenteComponent,
+    NotFoundComponent,
 
   ],
   imports: [

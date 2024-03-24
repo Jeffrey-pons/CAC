@@ -1,24 +1,34 @@
 <main>
-    <section>
+    <section class="login-section">
+        <div class="bloc-separation-title">
+            <div class="bloc-separation">
+              <div class="separationTwo"></div>
+          </div>
+          <h1>Back Office</h1>
+          <div class="bloc-separation">
+            <div class="separationTwo"></div>
+          </div>
+    </div>
         <div class="login-cac">
-            <div class="img-container-login">
-                <img src="../../../../assets/img/Logotype_cac.png" alt="">
+        <div class="container">
+            <div class="left">
+              <div class="header">
+                <div class="img-container-login">
+                    <img src="../../../../assets/img/Logotype_cac.png" alt="">
+                </div>
+                <h2 class="animation a1">Welcome Back ! </h2>
+              </div>
+              <form (ngSubmit)="submitLoginForm()">
+              <div class="form">
+                <input type="email" class="form-field animation a3" placeholder="Email" name="email" id="email" [(ngModel)]="email" required>
+                <input type="password" class="form-field animation a4" placeholder="Password" name="password" id="password" [(ngModel)]="password" required>
+                <button class="animation a6">Se connecter</button>
+              </div>
+            </form>
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
             </div>
-            <div class="info-container-login">
-                <h2>Back Office</h2>
-                <form (ngSubmit)="submitLoginForm()">
-                    <div>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" [(ngModel)]="email" required>
-                    </div>
-                    <div>
-                        <label for="password">Mot de Passe</label>
-                        <input type="password" name="password" id="password" [(ngModel)]="password" required>
-                    </div>
-                    <button type="submit">Se Connecter</button>
-                </form>
-                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-            </div>
+            <div class="right"></div>
+          </div>
         </div>
     </section>
 </main>

@@ -1,0 +1,23 @@
+@import '../../../styles/variables.scss';
+
+.page_404{
+    padding: 20px;
+    text-align: center;
+    h2 {
+        padding-bottom: 30px;
+    }
+    button {
+        padding: 14px 15px;
+        border: 2px solid rgb(72, 72, 72);
+        background-color: white;
+        border-radius: 3px;
+        color: black;
+        font-family: $fontTitle;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #1f1f1f;
+        color: white;
+    }
+}

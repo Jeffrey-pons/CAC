@@ -16,38 +16,11 @@
     </div>
   </section>
   <section class="containerTwo_collectionPermanente">
-    <!-- <div class="collection-permanente-oeuvres">
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5643-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5640-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5642-dxo-2.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5644-dxo.webp" alt=""></a></div>
-    </div>
-    <div class="collection-permanente-oeuvres">
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5643-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5640-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5642-dxo-2.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5644-dxo.webp" alt=""></a></div>
-    </div>
-    <div class="collection-permanente-oeuvres">
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5643-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5640-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5642-dxo-2.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5644-dxo.webp" alt=""></a></div>
-    </div>
-    <div class="collection-permanente-oeuvres">
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5643-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5640-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5642-dxo-2.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5644-dxo.webp" alt=""></a></div>
-    </div>
-    <div class="collection-permanente-oeuvres">
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5643-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5640-dxo.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5642-dxo-2.webp" alt=""></a></div>
-      <div><a href=""><img src="../../../assets/img/collection-permanente/mg-5644-dxo.webp" alt=""></a></div>
-    </div> -->
+  
     <div *ngFor="let artwork of artworks">
       <img src="http://localhost:5000/{{ artwork.image }}"alt="">
+      <p>Image path: {{ artwork.image }}</p>
+    
       <h4>{{ artwork.artist }}</h4>
     </div>
   </section>

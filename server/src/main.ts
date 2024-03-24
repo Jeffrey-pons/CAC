@@ -6,18 +6,21 @@ import { join } from 'path';
 import * as dotenv from 'dotenv';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import * as express from 'express';
 
 dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.use(rateLimit({ windowMs: 1 * 60 * 1000, max: 100 })); // 100 requests per minute
-  app.use(helmet());
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
-    origin: 'http://localhost:4200' // Allow only this domain
+    origin: '*',
   }); 
-  app.useStaticAssets(join(__dirname, '..', '..', 'uploads')); // Serving static files
+  app.use('/uploads', express.static(join(__dirname, 'uploads'))); // Serving static files
   
   await app.listen(process.env.PORT_BACKEND);
 }
