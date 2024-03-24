@@ -30,7 +30,7 @@
           </ul>
 
       </div>
-      <div class="auth-bubble" *ngIf="isLoggedIn()">
+      <div class="auth-bubble" *ngIf="isLoggedInToken()">
         <div class="profile-initial" (click)="toggleDropdown()">{{ userInitial }}</div>
         <div class="dropdown" *ngIf="isDropdownOpen">
           <ul>

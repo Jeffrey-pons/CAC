@@ -21,10 +21,6 @@ main {
         display: grid;
         gap: 28px;
         cursor: pointer;
-        p {
-          font-size: 13px;
-        }
-
         }
         .paragraph-aboutus {
             flex: 1;
@@ -33,10 +29,6 @@ main {
                 h3 {
                     padding-bottom: 10px;
                     color: #444444;
-                }
-                p {
-                  font-size: 13px;
-                  color: #616161;
                 }
             }
         }

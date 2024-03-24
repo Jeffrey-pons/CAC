@@ -1,0 +1,46 @@
+@import "../../../styles/variables.scss";
+main {
+    h2 {
+        font-weight: bold;
+        font-style: italic;
+        font-family: $fontTitle;
+        line-height: 36px;
+        text-align: center;
+        color: #444444;
+    }
+p {
+    font-size: 14.5px;
+    color: #272727;
+    text-align: justify;
+    font-family: $fontParagraph;
+    ul {
+        li {
+            padding: 14px 0px 14px 0px;
+        }
+    }
+}
+.archive {
+    max-width: 740px;
+    margin: auto;
+    .container_archive {
+        display: flex;
+        align-items: baseline;
+        gap: 40px;
+        ul { 
+            padding: 14px 0px 14px 0px;
+            li {
+
+                font-size: 13.5px;
+                color: #353535;
+                text-align: justify;
+                line-height: 22px;
+                font-family: $fontParagraph;
+             
+            }
+
+        }
+       
+    }
+
+}
+}

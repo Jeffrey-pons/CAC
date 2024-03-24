@@ -1,14 +1,27 @@
 <main>
-    <section>
-        <h1>Les expositions au Centre d'Art Contemporain Raymond Fabors depuis 1986 </h1>
-        <p>Depuis ses débuts en 1986, le CAC s'est imposé comme un lieu incontournable de la scène artistique contemporaine, offrant aux visiteurs une expérience unique au cœur de la création contemporaine.
-            <p>
-                Explorez les archives visuelles et artistiques des expositions qui ont marqué et façonné l'identité du CAC. De la découverte de jeunes talents prometteurs aux rétrospectives des grands noms de l'art contemporain, chaque exposition est une invitation à la réflexion et à la découverte de nouvelles perspectives artistiques.
-            </p>
-           
+    <section class="citation-cac">
+        <h2>
+        <i>Les expositions au Centre d'Art Contemporain Raymond Farbos depuis 1986</i>
+    </h2>
     </section>
-    <div *ngFor="let archive of archives">
-        <h2>{{ archive.date }}</h2>
-        <p>{{ archive.artist }}</p>
+    <div class="bloc-separation">
+    <div class="separation"></div>
     </div>
+    <section>
+        <p>
+            Depuis ses débuts en 1986, le CAC s'est imposé comme un lieu incontournable de la scène artistique contemporaine, offrant aux visiteurs une expérience unique au cœur de la création contemporaine.
+    Explorez les archives visuelles et artistiques des expositions qui ont marqué et façonné l'identité du CAC. De la découverte de jeunes talents prometteurs aux rétrospectives des grands noms de l'art contemporain, chaque exposition est une invitation à la réflexion et à la découverte de nouvelles perspectives artistiques.
+</p>  
+    </section>
+  <section class="archive">
+    <div class="container_archive" *ngFor="let archive of archives">
+        <p>{{ archive.year }} </p>
+        <ul>
+            <li>{{ archive.artists.join(' | ') }}</li>
+        </ul>
+    </div>
+  </section>
+  <div class="bloc-separation">
+    <div class="separationTwo"></div>
+</div>
 </main>
