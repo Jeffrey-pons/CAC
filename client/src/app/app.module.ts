@@ -17,6 +17,7 @@ import { AuthAdminComponent } from './modules/back-office/login/login.component'
 import { ArchiveComponent } from './components/archives/archives.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NextexpositionComponent } from './components/nextexposition/nextexposition.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ArchiveComponent,
     CollectionpermanenteComponent,
     NotFoundComponent,
+    NextexpositionComponent
 
   ],
   imports: [

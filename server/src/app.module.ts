@@ -1,4 +1,4 @@
-import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { Module, MiddlewareConsumer, NestModule, RequestMethod } from '@nestjs/common';
 import * as express from 'express';
 import { join } from 'path';
 import { AdminModule } from './admin/admin.module';
@@ -26,7 +26,15 @@ dotenv.config();
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(express.static(join(process.cwd(), 'uploads'))).forRoutes('work-expo-permanent/images/*');
+    consumer.apply((req, res, next) => {
+      const path = req.path;
+      if (path.endsWith('.jpg')) {
+        res.type('image/jpeg');
+      } else if (path.endsWith('.png')) {
+        res.type('image/png');
+      }
+      express.static(join(process.cwd(), 'uploads'))(req, res, next);
+    }).forRoutes({ path: 'work-expo-permanent/images/*', method: RequestMethod.ALL });
   }
 }
 

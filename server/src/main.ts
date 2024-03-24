@@ -14,13 +14,13 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.use(rateLimit({ windowMs: 1 * 60 * 1000, max: 100 })); // 100 requests per minute
   app.use(helmet({
-    contentSecurityPolicy: false,
+    crossOriginResourcePolicy: false, // Temporary fix for CORS issue : img-src 'self' data:;
   }));
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
     origin: '*',
   }); 
-  app.use('/uploads', express.static(join(__dirname, 'uploads'))); // Serving static files
+  app.use('/uploads', express.static(join(__dirname, '..',  '..', 'uploads'))); // Serving static files
   
   await app.listen(process.env.PORT_BACKEND);
 }
