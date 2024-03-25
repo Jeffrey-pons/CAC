@@ -8,6 +8,7 @@
 /uploads
 /migrations
 /.idea
+/.vscode
 
 # Node
 /node_modules
