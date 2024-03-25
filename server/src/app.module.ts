@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 import { ArchivesModule } from './archives/archives.module';
 import { WorkExpoPermanentModule } from './work-expo-permanent/work-expo-permanent.module';
 import { NextExpositionModule } from './next-exposition/next-exposition.module';
-
+import { MemberModule } from './member/member.module';
 
 dotenv.config();
 
@@ -20,6 +20,7 @@ dotenv.config();
     ArchivesModule,
     WorkExpoPermanentModule,
     NextExpositionModule,
+    MemberModule,
   ],
   controllers: [AppController],
   providers: [AppService],

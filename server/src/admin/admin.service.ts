@@ -36,6 +36,7 @@ export class AdminService {
 
     return { newAdmin: savedAdmin };
   }
+
   async login(email: string, password: string) {
     const admin = await this.getAdminByEmail(email);
 
@@ -59,6 +60,7 @@ export class AdminService {
       name: admin.name,
     };
   }
+
   async getAdminByEmail(email: string): Promise<Admin> {
     const existingAdmin = await this.adminModel
       .findOne({ email: email })
@@ -68,6 +70,7 @@ export class AdminService {
     }
     return existingAdmin;
   }
+  
   async updateAdmin(
     adminId: string,
     updateAdminDto: UpdateAdminDto,

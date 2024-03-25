@@ -27,7 +27,6 @@ export class AdminController {
   async createAdmin(@Res() response, @Body() createAdminDto: CreateAdminDto) {
     try {
       const { newAdmin } = await this.adminService.createAdmin(createAdminDto);
-
       return response.status(HttpStatus.CREATED).json({
         message: 'Admin created successfully',
         newAdmin,
