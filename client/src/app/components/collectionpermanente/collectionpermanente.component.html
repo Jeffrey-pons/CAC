@@ -16,11 +16,12 @@
     </div>
   </section>
   <section class="containerTwo_collectionPermanente">
-  
-    <div *ngFor="let artwork of artworks">
+
+    <div class="card" *ngFor="let artwork of artworks">
       <img src="http://localhost:5000/{{ artwork.image }}"alt="">
-    
-      <h4>{{ artwork.artist }}</h4>
-    </div>
+      <div class="card-content">
+        <h4>{{ artwork.artist }}</h4>
+      </div>
+  </div>
   </section>
 </main>

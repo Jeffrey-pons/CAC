@@ -17,43 +17,7 @@ main {
             grid-template-columns: repeat(2, 1fr);
             gap: 65px;
             align-items: center;
-            padding-top: 20px;
-            .card {
-               
-                #tag {
-                    padding: 8px 16px;
-                    text-transform: uppercase;
-                    border-radius: 0.4rem;
-                    background-color: #f1f1f1;
-                    text-align: center;
-                    display: inline-block;
-                    margin-top: -1rem;
-                    transition: all ease 0.4s;
-                    cursor: pointer;
-                    max-width: 12.4rem;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-                h3 {
-                    padding: 5px;
-                }
-                display: grid;
-                gap: 20px;
-                img {
-                    width: 450px; // Set the width
-                    height: 250px; // Set the height
-                    object-fit: cover; // This will ensure the aspect ratio of the image is maintained
-                    text-align: center;
-    margin: auto;
-                }
-                p {
-                    text-align: center;
-                }
-            }
-            .card:hover {
-                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-              }
+            padding-top: 48px;
         }
  
     }

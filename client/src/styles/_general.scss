@@ -105,6 +105,62 @@ main {
   padding-bottom: 5px;
 }
 
+.card {
+  
+  cursor: pointer;
+  transition: color 0.3s ease;
+  #tag {
+      padding: 8px 16px;
+      text-transform: uppercase;
+      border-radius: 0.6rem;
+      background-color: #f1f1f1;
+      text-align: center;
+      display: inline-block;
+      margin-top: -1rem;
+      transition: all ease 0.4s;
+      cursor: pointer;
+      max-width: 12.4rem;
+      align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  h3 {
+      padding: 5px;
+      transition: color 0.3s ease;
+  }
+ 
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  img {
+      width: 450px; 
+      height: 250px; 
+      object-fit: cover; 
+      text-align: center;
+      margin: auto;
+  }
+  p {
+      text-align: center;
+      font-size: 12.5px;
+  }
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.044);
+  h3 {
+      color: rgba(65, 65, 65, 0.777);
+  }
+  p{
+      opacity: 0.8;
+  }
+  #tag {
+      background-color: #f1f1f1;
+      color: #00000066;
+  }
+}
+
+
 .svg-container {
   width: 32px;
   height: 32px;
@@ -118,4 +174,6 @@ main {
   to {
     transform: rotate(360deg);
   }
+
+  
 }
