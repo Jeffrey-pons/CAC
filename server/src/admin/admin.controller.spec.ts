@@ -40,9 +40,7 @@ describe('AdminController', () => {
         password: 'passwordD@123',
       } as Admin;
       const result = { newAdmin: mockAdmin };
-      jest
-        .spyOn(adminService, 'createAdmin')
-        .mockImplementation(() => Promise.resolve(result));
+      jest.spyOn(adminService, 'createAdmin').mockImplementation(() => Promise.resolve(result));
 
       expect(await adminController.createAdmin({}, mockAdmin)).toEqual(result);
     });
@@ -87,10 +85,7 @@ describe('AdminController', () => {
       jest.spyOn(adminService, 'login');
 
       expect(
-        await adminController.login(
-          {},
-          { email: 'test@test.com', password: 'password' },
-        ),
+        await adminController.login({}, { email: 'test@test.com', password: 'password' }),
       ).toEqual(result);
     });
   });
@@ -103,13 +98,9 @@ describe('AdminController', () => {
         email: 'test@tests.com',
         password: 'password@123L',
       } as Admin;
-      jest
-        .spyOn(adminService, 'updateAdmin')
-        .mockImplementation(() => Promise.resolve(mockAdmin));
+      jest.spyOn(adminService, 'updateAdmin').mockImplementation(() => Promise.resolve(mockAdmin));
 
-      expect(await adminController.updateAdmin({}, '1', mockAdmin)).toEqual(
-        mockAdmin,
-      );
+      expect(await adminController.updateAdmin({}, '1', mockAdmin)).toEqual(mockAdmin);
     });
   });
 
@@ -123,9 +114,7 @@ describe('AdminController', () => {
           password: 'password123G@',
         },
       ] as Admin[];
-      jest
-        .spyOn(adminService, 'getAllAdmin')
-        .mockImplementation(() => Promise.resolve(mockAdmins));
+      jest.spyOn(adminService, 'getAllAdmin').mockImplementation(() => Promise.resolve(mockAdmins));
 
       expect(await adminController.getAdmins({})).toEqual(mockAdmins);
     });
@@ -139,9 +128,7 @@ describe('AdminController', () => {
         email: 'test@testttt.com',
         password: 'password123G@',
       } as Admin;
-      jest
-        .spyOn(adminService, 'getAdmin')
-        .mockImplementation(() => Promise.resolve(mockAdmin));
+      jest.spyOn(adminService, 'getAdmin').mockImplementation(() => Promise.resolve(mockAdmin));
 
       expect(await adminController.getAdmin({}, '1')).toEqual(mockAdmin);
     });
@@ -155,9 +142,7 @@ describe('AdminController', () => {
         email: 'test@testttt.com',
         password: 'password123G@',
       } as Admin;
-      jest
-        .spyOn(adminService, 'deleteAdmin')
-        .mockImplementation(() => Promise.resolve(mockAdmin));
+      jest.spyOn(adminService, 'deleteAdmin').mockImplementation(() => Promise.resolve(mockAdmin));
 
       expect(await adminController.deleteAdmin({}, '1')).toEqual(mockAdmin);
     });

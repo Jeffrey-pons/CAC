@@ -9,9 +9,7 @@ import { Model } from 'mongoose';
 export class ArchivesService {
   constructor(@InjectModel('Archive') private archiveModel: Model<Archive>) {}
 
-  async createArchive(
-    createArchiveDto: CreateArchiveDto,
-  ): Promise<{ newArchive: Archive }> {
+  async createArchive(createArchiveDto: CreateArchiveDto): Promise<{ newArchive: Archive }> {
     const newArchive = new this.archiveModel(createArchiveDto);
     const savedArchives = await newArchive.save();
     return { newArchive: savedArchives };
@@ -33,15 +31,10 @@ export class ArchivesService {
     return archive;
   }
 
-  async updateArchive(
-    id: string,
-    updateArchiveDto: UpdateArchiveDto,
-  ): Promise<Archive> {
-    const existingArchive = await this.archiveModel.findByIdAndUpdate(
-      id,
-      updateArchiveDto,
-      { new: true },
-    );
+  async updateArchive(id: string, updateArchiveDto: UpdateArchiveDto): Promise<Archive> {
+    const existingArchive = await this.archiveModel.findByIdAndUpdate(id, updateArchiveDto, {
+      new: true,
+    });
     if (!existingArchive) {
       throw new Error(`Archive #${id} not found`);
     }

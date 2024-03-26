@@ -41,15 +41,9 @@ export class AdminController {
   }
 
   @Post('/login')
-  async login(
-    @Res() response,
-    @Body() loginDto: { email: string; password: string },
-  ) {
+  async login(@Res() response, @Body() loginDto: { email: string; password: string }) {
     try {
-      const { token, name } = await this.adminService.login(
-        loginDto.email,
-        loginDto.password,
-      );
+      const { token, name } = await this.adminService.login(loginDto.email, loginDto.password);
 
       return response.status(HttpStatus.OK).json({
         message: 'Logged in successfully',
@@ -69,10 +63,7 @@ export class AdminController {
     @Body() updateAdminDto: UpdateAdminDto,
   ) {
     try {
-      const existingAdmin = await this.adminService.updateAdmin(
-        adminId,
-        updateAdminDto,
-      );
+      const existingAdmin = await this.adminService.updateAdmin(adminId, updateAdminDto);
       return response.status(HttpStatus.OK).json({
         message: 'Admin has been successfully updated',
         existingAdmin,

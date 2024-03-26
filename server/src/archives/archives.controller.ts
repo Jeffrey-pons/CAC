@@ -21,13 +21,9 @@ export class ArchivesController {
 
   @Post()
   @UseGuards(AdminGuard)
-  async createArchive(
-    @Res() response,
-    @Body() createArchiveDto: CreateArchiveDto,
-  ) {
+  async createArchive(@Res() response, @Body() createArchiveDto: CreateArchiveDto) {
     try {
-      const { newArchive } =
-        await this.archivesService.createArchive(createArchiveDto);
+      const { newArchive } = await this.archivesService.createArchive(createArchiveDto);
       return response.status(HttpStatus.CREATED).json({
         message: 'Archive created successfully',
         newArchive,
@@ -85,10 +81,7 @@ export class ArchivesController {
     @Body() updateArchiveDto: UpdateArchiveDto,
   ) {
     try {
-      const existingArchive = await this.archivesService.updateArchive(
-        id,
-        updateArchiveDto,
-      );
+      const existingArchive = await this.archivesService.updateArchive(id, updateArchiveDto);
       return response.status(HttpStatus.OK).json({
         message: 'Archive updated successfully',
         existingArchive,

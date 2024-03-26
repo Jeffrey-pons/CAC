@@ -15,16 +15,10 @@ dotenv.config();
 export class AdminService {
   constructor(@InjectModel('Admin') private adminModel: Model<Admin>) {}
 
-  async createAdmin(
-    createAdminDto: CreateAdminDto,
-  ): Promise<{ newAdmin: Admin }> {
-    const existingAdmin = await this.adminModel
-      .findOne({ email: createAdminDto.email })
-      .exec();
+  async createAdmin(createAdminDto: CreateAdminDto): Promise<{ newAdmin: Admin }> {
+    const existingAdmin = await this.adminModel.findOne({ email: createAdminDto.email }).exec();
     if (existingAdmin) {
-      throw new Error(
-        `Admin with email ${createAdminDto.email} already exists`,
-      );
+      throw new Error(`Admin with email ${createAdminDto.email} already exists`);
     }
     const hashedPassword = await bcrypt.hash(createAdminDto.password, 10);
 
@@ -62,24 +56,17 @@ export class AdminService {
   }
 
   async getAdminByEmail(email: string): Promise<Admin> {
-    const existingAdmin = await this.adminModel
-      .findOne({ email: email })
-      .exec();
+    const existingAdmin = await this.adminModel.findOne({ email: email }).exec();
     if (!existingAdmin) {
       throw new Error(`Admin with email ${email} not found`);
     }
     return existingAdmin;
   }
-  
-  async updateAdmin(
-    adminId: string,
-    updateAdminDto: UpdateAdminDto,
-  ): Promise<Admin> {
-    const existingAdmin = await this.adminModel.findByIdAndUpdate(
-      adminId,
-      updateAdminDto,
-      { new: true },
-    );
+
+  async updateAdmin(adminId: string, updateAdminDto: UpdateAdminDto): Promise<Admin> {
+    const existingAdmin = await this.adminModel.findByIdAndUpdate(adminId, updateAdminDto, {
+      new: true,
+    });
     if (!existingAdmin) {
       throw new Error(`Admin #${adminId} not found`);
     }

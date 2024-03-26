@@ -10,7 +10,8 @@ export class NextExpositionService {
   constructor(@InjectModel('NextExposition') private nextExpositionModel: Model<NextExposition>) {}
 
   async createNextExpo(
-    createNextExpositionDto: CreateNextExpositionDto): Promise<{ newNextExpo: NextExposition }> {
+    createNextExpositionDto: CreateNextExpositionDto,
+  ): Promise<{ newNextExpo: NextExposition }> {
     const newNextExpo = new this.nextExpositionModel(createNextExpositionDto);
     const savedNextExpo = await newNextExpo.save();
     return { newNextExpo: savedNextExpo };
@@ -32,7 +33,10 @@ export class NextExpositionService {
     return nextExpo;
   }
 
-  async updateNextExpo(id: string, updateNextExpositionDto: UpdateNextExpositionDto): Promise<NextExposition> {
+  async updateNextExpo(
+    id: string,
+    updateNextExpositionDto: UpdateNextExpositionDto,
+  ): Promise<NextExposition> {
     const existingNextExpo = await this.nextExpositionModel.findByIdAndUpdate(
       id,
       updateNextExpositionDto,

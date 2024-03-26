@@ -1,9 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, Res, UseGuards, } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpStatus,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { MemberService } from './member.service';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
 import { AdminGuard } from 'src/admin/admin.guards';
-
 
 @Controller('member')
 export class MemberController {
@@ -64,7 +74,11 @@ export class MemberController {
 
   @Patch('/:id')
   @UseGuards(AdminGuard)
-  async updateMember(@Res() response, @Param('id') id: string, @Body() updateMemberDto: UpdateMemberDto) {
+  async updateMember(
+    @Res() response,
+    @Param('id') id: string,
+    @Body() updateMemberDto: UpdateMemberDto,
+  ) {
     try {
       const updatedMember = await this.memberService.updateMember(id, updateMemberDto);
       return response.status(HttpStatus.OK).json({
@@ -97,5 +111,4 @@ export class MemberController {
       });
     }
   }
-  
 }

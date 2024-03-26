@@ -1,4 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, UseInterceptors, Res, UploadedFile, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  UseInterceptors,
+  Res,
+  UploadedFile,
+  HttpStatus,
+} from '@nestjs/common';
 import { NextExpositionService } from './next-exposition.service';
 import { CreateNextExpositionDto } from './dto/create-next-exposition.dto';
 import { UpdateNextExpositionDto } from './dto/update-next-exposition.dto';
@@ -27,20 +40,25 @@ export class NextExpositionController {
       }),
     }),
   )
-  async createNextExpo(@Res() response, @Body() createNextExpositionDto: CreateNextExpositionDto, @UploadedFile() file: Express.Multer.File,) {
-   try {
+  async createNextExpo(
+    @Res() response,
+    @Body() createNextExpositionDto: CreateNextExpositionDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    try {
       createNextExpositionDto.image = file.path;
-      const { newNextExpo } = await this.nextExpositionService.createNextExpo(createNextExpositionDto);
+      const { newNextExpo } =
+        await this.nextExpositionService.createNextExpo(createNextExpositionDto);
       return response.status(HttpStatus.CREATED).json({
         message: 'Next exposition created successfully',
         newNextExpo,
       });
-   } catch (err) {
+    } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
         message: 'Error: Next exposition not created',
         status: 'error',
       });
-  }
+    }
   }
 
   @Get()
@@ -49,7 +67,7 @@ export class NextExpositionController {
       const nextExpoData = await this.nextExpositionService.findAllNextExpo();
       return response.status(HttpStatus.OK).json({
         message: 'Next exposition data retrieved successfully',
-        nextExpoData
+        nextExpoData,
       });
     } catch (err) {
       return response.status(HttpStatus.NOT_FOUND).json({
@@ -92,12 +110,20 @@ export class NextExpositionController {
       }),
     }),
   )
-  async updateNextExpo(@Res() response, @Param('id') id: string, @Body() updateNextExpositionDto: UpdateNextExpositionDto,     @UploadedFile() file: Express.Multer.File,) {
+  async updateNextExpo(
+    @Res() response,
+    @Param('id') id: string,
+    @Body() updateNextExpositionDto: UpdateNextExpositionDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
     try {
       if (file) {
         updateNextExpositionDto.image = file.path;
       }
-      const existingNextExpo = await this.nextExpositionService.updateNextExpo(id, updateNextExpositionDto);
+      const existingNextExpo = await this.nextExpositionService.updateNextExpo(
+        id,
+        updateNextExpositionDto,
+      );
       return response.status(HttpStatus.OK).json({
         message: 'Next exposition updated successfully',
         existingNextExpo,

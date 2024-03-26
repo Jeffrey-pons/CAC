@@ -2,14 +2,13 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 export enum MemberType {
-    AMIS = 'Ami',
-    ADHERENTS = 'Adhérent',
-    CERCLE = 'Cercle',
-  }
+  AMIS = 'Ami',
+  ADHERENTS = 'Adhérent',
+  CERCLE = 'Cercle',
+}
 
 @Schema()
-export class Member  extends Document {
-    
+export class Member extends Document {
   @Prop()
   firstname: string;
 

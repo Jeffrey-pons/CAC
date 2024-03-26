@@ -1,8 +1,6 @@
-import { IsNotEmpty, IsString} from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateNextExpositionDto {
-
-
   @IsString()
   @IsNotEmpty()
   readonly titleDate: string;
@@ -24,5 +22,4 @@ export class CreateNextExpositionDto {
   @IsString()
   @IsNotEmpty()
   readonly type: string;
-
 }

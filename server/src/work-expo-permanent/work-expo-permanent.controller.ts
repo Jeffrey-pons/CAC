@@ -22,9 +22,7 @@ import { extname } from 'path';
 
 @Controller('work-expo-permanent')
 export class WorkExpoPermanentController {
-  constructor(
-    private readonly workExpoPermanentService: WorkExpoPermanentService,
-  ) {}
+  constructor(private readonly workExpoPermanentService: WorkExpoPermanentService) {}
 
   @Post()
   @UseGuards(AdminGuard)
@@ -147,8 +145,7 @@ export class WorkExpoPermanentController {
   @UseGuards(AdminGuard)
   async removeArtWork(@Res() response, @Param('id') id: string) {
     try {
-      const removedArtWork =
-        await this.workExpoPermanentService.removeArtWork(id);
+      const removedArtWork = await this.workExpoPermanentService.removeArtWork(id);
       return response.status(HttpStatus.OK).json({
         message: 'Artwork deleted successfully',
         removedArtWork,

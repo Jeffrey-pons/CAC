@@ -3,7 +3,6 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class NextExposition extends Document {
-
   @Prop()
   titleDate: string;
 
@@ -21,8 +20,6 @@ export class NextExposition extends Document {
 
   @Prop()
   type: string;
-
 }
 
 export const NextExpositionSchema = SchemaFactory.createForClass(NextExposition);
-

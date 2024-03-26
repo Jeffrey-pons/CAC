@@ -27,15 +27,16 @@ dotenv.config();
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply((req, res, next) => {
-      const path = req.path;
-      if (path.endsWith('.jpg')) {
-        res.type('image/jpeg');
-      } else if (path.endsWith('.png')) {
-        res.type('image/png');
-      }
-      express.static(join(process.cwd(), 'uploads'))(req, res, next);
-    }).forRoutes({ path: 'work-expo-permanent/images/*', method: RequestMethod.ALL });
+    consumer
+      .apply((req, res, next) => {
+        const path = req.path;
+        if (path.endsWith('.jpg')) {
+          res.type('image/jpeg');
+        } else if (path.endsWith('.png')) {
+          res.type('image/png');
+        }
+        express.static(join(process.cwd(), 'uploads'))(req, res, next);
+      })
+      .forRoutes({ path: 'work-expo-permanent/images/*', method: RequestMethod.ALL });
   }
 }
-

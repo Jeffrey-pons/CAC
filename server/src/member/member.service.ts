@@ -7,17 +7,12 @@ import { Member } from './entities/member.entity';
 
 @Injectable()
 export class MemberService {
-
-constructor(@InjectModel('Member') private memberModel: Model<Member>) {}
+  constructor(@InjectModel('Member') private memberModel: Model<Member>) {}
 
   async createMember(createMemberDto: CreateMemberDto): Promise<{ newMember: Member }> {
-    const existingMember = await this.memberModel
-      .findOne({ email: createMemberDto.email })
-      .exec();
+    const existingMember = await this.memberModel.findOne({ email: createMemberDto.email }).exec();
     if (existingMember) {
-      throw new Error(
-        `Member with email ${createMemberDto.email} already exists`,
-      );
+      throw new Error(`Member with email ${createMemberDto.email} already exists`);
     }
 
     const newMember = new this.memberModel(createMemberDto);
@@ -26,7 +21,7 @@ constructor(@InjectModel('Member') private memberModel: Model<Member>) {}
     return { newMember: savedMember };
   }
 
-  async findAllMembers():Promise<{members: Member[]}>{
+  async findAllMembers(): Promise<{ members: Member[] }> {
     const members = await this.memberModel.find();
     if (!members || members.length === 0) {
       throw new Error('No members found');
@@ -42,20 +37,21 @@ constructor(@InjectModel('Member') private memberModel: Model<Member>) {}
     return existingMember;
   }
 
-  async updateMember(id: string, updateMemberDto: UpdateMemberDto):Promise<Member>{
-    const updatedAdmin = await this.memberModel.findByIdAndUpdate(id, updateMemberDto, { new: true });
+  async updateMember(id: string, updateMemberDto: UpdateMemberDto): Promise<Member> {
+    const updatedAdmin = await this.memberModel.findByIdAndUpdate(id, updateMemberDto, {
+      new: true,
+    });
     if (!updatedAdmin) {
       throw new Error(`Member with id ${id} not found`);
     }
     return updatedAdmin;
   }
 
-  async removeMember(id: string):Promise<Member>{ 
+  async removeMember(id: string): Promise<Member> {
     const deletedMember = await this.memberModel.findByIdAndDelete(id);
     if (!deletedMember) {
       throw new Error(`Member with id ${id} not found`);
     }
     return deletedMember;
   }
-  
 }
