@@ -41,12 +41,12 @@
     <h2>Rejoignez l'association du CAC</h2>
     <div class="join_cards">
       <div>
-        <img src="../../../assets/img/centre-pictures/409751-111162665696508-329067238-n.jpg" alt="Adhérants du centre">
+        <img  src="../../../assets/img/centre-pictures/409751-111162665696508-329067238-n.jpg" alt="Adhérants du centre">
         <div class="add-ami">
           <h1>Adhérant</h1>
           <p>- 90e</p>
           <div class="separation-top"></div>
-          <a href="">&#62; Je m'inscris</a>
+          <a id='register' href="#">&#62; Je m'inscris</a>
           <div class="separation-bottom"></div>
         </div>
       </div>
@@ -56,7 +56,7 @@
           <h1>Ami</h1>
           <p>- 300e </p>
           <div class="separation-top"></div>
-          <a href="">&#62; Je m'inscris</a>
+          <a id='register' href="#">&#62; Je m'inscris</a>
           <div class="separation-bottom"></div>
 
         </div>
@@ -67,7 +67,7 @@
           <h1>Cercle</h1>
           <p>- 500e </p>
           <div class="separation-top"></div>
-          <a href="">&#62; Je m'inscris</a>
+          <a id='register' href="#">&#62; Je m'inscris</a>
           <div class="separation-bottom"></div>
         </div>
       </div>
@@ -102,4 +102,52 @@
     </div>
   </div>
 </section>
+<!-- // MODALE -->
+<div id="ModalMember" class="modalMember">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+   <div class="modal">
+    <div class="adhesion-member">
+      <h2>Adhésion à l’Association du CAC 40</h2>
+      <h4>Adhérez pour soutenir les expositions du Centre et bénéficiez de plusieurs avantages.
+        Adhésion valable jusqu’au 31 décembre de l’année en cours.</h4>
+        <div class="separation-bottom"></div>
+        <div>
+          <h2>Coordonnées bancaires</h2>
+          <div>
+            <p>Société Générale de Mont-de-Marsan, 40 France <br>
+              IBAN: FR86 3456 7890 1234 5678 92 <br>
+              SWIFT: BFGEGCHGGXXX</p>
+              <p>À VERSER POUR <br>
+                Association Centre d’Art Contemporain Raymond Farbos <br>
+                rue Saint Vincent de Paul <br>
+                40000 Mont-de-Marsan</p>
+          </div>
+        </div>
+    </div>
+    <div class="form-member">
+      <div class="separation-top"></div>
+      <i>Adhérent</i>
+      <form action="">
+        <input type="text" placeholder="Nom" name="Nom" id="Nom" required>
+        <input type="text" placeholder="Prénom" name="Prénom" id="Prénom" required>
+        <input type="text" placeholder="Adresse" name="Adresse" id="Adresse" required>
+        <input type="text" placeholder="Code postal" name="CP" id="CP" required>
+        <input type="text" placeholder="Ville" name="city" id="city" required>
+        <input type="text" placeholder="Pays" name="country" id="country" required>
+        <input type="email" class="form-field animation a3" placeholder="Email" name="email" id="email" required>
+        <div class="separation-top"></div>
+        <i>Je souhaite devenir</i>
+        <select name="adherent" id="">
+          <option value="Ami">Ami</option>
+          <option value="Adhérent">Adhérent</option>
+          <option value="Cercle">Cercle</option>
+        </select>
+        <button>Envoyer</button>
+      </form>
+    </div>
+   </div>
+  </div>
+
+</div>
 </main>

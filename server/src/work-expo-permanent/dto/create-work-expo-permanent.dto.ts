@@ -17,4 +17,7 @@ export class CreateWorkExpoPermanentDto {
 
   @IsString()
   readonly dateOfExposition: string;
+
+  @IsString()
+  readonly type: string;
 }

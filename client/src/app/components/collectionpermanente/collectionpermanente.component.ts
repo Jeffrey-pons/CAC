@@ -14,11 +14,12 @@ export class CollectionpermanenteComponent implements OnInit{
   ngOnInit(): void {
     this.collectionPermanenteService.getArtWork().subscribe(data => {
       if (data && Array.isArray(data.artWorkData)) {
-        this.artworks = data.artWorkData.map((artwork: any) => ({ 
+        this.artworks = data.artWorkData.map((artwork: any) => ({
           ...artwork,
           image: artwork.image.replace(/\\/g, '/')
         }));
-      } 
+        this.artworks.reverse();
+      }
     });
   }
 }

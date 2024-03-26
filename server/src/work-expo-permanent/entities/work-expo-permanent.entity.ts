@@ -17,6 +17,9 @@ export class Artwork extends Document {
 
   @Prop()
   dateOfExposition: string;
+
+  @Prop()
+  type: string;
 }
 
 export const ArtworkSchema = SchemaFactory.createForClass(Artwork);

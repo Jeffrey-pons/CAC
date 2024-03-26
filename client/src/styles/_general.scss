@@ -106,9 +106,9 @@ main {
 }
 
 .card {
-  
-  cursor: pointer;
-  transition: color 0.3s ease;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    transition: transform 333ms cubic-bezier(.4,0,.22,1), color 333ms cubic-bezier(.4,0,.22,1);
   #tag {
       padding: 8px 16px;
       text-transform: uppercase;
@@ -129,15 +129,15 @@ main {
       padding: 5px;
       transition: color 0.3s ease;
   }
- 
+
   display: grid;
   gap: 20px;
   padding: 20px;
   border-radius: 10px;
   img {
-      width: 450px; 
-      height: 250px; 
-      object-fit: cover; 
+      width: 450px;
+      height: 250px;
+      object-fit: cover;
       text-align: center;
       margin: auto;
   }
@@ -148,6 +148,7 @@ main {
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.044);
+  transform: translateY(-3px);
   h3 {
       color: rgba(65, 65, 65, 0.777);
   }
@@ -175,5 +176,5 @@ main {
     transform: rotate(360deg);
   }
 
-  
+
 }
