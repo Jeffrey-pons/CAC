@@ -105,6 +105,10 @@ main {
   padding-bottom: 5px;
 }
 
+.noscroll {
+  overflow: hidden;
+}
+
 .card {
     cursor: pointer;
     -webkit-font-smoothing: antialiased;

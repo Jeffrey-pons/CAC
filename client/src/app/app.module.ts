@@ -18,6 +18,7 @@ import { ArchiveComponent } from './components/archives/archives.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NextexpositionComponent } from './components/nextexposition/nextexposition.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +33,15 @@ import { NextexpositionComponent } from './components/nextexposition/nextexposit
     ArchiveComponent,
     CollectionpermanenteComponent,
     NotFoundComponent,
-    NextexpositionComponent
+    NextexpositionComponent,
+    FriendsComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     CommonModule
   ],
   providers: [

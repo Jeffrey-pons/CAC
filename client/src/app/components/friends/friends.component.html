@@ -102,7 +102,7 @@
     </div>
   </div>
 </section>
-<!-- // MODALE -->
+<!-- // MODALE CREATION MEMBER -->
 <div id="ModalMember" class="modalMember">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -126,28 +126,46 @@
         </div>
     </div>
     <div class="form-member">
-      <div class="separation-top"></div>
-      <i>Adhérent</i>
-      <form action="">
-        <input type="text" placeholder="Nom" name="Nom" id="Nom" required>
-        <input type="text" placeholder="Prénom" name="Prénom" id="Prénom" required>
-        <input type="text" placeholder="Adresse" name="Adresse" id="Adresse" required>
-        <input type="text" placeholder="Code postal" name="CP" id="CP" required>
-        <input type="text" placeholder="Ville" name="city" id="city" required>
-        <input type="text" placeholder="Pays" name="country" id="country" required>
-        <input type="email" class="form-field animation a3" placeholder="Email" name="email" id="email" required>
+
+      <form (ngSubmit)="submitCreateMemberForm()">
         <div class="separation-top"></div>
+        <i>Adhérent</i>
+        <input type="text" placeholder="Nom" name="Nom" id="Nom" [(ngModel)]="firstname" required>
+        <input type="text" placeholder="Prénom" name="Prénom" id="Prénom" [(ngModel)]="lastname" required>
+        <input type="text" placeholder="Adresse" name="Adresse" id="Adresse" [(ngModel)]="adresse" required>
+        <input type="text" placeholder="Code postal" name="CP" id="CP" [(ngModel)]="postaladresse" required>
+        <input type="text" placeholder="Ville" name="city" id="city" [(ngModel)]="city" required>
+        <input type="text" placeholder="Pays" name="country" id="country" [(ngModel)]="country" required>
+        <input type="email" class="form-field animation a3" placeholder="Email" name="email" id="email" [(ngModel)]="email" required>
+        <div class="separation-bottom"></div>
         <i>Je souhaite devenir</i>
-        <select name="adherent" id="">
+        <select name="adherent" id="" [(ngModel)]="type">
+          <option value="">Choisir un type d'adhésion</option>
           <option value="Ami">Ami</option>
           <option value="Adhérent">Adhérent</option>
           <option value="Cercle">Cercle</option>
         </select>
-        <button>Envoyer</button>
+        <button type="submit">Envoyer</button>
       </form>
     </div>
    </div>
   </div>
 
+</div>
+<!-- // MODALE REMERCIEMENT MEMBER -->
+<div id="ModalThanks" class="modalMember">
+  <div class="modal-content">
+    <div class="modalThanks">
+      <h2>Merci de votre soutien</h2>
+      <h2>Nous sommes heureux de vous compter parmi les Amis du Centre !</h2>
+    <h3>Votre carte de membre vous sera adressée par courrier dès réception de votre paiement.</h3>
+      <p>IBAN: FR86 3456 7890 1234 5678 92 <br>
+        SWIFT: BFGEGCHGGXXX</p>
+        <div class="button-modalThanks">
+        <button class="closeTwo" (click)="closeThanksModal()">Fermer</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 </main>

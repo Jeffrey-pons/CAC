@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 main {
     .bloc-separation {
         padding: 0px;
@@ -131,20 +133,33 @@ main {
         transform: translate(-50%, -50%);
         border-radius: 30px;
         .modal {
+          h2 {
+            padding-bottom: 16px;
+          }
+          padding-top: 44px;
+          max-width: 980px;
+          margin: auto;
+          align-items: center;
+          display: flex;
+          gap: 123px;
           .separation-top, .separation-bottom  {
-            margin: -10px 0;
+            margin: 0;
             border-top: 1px solid rgba(148, 148, 148, 0.466);
             transition: width 333ms cubic-bezier(.4, 0, .22, 1);
           }
-          display: flex;
           .form-member {
             flex: 1;
             form {
               display: grid;
               gap: 15px;
+              i {
+                font-family: $fontParagraph;
+                font-size: 13px;
+              }
               input {
                 width: 100%;
                 letter-spacing: .075em;
+                font-family: $fontParagraph;
                 color: #2b2b2b;
                 padding: .8rem;
                 box-sizing: border-box;
@@ -152,10 +167,38 @@ main {
                 border-radius: 6px;
                 border: 1px solid grey;
               }
+              select {
+                width: 100%;
+                padding: 8px 5px;
+                border-color: #f1f1f1;
+                text-transform: none;
+                background-color: #f1f1f1;
+                border-radius: 5px;
+                font-family: $fontParagraph;
+                color: grey;
+                cursor: pointer;
+                select:focus, select:focus-visible {
+                  border:none
+                }
+              }
+              button {
+                cursor: pointer;
+                padding: 11px 6px;
+                max-width: 22%;
+                background: transparent;
+                border-radius: 5px;
+                text-transform: uppercase;
+                border: 0.5px solid black;
+                font-size: 12px;
+                opacity: 0.9;
+              }
             }
           }
           .adhesion-member {
             flex: 1;
+            .separation-bottom {
+              margin: 30px 0;
+            }
           }
           }
 
@@ -172,6 +215,48 @@ main {
           text-decoration: none;
           cursor: pointer;
         }
+      }
+    }
+    #ModalThanks {
+      .modal-content {
+        background-color: #fff2a8;
+        transition: opacity 0.3s ease;
+      }
+      .modalThanks {
+        display: grid;
+        gap: 0px;
+        text-align: center;
+        padding: 20px;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 30px;
+        p {
+          text-align: center;
+        }
+        h2 {
+          padding-bottom: 30px;
+        }
+        h3 {
+          padding-bottom: 15px;
+        }
+        .button-modalThanks {
+          padding-top: 30px;
+          button {
+            max-width: 8%;
+            margin-top: 10px;
+            text-align: center;
+            margin: auto;
+            padding: 10px 19px;
+            background: transparent;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+
       }
     }
 }

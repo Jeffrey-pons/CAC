@@ -1,14 +1,31 @@
 import { Component, ElementRef } from '@angular/core';
+import { MemberServiceService } from '../../services/memberService/member-service.service';
 
 @Component({
   selector: 'app-friends',
-  standalone: true,
-  imports: [],
   templateUrl: './friends.component.html',
   styleUrl: './friends.component.scss'
 })
 export class FriendsComponent {
-  constructor(private el: ElementRef) {}
+  firstname: string;
+  lastname: string;
+  adresse: string;
+  postaladresse: string;
+  city: string;
+  country: string;
+  email: string;
+  type: string;
+
+  constructor(private el: ElementRef, private MemberService: MemberServiceService) {
+    this.firstname = '';
+    this.lastname = '';
+    this.adresse = '';
+    this.postaladresse = '';
+    this.city = '';
+    this.country = '';
+    this.email = '';
+    this.type = '';
+  }
 
   ngOnInit(): void {
     const links: NodeListOf<Element> = this.el.nativeElement.querySelectorAll('a[id^="register"]');
@@ -18,10 +35,13 @@ export class FriendsComponent {
 
     const displayModal = () => {
       modal.style.display = 'block';
+      document.body.classList.add('noscroll');
     };
 
     const closeModal = () => {
       modal.style.display = 'none';
+      document.body.classList.remove('noscroll');
+      this.resetFormValues();
     };
 
     links.forEach(link => {
@@ -35,16 +55,65 @@ export class FriendsComponent {
       closeModal();
     });
 
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
     images.forEach(image => {
       image.addEventListener('click', () => {
         displayModal();
       });
     });
+  }
+
+  submitCreateMemberForm() {
+    const formDataMember = {
+      firstname: this.firstname,
+      lastname: this.lastname,
+      adresse: this.adresse,
+      postaladresse: this.postaladresse,
+      city: this.city,
+      country: this.country,
+      email: this.email,
+      type: this.type
+    }
+    this.MemberService.createMember(formDataMember).subscribe(
+      response => {
+        const modalThanks = document.getElementById("ModalThanks");
+        if (modalThanks) {
+          modalThanks.style.display = "block";
+        } else {
+          console.error('Element "ModalThanks" not found.');
+        }
+        this.resetFormValues();
+      },
+      error => {
+        console.error('Erreur lors de la création du membre :', error);
+      }
+    );
+  }
+
+  closeThanksModal() {
+    const modalThanks = document.getElementById("ModalThanks");
+    const modalMember = document.getElementById("ModalMember");
+
+    if (modalThanks && modalMember) {
+      modalThanks.classList.add('closing');
+      modalMember.classList.add('closing');
+
+      setTimeout(() => {
+        modalThanks.style.display = "none";
+        modalMember.style.display = "none";
+        document.body.classList.remove('noscroll');
+      }, 300);
+      this.resetFormValues();
+    }
+  }
+
+  resetFormValues() {
+    this.firstname = '';
+    this.lastname = '';
+    this.adresse = '';
+    this.postaladresse = '';
+    this.city = '';
+    this.country = '';
+    this.email = '';
+    this.type = '';
   }
 }
