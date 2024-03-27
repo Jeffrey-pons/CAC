@@ -6,3 +6,7 @@ export interface NextExpo {
   description: string;
   type: string;
 }
+
+export interface NextExpoResponse {
+  nextExpoData: NextExpo[];
+}

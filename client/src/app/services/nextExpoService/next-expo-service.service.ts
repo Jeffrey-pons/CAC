@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NextExpoResponse } from '../../interfaces/nextExpo.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class NextExpoServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getNextExpo(): Observable<any> {
-    return this.http.get<any[]>(`${this.baseUrl}`);
+  getNextExpo(): Observable<NextExpoResponse> {
+    return this.http.get<NextExpoResponse>(`${this.baseUrl}`);
   }
 }
 

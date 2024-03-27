@@ -6,3 +6,7 @@ export interface CollectionPermanente {
   dateOfExposition: string;
   type: string;
 }
+
+export interface ArtWorkResponse {
+  artWorkData: CollectionPermanente[];
+}

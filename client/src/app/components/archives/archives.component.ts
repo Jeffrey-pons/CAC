@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArchivesService } from '../../services/archiveservice/archives.service';
+import { Archive, ArchiveResponse } from '../../interfaces/archives.interface';
 
 @Component({
   selector: 'app-archives',

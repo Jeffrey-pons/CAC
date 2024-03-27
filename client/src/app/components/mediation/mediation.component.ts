@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { MediationService } from '../../services/mediationService/mediation.service';
-import { Mediation } from '../../interfaces/mediation.interface';
+import { Mediation, MediationResponse } from '../../interfaces/mediation.interface';
 import { OnInit } from '@angular/core';
 
 @Component({
@@ -13,12 +13,10 @@ import { OnInit } from '@angular/core';
 export class MediationComponent implements OnInit{
   mediation: Mediation[] = [];
 
-
-
   constructor(private mediationService: MediationService, private el: ElementRef) { }
 
   ngOnInit(): void {
-    this.mediationService.getAllMediation().subscribe(data => {
+    this.mediationService.getAllMediation().subscribe((data: MediationResponse) => {
       if (data && Array.isArray(data.mediationData)) {
         this.mediation = data.mediationData.map((mediation: Mediation) => ({
           ...mediation,

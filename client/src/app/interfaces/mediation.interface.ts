@@ -6,3 +6,7 @@ export interface Mediation {
   description: string;
   infosupp: string;
 }
+
+export interface MediationResponse {
+  mediationData: Mediation[];
+}

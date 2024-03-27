@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MediationResponse } from '../../interfaces/mediation.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class MediationService {
 
   constructor(private http: HttpClient) { }
 
-  getAllMediation(): Observable<any> {
-    return this.http.get<any[]>(`${this.baseUrl}`);
+  getAllMediation(): Observable<MediationResponse> {
+    return this.http.get<MediationResponse>(`${this.baseUrl}`);
   }
 }

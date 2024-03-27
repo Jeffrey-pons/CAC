@@ -1,7 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { NextExpoServiceService } from '../../services/nextExpoService/next-expo-service.service';
 import { OnInit } from '@angular/core';
-import { NextExpo } from '../../interfaces/nextExpo.interface';
+import { NextExpo, NextExpoResponse } from '../../interfaces/nextExpo.interface';
 
 @Component({
   selector: 'app-nextexposition',
@@ -16,7 +16,7 @@ export class NextexpositionComponent implements OnInit {
   constructor(private nextExpoService: NextExpoServiceService, private el: ElementRef) { }
 
   ngOnInit(): void {
-    this.nextExpoService.getNextExpo().subscribe(data => {
+    this.nextExpoService.getNextExpo().subscribe((data: NextExpoResponse) => {
       if (data && Array.isArray(data.nextExpoData)) {
         this.nextExpositions = data.nextExpoData.map((nextExpositions: NextExpo) => ({
           ...nextExpositions,
