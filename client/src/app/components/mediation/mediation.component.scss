@@ -1,0 +1,63 @@
+@import '../../../styles/variables';
+
+main {
+  .bloc-separation {
+    padding: 0px;
+    display: block;
+}
+  .mediation_cac {
+    padding-bottom: 62px;
+      display:flex;
+      h2 {
+        flex: 1;
+      }
+      div {
+        flex: 1;
+      }
+  }
+  .section_mediation_cac{
+    padding: 8px 8px;
+    .type_mediation_cac {
+      display: flex;
+      gap: 56px;
+      padding: 19px 0px 29px 0px;
+      img {
+        width: 550px;
+        height: 300px;
+        object-fit: cover;
+      }
+      h2 {
+        text-align: left;
+        padding-bottom: 32px;
+      }
+      .img_mediation, .info_mediation {
+        flex: 1;
+      }
+      p {
+        font-size: 15px;
+      }
+      .button_mediation {
+        -webkit-font-smoothing: antialiased;
+        transition: transform 333ms cubic-bezier(.4,0,.22,1), color 333ms cubic-bezier(.4,0,.22,1);
+        padding-top: 32px;
+        a {
+          color: grey;
+          font-size: 17px;
+          text-decoration: none;
+          cursor: pointer;
+          font-family: $fontParagraph;
+          font-weight: 500;
+        }
+        a:hover {
+          color: black;
+        }
+      }
+      .button_mediation:hover {
+        transform: translateX(7px);
+        color: black;
+      }
+
+    }
+  }
+
+}

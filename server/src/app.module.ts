@@ -10,6 +10,7 @@ import { ArchivesModule } from './archives/archives.module';
 import { WorkExpoPermanentModule } from './work-expo-permanent/work-expo-permanent.module';
 import { NextExpositionModule } from './next-exposition/next-exposition.module';
 import { MemberModule } from './member/member.module';
+import { MediationModule } from './mediation/mediation.module';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ dotenv.config();
     WorkExpoPermanentModule,
     NextExpositionModule,
     MemberModule,
+    MediationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -19,6 +19,7 @@ import { CollectionpermanenteComponent } from './components/collectionpermanente
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NextexpositionComponent } from './components/nextexposition/nextexposition.component';
 import { FriendsComponent } from './components/friends/friends.component';
+import { MediationComponent } from './components/mediation/mediation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FriendsComponent } from './components/friends/friends.component';
     CollectionpermanenteComponent,
     NotFoundComponent,
     NextexpositionComponent,
-    FriendsComponent
+    FriendsComponent,
+    MediationComponent,
 
   ],
   imports: [

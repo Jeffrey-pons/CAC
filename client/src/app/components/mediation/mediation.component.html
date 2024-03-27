@@ -1,1 +1,32 @@
-<p>mediation works!</p>
+<main>
+  <div class="bloc-separation">
+    <div class="separationTwo"></div>
+</div>
+  <section class="mediation_cac">
+    <h2>Médiation</h2>
+    <div>
+    <p>Le CAC œuvre quotidiennement à rendre l’art contemporain accessible aux publics les plus divers et propose plusieurs rendez-vous qui accompagnent la programmation et qui permettent de découvrir les expositions présentées. L’ensemble du programme de médiation offre une passerelle permettant d’appréhender l’art contemporain de façon didactique et conviviale.</p>
+        <p>Soyez informé·e·s des activités de l’Association du CAC Raymond Farbos, rejoignez nous sur nos réseaux sociaux</p>
+      </div>
+    </section>
+    <div class="bloc-separation">
+      <div class="separationTwo"></div>
+  </div>
+<section class="section_mediation_cac" *ngFor="let item of mediation">
+  <div class="type_mediation_cac">
+  <div class="img_mediation">
+    <img [src]="item.image" alt="">
+  </div>
+  <div class="info_mediation">
+    <h2>{{item.title}}</h2>
+    <p>{{item.intro}}</p>
+    <div class="button_mediation">
+      <a>&#62; Plus d'informations</a>
+    </div>
+  </div>
+</div>
+<div class="bloc-separation">
+  <div class="separationTwo"></div>
+</div>
+</section>
+</main>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild  } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { NextExpoServiceService } from '../../services/nextExpoService/next-expo-service.service';
 
 @Component({
