@@ -7,7 +7,6 @@ import { ArchiveComponent } from './components/archives/archives.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 import { ActualiteComponent } from './components/actualite/actualite.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
-import { OeuvresCollectionPermamComponent } from './components/oeuvres-collection-permam/oeuvres-collection-permam.component';
 import { AuthAdminComponent } from './modules/back-office/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MediationComponent } from './components/mediation/mediation.component';
@@ -22,7 +21,6 @@ const routes: Routes = [
   { path: 'mentions-legales', component: LegalnoticeComponent },
   { path: 'collection-permanente', component: CollectionpermanenteComponent },
   { path: 'cac-back-office-connexion', component: AuthAdminComponent },
-  { path: 'oeuvre-collection-permanente', component: OeuvresCollectionPermamComponent },
   { path: 'mediation', component: MediationComponent },
   { path: 'amis', component: FriendsComponent },
 
