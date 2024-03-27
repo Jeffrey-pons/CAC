@@ -1,6 +1,5 @@
 <header>
     <nav>
-
         <div class="link-categories-left">
             <ul>
                 <li [class.active]="isLinkActive('/')"><a [routerLink]="['/']">Actualité</a></li>
@@ -8,21 +7,15 @@
                 <li [class.active]="isLinkActive('/a-propos')"><a [routerLink]="['/a-propos']">Qui sommes-nous</a></li>
                 <li [class.active]="isLinkActive('/mediation')"><a [routerLink]="['/mediation']">Médiation</a></li>
             </ul>
-
         </div>
         <div class="img-navbar">
-          <a [routerLink]="['/']" class="logo-container">
+          <a [routerLink]="['/']" class="logo-container"  (focus)="handleFocus()" (blur)="handleBlur()" tabindex="0" (keyup)="handleKeyUp($event)" (keydown)="handleKeyDown($event)">
             <div class="logo" (mouseover)="handleHover()" (mouseout)="handleMouseOut()">
-              <img src="../../../../assets/img/raymondfarbos-logo (2).png" alt="Logo CAC" class="logo-back" [class.hidden]="isFirstImageHovered">
-              <img src="../../../../assets/img/raymondfarbos-logo (1).png" alt="Logo CAC" class="logo-front" [class.hidden]="!isFirstImageHovered">
+              <img src="../../../../assets/img/raymondfarbos-logo (2).png" alt="Logo CAC" class="logo-back" [class.hidden]="isFirstImageHovered" (focus)="handleFocus()" (blur)="handleBlur()">
+              <img src="../../../../assets/img/raymondfarbos-logo (1).png" alt="Logo CAC" class="logo-front" [class.hidden]="!isFirstImageHovered" (focus)="handleFocus()" (blur)="handleBlur()">
             </div>
           </a>
         </div>
-
-
-
-
-
         <div class="link-categories-right">
           <ul>
             <li [class.active]="isLinkActive('/amis')"><a [routerLink]="['/amis']">Amis</a></li>
@@ -30,14 +23,13 @@
               <li [class.active]="isLinkActive('/archives')"><a [routerLink]="['/archives']">Archives</a></li>
               <li [class.active]="isLinkActive('/contact')"><a [routerLink]="['/contact']">Contact</a></li>
           </ul>
-
       </div>
       <div class="auth-bubble" *ngIf="isLoggedInToken()">
-        <div class="profile-initial" (click)="toggleDropdown()">{{ userInitial }}</div>
-        <div class="dropdown" *ngIf="isDropdownOpen">
+        <div class="profile-initial" (focus)="handleFocus()" (blur)="handleBlur()" (click)="toggleDropdown()" (keyup)="handleKeyUp($event)" tabindex="0">{{ userInitial }}</div>
+        <div class="dropdown" *ngIf="isDropdownOpen" (focus)="handleFocus()" (blur)="handleBlur()">
           <ul>
             <li><a [routerLink]="['/admin/dashboard']">Back Office</a></li>
-            <li (click)="logout()">Déconnexion</li>
+            <li (click)="logout()" (focus)="handleFocus()" (keyup)="handleKeyUp($event)" tabindex="0">Déconnexion</li>
           </ul>
         </div>
       </div>

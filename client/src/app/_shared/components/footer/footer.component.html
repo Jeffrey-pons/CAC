@@ -67,9 +67,10 @@
               <a href=""> © Centre d'Art Contemporain Raymond Farbos</a>
           </p>
       </div>
-      <div class="backToTop" id="backToTop" (click)="scrollToTop()">
+      <div class="backToTop" id="backToTop" (click)="scrollToTop()" (keydown)="handleKeyPress($event)" tabindex="0">
         <img src="../../../../assets/img/arrow_backToTop.svg" alt="arrow up">
       </div>
+
       <div class="socialMedia_Link">
         <ul>
           <li><a target="_blank" href="https://www.facebook.com/CACRF40/?locale=fr_FR">Facebook</a></li>

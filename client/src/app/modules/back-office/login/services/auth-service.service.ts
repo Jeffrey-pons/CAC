@@ -22,7 +22,7 @@ export class AuthService {
           // Stocker le token dans le local storage
           localStorage.setItem(this.tokenKey, response.token);
           localStorage.setItem(this.userKey, response.name);
-          this.isLoggedInSubject.next(true); 
+          this.isLoggedInSubject.next(true);
         }),
         catchError(this.handleError)
       );
@@ -34,7 +34,7 @@ export class AuthService {
 
   getUser(): string | null {
     return  localStorage.getItem(this.userKey);
-  
+
   }
 
   setUser(name: string): void {

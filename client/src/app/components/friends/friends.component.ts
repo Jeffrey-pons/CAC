@@ -1,12 +1,13 @@
 import { Component, ElementRef } from '@angular/core';
 import { MemberServiceService } from '../../services/memberService/member-service.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
   styleUrl: './friends.component.scss'
 })
-export class FriendsComponent {
+export class FriendsComponent implements OnInit {
   firstname: string;
   lastname: string;
   adresse: string;
@@ -74,7 +75,7 @@ export class FriendsComponent {
       type: this.type
     }
     this.MemberService.createMember(formDataMember).subscribe(
-      response => {
+      () => {
         const modalThanks = document.getElementById("ModalThanks");
         if (modalThanks) {
           modalThanks.style.display = "block";

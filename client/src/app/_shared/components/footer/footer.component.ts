@@ -13,4 +13,10 @@ export class FooterComponent {
   scrollToTop() {
     this.scrollService.scrollToTop();
   }
+
+  handleKeyPress(event: KeyboardEvent) {
+    if (event.keyCode === 13 || event.keyCode === 32) {
+      this.scrollToTop();
+    }
+  }
 }

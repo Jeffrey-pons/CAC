@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../modules/back-office/login/services/auth-service.service';
 import { Subscription } from 'rxjs';
+import { OnClickService } from '../../../utils/onClick.utils';
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +15,13 @@ export class NavbarComponent implements OnInit, OnDestroy{
   isLoggedIn: boolean = false;
   private authSubscription: Subscription;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private onClickService: OnClickService) {
     this.authSubscription = this.authService.isLoggedIn$.subscribe((loggedIn: boolean) => {
       this.isLoggedIn = loggedIn;
       if (loggedIn) {
         this.loadUserInitial();
       } else {
-        this.userInitial = ''; // Réinitialiser la lettre de l'utilisateur lors de la déconnexion
+        this.userInitial = '';
       }
     });
   }
@@ -74,5 +75,27 @@ export class NavbarComponent implements OnInit, OnDestroy{
   handleMouseOut() {
     //none
   }
+
+
+  handleFocus() {
+    this.onClickService.handleFocus();
+  }
+
+  handleBlur() {
+    this.onClickService.handleBlur();
+  }
+
+  handleClick() {
+    this.onClickService.handleClick();
+  }
+
+  handleKeyUp(event: KeyboardEvent) {
+    this.onClickService.handleKeyUp(event);
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    this.onClickService.handleKeyDown(event);
+  }
 }
+
 

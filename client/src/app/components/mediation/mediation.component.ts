@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { MediationService } from '../../services/mediationService/mediation.service';
 import { Mediation } from '../../interfaces/mediation.interface';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-mediation',
@@ -9,7 +10,7 @@ import { Mediation } from '../../interfaces/mediation.interface';
 })
 
 
-export class MediationComponent {
+export class MediationComponent implements OnInit{
   mediation: Mediation[] = [];
 
 

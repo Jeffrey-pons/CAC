@@ -15,5 +15,5 @@ export class CollectionPermanenteService {
     return this.http.get<any[]>(`${this.baseUrl}`);
   }
 
-  
+
 }

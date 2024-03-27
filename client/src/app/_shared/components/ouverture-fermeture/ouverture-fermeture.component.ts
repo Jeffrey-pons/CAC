@@ -19,7 +19,6 @@ export class OuvertureFermetureComponent implements OnInit {
     const now = new Date();
     const dayOfWeek = now.getDay();
     const hour = now.getHours();
-    const minutes = now.getMinutes();
 
     // Vérifier si c'est un jour férié
     if (dayOfWeek === 0 || dayOfWeek === 1) {
