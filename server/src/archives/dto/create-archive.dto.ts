@@ -8,4 +8,20 @@ export class CreateArchiveDto {
   @IsString()
   @IsNotEmpty()
   readonly artist: string;
+
+  @IsString()
+  readonly title: string;
+
+  @IsString()
+  readonly month: string;
+
+  public image: string[];
+
+  @IsString()
+  readonly description: string;
+
+  @IsString()
+  readonly rencontretext: string;
+
 }
+

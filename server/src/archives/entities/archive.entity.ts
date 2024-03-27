@@ -8,5 +8,20 @@ export class Archive extends Document {
 
   @Prop()
   artist: string;
+
+  @Prop()
+  title: string;
+
+  @Prop()
+  month: string;
+
+  @Prop()
+  image: string[];
+
+  @Prop()
+  description: string;
+
+  @Prop()
+  rencontretext: string;
 }
 export const ArchiveSchema = SchemaFactory.createForClass(Archive);
