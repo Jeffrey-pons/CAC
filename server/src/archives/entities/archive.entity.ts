@@ -23,5 +23,8 @@ export class Archive extends Document {
 
   @Prop()
   rencontretext: string;
+
+  @Prop()
+  type: string;
 }
 export const ArchiveSchema = SchemaFactory.createForClass(Archive);

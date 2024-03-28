@@ -36,6 +36,8 @@ export class AppModule implements NestModule {
           res.type('image/jpeg');
         } else if (path.endsWith('.png')) {
           res.type('image/png');
+        } else if (path.endsWith('.webp')) {
+          res.type('image/webp');
         }
         express.static(join(process.cwd(), 'uploads'))(req, res, next);
       })

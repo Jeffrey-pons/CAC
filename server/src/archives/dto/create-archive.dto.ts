@@ -23,5 +23,8 @@ export class CreateArchiveDto {
   @IsString()
   readonly rencontretext: string;
 
+  @IsString()
+  readonly type: string;
+
 }
 

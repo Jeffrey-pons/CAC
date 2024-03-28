@@ -11,16 +11,25 @@
         <p>
             Depuis ses débuts en 1986, le CAC s'est imposé comme un lieu incontournable de la scène artistique contemporaine, offrant aux visiteurs une expérience unique au cœur de la création contemporaine.
     Explorez les archives visuelles et artistiques des expositions qui ont marqué et façonné l'identité du CAC. De la découverte de jeunes talents prometteurs aux rétrospectives des grands noms de l'art contemporain, chaque exposition est une invitation à la réflexion et à la découverte de nouvelles perspectives artistiques.
-</p>  
+</p>
     </section>
-  <section class="archive">
-    <div class="container_archive" *ngFor="let archive of archives">
-        <p>{{ archive.year }} </p>
+    <section class="archive">
+      <div class="container_archive" *ngFor="let group of archives">
+        <p>{{ group.year }}</p>
         <ul>
-            <li>{{ archive.artists.join(' | ') }}</li>
+          <li *ngFor="let archive of group.archives">
+            <ng-container *ngIf="group.year < 2019">{{ archive.artist }}</ng-container>
+            <ng-container *ngIf="group.year >= 2019 && archive.image.length > 1">
+              <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
+              <p>{{ archive.title }}</p>
+              <div class="button-tag">
+              <button id="tag">{{archive.type}}</button>
+            </div>
+            </ng-container>
+          </li>
         </ul>
-    </div>
-  </section>
+      </div>
+    </section>
   <div class="bloc-separation">
     <div class="separationTwo"></div>
 </div>

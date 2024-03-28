@@ -8,7 +8,7 @@ import { Archive, ArchiveResponse } from '../../interfaces/archives.interface';
   styleUrls: ['./archives.component.scss']
 })
 export class ArchiveComponent implements OnInit {
-  archives: { year: number; artists: string[] }[] = [];
+  archives: { year: number; archives: Archive[] }[] = [];
 
   constructor(private archivesService: ArchivesService) {}
 
@@ -20,14 +20,14 @@ export class ArchiveComponent implements OnInit {
         if (!acc[year]) {
           acc[year] = []; // Créer un tableau vide s'il n'existe pas encore pour cette année
         }
-        acc[year].push(archive.artist);
+        acc[year].push(archive);
         return acc;
       }, {});
 
 
       this.archives = Object.keys(groupedArchives).map(year => ({
         year: parseInt(year, 10),
-        artists: groupedArchives[year]
+        archives: groupedArchives[year]
       })).reverse();
     });
   }

@@ -6,6 +6,7 @@ export interface Archive {
   image: string[];
   description: string;
   rencontretext: string;
+  type: string;
 }
 
 export interface ArchiveResponse {
