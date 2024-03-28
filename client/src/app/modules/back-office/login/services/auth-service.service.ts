@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Injectable({
@@ -52,7 +53,7 @@ export class AuthService {
   }
 
 
-  private handleError(error: any) {
+  private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Erreur inconnue';
     if (error.error instanceof ErrorEvent) {
       // Erreur côté client

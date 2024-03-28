@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArchivesService } from '../../services/archiveservice/archives.service';
-import { Archive, ArchiveResponse } from '../../interfaces/archives.interface';
+import { Archive } from '../../interfaces/archives.interface';
 
 @Component({
   selector: 'app-archives',
@@ -8,9 +8,15 @@ import { Archive, ArchiveResponse } from '../../interfaces/archives.interface';
   styleUrls: ['./archives.component.scss']
 })
 export class ArchiveComponent implements OnInit {
+  allArchives: { year: number; archives: Archive[] }[] = [];
   archives: { year: number; archives: Archive[] }[] = [];
+  yearFilter: string = '';
+  keywordFilter: string = '';
+  isKeywordFilterApplied: boolean = false;
 
   constructor(private archivesService: ArchivesService) {}
+
+
 
   ngOnInit(): void {
     this.archivesService.getArchives().subscribe(data => {
@@ -24,12 +30,10 @@ export class ArchiveComponent implements OnInit {
         return acc;
       }, {});
 
-
       this.archives = Object.keys(groupedArchives).map(year => ({
         year: parseInt(year, 10),
         archives: groupedArchives[year]
       })).reverse();
-
       this.archives.forEach(group => {
         if (group.year < 2019) {
           group.archives[0].artist = group.archives.map((archive, index, array) => {
@@ -37,6 +41,27 @@ export class ArchiveComponent implements OnInit {
           }).join('');
         }
       });
+      this.allArchives = this.archives;
+      this.applyFilters();
     });
+  }
+  applyFilters() {
+    this.isKeywordFilterApplied = !!this.keywordFilter;
+    this.archives = this.allArchives
+      .filter(group => group.year.toString().includes(this.yearFilter))
+      .map(group => ({
+        year: group.year,
+        archives: group.archives.filter(archive => archive.artist.includes(this.keywordFilter))
+      }));
+  }
+
+  applyYearFilter(filterValue: string) {
+    this.yearFilter = filterValue;
+    this.applyFilters();
+  }
+
+  applyKeywordFilter(filterValue: string) {
+    this.keywordFilter = filterValue;
+    this.applyFilters();
   }
 }

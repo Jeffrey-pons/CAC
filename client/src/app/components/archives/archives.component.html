@@ -3,18 +3,58 @@
         <h1>Archives
     </h1>
     </section>
-    <div class="bloc-separation">
-    <div class="separation"></div>
-    </div>
-    <section>
-        <p>
-            Depuis ses débuts en 1986, le CAC s'est imposé comme un lieu incontournable de la scène artistique contemporaine, offrant aux visiteurs une expérience unique au cœur de la création contemporaine.
-    Explorez les archives visuelles et artistiques des expositions qui ont marqué et façonné l'identité du CAC. De la découverte de jeunes talents prometteurs aux rétrospectives des grands noms de l'art contemporain, chaque exposition est une invitation à la réflexion et à la découverte de nouvelles perspectives artistiques.
-</p>
+    <section class="filter_archive">
+      <div class="search-container">
+        <input class='keywordFilter search-input' [(ngModel)]="keywordFilter" (keyup.enter)="applyKeywordFilter(keywordFilter)" placeholder="RECHERCHER...">
+        <button class="search-button" (click)="applyKeywordFilter(keywordFilter)">
+          <img src="../../../assets/img/loupe.png" alt="Search">
+        </button>
+      </div>
+      <select class='yearFilter' [(ngModel)]="yearFilter" (change)="applyYearFilter(yearFilter)" placeholder="TOUTES LES ANNEES" type="text">
+        <option value="">TOUTES LES ANNEES</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+        <option value="2010">2010</option>
+        <option value="2009">2009</option>
+        <option value="2008">2008</option>
+        <option value="2007">2007</option>
+        <option value="2006">2006</option>
+        <option value="2005">2005</option>
+        <option value="2004">2004</option>
+        <option value="2003">2003</option>
+        <option value="2002">2002</option>
+        <option value="2001">2001</option>
+        <option value="2000">2000</option>
+        <option value="1999">1999</option>
+        <option value="1998">1998</option>
+        <option value="1997">1997</option>
+        <option value="1996">1996</option>
+        <option value="1995">1995</option>
+        <option value="1994">1994</option>
+        <option value="1993">1993</option>
+        <option value="1992">1992</option>
+        <option value="1991">1991</option>
+        <option value="1990">1990</option>
+        <option value="1989">1989</option>
+        <option value="1988">1988</option>
+        <option value="1987">1987</option>
+        <option value="1986">1986</option>
+      </select>
     </section>
     <section class="archive">
-      <div class="container_archive" *ngFor="let group of archives" [ngClass]="{'pre-2019': group.year < 2019}">
-        <p class="p-group-year" [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}">{{ group.year }}</p>
+      <ng-container *ngFor="let group of archives">
+      <div class="container_archive" [ngClass]="{'pre-2019': group.year < 2019}" *ngIf="group.archives.length > 0">
+        <p class="p-group-year" [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}" *ngIf="!isKeywordFilterApplied">{{ group.year }}</p>
         <ul [ngClass]="{'pre-2019-flex': group.year < 2019, 'post-2019': group.year >= 2019}">
           <ng-container *ngIf="group.year < 2019">
             <li class="pre-2019-artist">{{ group.archives[0].artist }}</li>
@@ -32,6 +72,7 @@
           </ng-container>
         </ul>
       </div>
+    </ng-container>
     </section>
   <div class="bloc-separation">
     <div class="separationTwo"></div>
