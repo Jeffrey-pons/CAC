@@ -14,7 +14,7 @@
     </section>
     <section class="archive">
       <div class="container_archive" *ngFor="let group of archives" [ngClass]="{'pre-2019': group.year < 2019}">
-        <p [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}">{{ group.year }}</p>
+        <p class="p-group-year" [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}">{{ group.year }}</p>
         <ul [ngClass]="{'pre-2019-flex': group.year < 2019, 'post-2019': group.year >= 2019}">
           <ng-container *ngIf="group.year < 2019">
             <li class="pre-2019-artist">{{ group.archives[0].artist }}</li>
