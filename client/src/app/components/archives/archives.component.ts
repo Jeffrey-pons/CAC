@@ -29,6 +29,14 @@ export class ArchiveComponent implements OnInit {
         year: parseInt(year, 10),
         archives: groupedArchives[year]
       })).reverse();
+
+      this.archives.forEach(group => {
+        if (group.year < 2019) {
+          group.archives[0].artist = group.archives.map((archive, index, array) => {
+            return archive.artist + (index < array.length - 1 ? '  |  ' : ' ');
+          }).join('');
+        }
+      });
     });
   }
 }
