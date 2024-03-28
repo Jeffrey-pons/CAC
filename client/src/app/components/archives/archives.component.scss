@@ -128,3 +128,37 @@ p {
   width: 15px;
   height: 15px;
 }
+
+//ngx-pagination
+.ngx-pagination {
+  padding-top: 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+  .pagination-next, .pagination-previous, .pagination-next.disabled, .pagination-previous.disabled {
+    cursor: pointer;
+    padding: 8px 4px;
+    background: transparent;
+    border-radius: .7rem;
+    text-transform: uppercase;
+    border: 0.7px solid black;
+    font-size: 12px;
+    opacity: 0.9;
+    .disabled {
+      color: black;
+      padding: none;
+    }
+    a:hover,  button:hover {
+      background: transparent;
+      opacity: 0.6;
+  }
+  }
+   .pagination-previous.disabled:before, .pagination-previous a:before, .pagination-next a:after, .pagination-next.disabled:after {
+    content: none!important;
+    margin: auto;
+}
+  
+  
+}

@@ -10,7 +10,6 @@ import {
   HttpStatus,
   UseGuards,
   UseInterceptors,
-  UploadedFile,
   UploadedFiles,
 } from '@nestjs/common';
 import { ArchivesService } from './archives.service';

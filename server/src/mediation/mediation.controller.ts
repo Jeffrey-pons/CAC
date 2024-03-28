@@ -20,7 +20,6 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
-
 @Controller('mediation')
 export class MediationController {
   constructor(private readonly mediationService: MediationService) {}

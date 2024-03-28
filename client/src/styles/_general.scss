@@ -68,6 +68,20 @@ p {
         text-align: justify;
         line-height: 22px;
 }
+
+.buttonOne {
+  cursor: pointer;
+  padding: 11px 6px;
+  background: transparent;
+  border-radius: 5px;
+  text-transform: uppercase;
+  border: 0.5px solid black;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+
+
 img {
         max-width: 100%;
 }

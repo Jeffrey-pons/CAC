@@ -52,7 +52,7 @@
       </select>
     </section>
     <section class="archive">
-      <ng-container *ngFor="let group of archives | paginate: { itemsPerPage:8, currentPage: page }">
+      <ng-container *ngFor="let group of archives | paginate: { itemsPerPage:10, currentPage: page }">
         <div class="container_archive" [ngClass]="{'pre-2019': group.year < 2019}" *ngIf="group.archives.length > 0">
           <p class="p-group-year" [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}" *ngIf="!isKeywordFilterApplied">{{ group.year }}</p>
           <ul [ngClass]="{'pre-2019-flex': group.year < 2019, 'post-2019': group.year >= 2019}">
@@ -73,7 +73,7 @@
           </ul>
         </div>
       </ng-container>
-      <pagination-controls (pageChange)="page = $event" previousLabel="Précédent" nextLabel="Suivant" [maxSize]="0"></pagination-controls>
+      <pagination-controls class="pagination" (pageChange)="changePage($event)" previousLabel="Précédent" nextLabel="Suivant" autoScroll="false" [maxSize]="0"></pagination-controls>
     </section>
   <div class="bloc-separation">
     <div class="separationTwo"></div>

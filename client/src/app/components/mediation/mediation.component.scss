@@ -40,16 +40,15 @@ main {
         -webkit-font-smoothing: antialiased;
         transition: transform 333ms cubic-bezier(.4,0,.22,1), color 333ms cubic-bezier(.4,0,.22,1);
         padding-top: 32px;
-        a {
+        button {
           color: grey;
-          font-size: 17px;
-          text-decoration: none;
-          cursor: pointer;
-          font-family: $fontParagraph;
-          font-weight: 500;
+          font-size: 15px;
+          padding: 15px 16px;
+          border-color: grey;
         }
-        a:hover {
+        button:hover {
           color: black;
+          border-color: black;
         }
       }
       .button_mediation:hover {

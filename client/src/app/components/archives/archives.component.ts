@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ArchivesService } from '../../services/archiveservice/archives.service';
 import { Archive } from '../../interfaces/archives.interface';
 
 @Component({
   selector: 'app-archives',
   templateUrl: './archives.component.html',
-  styleUrls: ['./archives.component.scss']
+  styleUrls: ['./archives.component.scss'],
+  //style pour ngx pagination
+  encapsulation: ViewEncapsulation.None
 })
 export class ArchiveComponent implements OnInit {
   allArchives: { year: number; archives: Archive[] }[] = [];
@@ -18,10 +20,8 @@ export class ArchiveComponent implements OnInit {
   constructor(private archivesService: ArchivesService) {}
 
 
-
   ngOnInit(): void {
     this.archivesService.getArchives().subscribe(data => {
-
       const groupedArchives = data.ArchivesData.reduce((acc: any, archive: any) => {
         const year = archive.date; // Récupérer l'année de l'archive
         if (!acc[year]) {
@@ -55,7 +55,6 @@ export class ArchiveComponent implements OnInit {
         archives: group.archives.filter(archive => archive.artist.includes(this.keywordFilter))
       }));
   }
-
   applyYearFilter(filterValue: string) {
     this.yearFilter = filterValue;
     this.applyFilters();
@@ -64,5 +63,9 @@ export class ArchiveComponent implements OnInit {
   applyKeywordFilter(filterValue: string) {
     this.keywordFilter = filterValue;
     this.applyFilters();
+  }
+  changePage(newPage: number) {
+    this.page = newPage;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
