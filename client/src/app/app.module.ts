@@ -20,6 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NextexpositionComponent } from './components/nextexposition/nextexposition.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { MediationComponent } from './components/mediation/mediation.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MediationComponent } from './components/mediation/mediation.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgxPaginationModule,
   ],
   providers: [
     {

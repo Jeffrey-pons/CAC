@@ -13,6 +13,7 @@ export class ArchiveComponent implements OnInit {
   yearFilter: string = '';
   keywordFilter: string = '';
   isKeywordFilterApplied: boolean = false;
+  page: number = 1;
 
   constructor(private archivesService: ArchivesService) {}
 

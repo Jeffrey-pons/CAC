@@ -52,27 +52,28 @@
       </select>
     </section>
     <section class="archive">
-      <ng-container *ngFor="let group of archives">
-      <div class="container_archive" [ngClass]="{'pre-2019': group.year < 2019}" *ngIf="group.archives.length > 0">
-        <p class="p-group-year" [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}" *ngIf="!isKeywordFilterApplied">{{ group.year }}</p>
-        <ul [ngClass]="{'pre-2019-flex': group.year < 2019, 'post-2019': group.year >= 2019}">
-          <ng-container *ngIf="group.year < 2019">
-            <li class="pre-2019-artist">{{ group.archives[0].artist }}</li>
-          </ng-container>
-          <ng-container *ngIf="group.year >= 2019">
-            <li *ngFor="let archive of group.archives" class="card">
-              <ng-container *ngIf="archive.image.length > 0">
-                <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
-                <h3>{{ archive.title }}</h3>
-                <div class="button-tag">
-                  <button id="tag">{{archive.type}}</button>
-                </div>
-              </ng-container>
-            </li>
-          </ng-container>
-        </ul>
-      </div>
-    </ng-container>
+      <ng-container *ngFor="let group of archives | paginate: { itemsPerPage:8, currentPage: page }">
+        <div class="container_archive" [ngClass]="{'pre-2019': group.year < 2019}" *ngIf="group.archives.length > 0">
+          <p class="p-group-year" [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}" *ngIf="!isKeywordFilterApplied">{{ group.year }}</p>
+          <ul [ngClass]="{'pre-2019-flex': group.year < 2019, 'post-2019': group.year >= 2019}">
+            <ng-container *ngIf="group.year < 2019">
+              <li class="pre-2019-artist">{{ group.archives[0].artist }}</li>
+            </ng-container>
+            <ng-container *ngIf="group.year >= 2019">
+              <li *ngFor="let archive of group.archives" class="card">
+                <ng-container *ngIf="archive.image.length > 0">
+                  <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
+                  <h3>{{ archive.title }}</h3>
+                  <div class="button-tag">
+                    <button id="tag">{{archive.type}}</button>
+                  </div>
+                </ng-container>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </ng-container>
+      <pagination-controls (pageChange)="page = $event" previousLabel="Précédent" nextLabel="Suivant" [maxSize]="0"></pagination-controls>
     </section>
   <div class="bloc-separation">
     <div class="separationTwo"></div>
