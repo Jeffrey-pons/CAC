@@ -69,6 +69,25 @@ p {
         line-height: 22px;
 }
 
+.back-to-top {
+  position: fixed;
+  bottom: 50px;
+  cursor: pointer;
+  right: 50px;
+  width: 42px;
+  height: 42px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 100%;
+  opacity: 0.6;
+  img {
+      width: 30px;
+  } 
+}
+.back-to-top:hover {
+  opacity: 1;
+}
+
 .buttonOne {
   cursor: pointer;
   padding: 11px 6px;
