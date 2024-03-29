@@ -11,6 +11,7 @@ import { WorkExpoPermanentModule } from './work-expo-permanent/work-expo-permane
 import { NextExpositionModule } from './next-exposition/next-exposition.module';
 import { MemberModule } from './member/member.module';
 import { MediationModule } from './mediation/mediation.module';
+import { NewsModule } from './news/news.module';
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ dotenv.config();
     NextExpositionModule,
     MemberModule,
     MediationModule,
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
