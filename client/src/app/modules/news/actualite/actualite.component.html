@@ -1,0 +1,38 @@
+<main>
+  <div class="bloc-separation">
+    <div class="separationTwo"></div>
+  </div>
+  <p>Actualité</p>
+  <section>
+    <ng-container *ngFor="let new of news; let i = index" >
+      <div *ngIf="i === 0" class="first-news">
+        <div>
+        <img [src]="new.image[0]" alt="Image de la nouvelle">
+      </div>
+      <div>
+        <h2>{{ new.title }}</h2>
+        <p>{{ new.month }}</p>
+        <p>{{new.description}}</p>
+        <div class="button-tag">
+          <button id="tag">{{new.type}}</button>
+          </div>
+      </div>
+      </div>
+      <div *ngIf="i !== 0" class="news-card" (click)="navigateToDetail(new._id)">
+        <div class="card">
+        <img [src]="new.image[0]" alt="Image de la nouvelle">
+        <h2>{{ new.title }}</h2>
+        <p>{{ new.month }}</p>
+        <div class="button-tag">
+        <button id="tag">{{new.type}}</button>
+        </div>
+      </div>
+      </div>
+    </ng-container>
+  </section>
+  <div class="button-actualite">
+<button [routerLink]="['/archives']" class="buttonOne">
+  <a >Voir les archives</a>
+</button>
+</div>
+</main>

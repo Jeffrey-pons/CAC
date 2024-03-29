@@ -1,0 +1,7 @@
+<div *ngIf="news">
+    <h2>{{ news.title }}</h2>
+    <img [src]="news.image[1]" alt="Image de la nouvelle">
+    <p>{{ news.month }}</p>
+    <p>{{ news.description }}</p>
+    <!-- afficher les autres détails de l'actualité ici -->
+  </div>

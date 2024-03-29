@@ -10,6 +10,7 @@ import { CollectionPermanenteService } from './../../services/CollectionPService
 })
 export class CollectionpermanenteComponent implements OnInit{
   artworks: CollectionPermanente[] = [];
+  page: number = 1;
 
   constructor(private collectionPermanenteService: CollectionPermanenteService) {}
 
@@ -23,5 +24,10 @@ export class CollectionpermanenteComponent implements OnInit{
         this.artworks.reverse();
       }
     });
+  }
+
+  changePage(newPage: number) {
+    this.page = newPage;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

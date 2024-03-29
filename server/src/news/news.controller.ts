@@ -79,7 +79,6 @@ export class NewsController {
   }
 
   @Get('/:id')
-  @UseGuards(AdminGuard)
   async findOneNews(@Res() response, @Param('id') id: string) {
     try {
       const news = await this.newsService.findOneNews(id);

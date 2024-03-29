@@ -17,7 +17,7 @@
   </section>
   <section class="containerTwo_collectionPermanente">
 
-    <div class="card" *ngFor="let artwork of artworks">
+    <div class="card" *ngFor="let artwork of artworks| paginate: { itemsPerPage: 10, currentPage: page }">
       <img src="http://localhost:5000/{{ artwork.image }}"alt="image-collection-permanente">
       <div class="card-content">
         <h3>{{ artwork.artist }}</h3>
@@ -26,5 +26,8 @@
         <button id="tag">{{artwork.type}}</button>
       </div>
   </div>
+  
+
   </section>
+  <pagination-controls class="pagination" (pageChange)="changePage($event)" previousLabel="Précédent" nextLabel="Suivant" autoScroll="false" [maxSize]="0"></pagination-controls>
 </main>

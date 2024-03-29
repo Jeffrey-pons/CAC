@@ -21,7 +21,8 @@ import { NextexpositionComponent } from './components/nextexposition/nextexposit
 import { FriendsComponent } from './components/friends/friends.component';
 import { MediationComponent } from './components/mediation/mediation.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ActualiteComponent } from './components/actualite/actualite.component';
+import { ActualiteComponent } from './modules/news/actualite/actualite.component';
+import { NewsModule } from './modules/news/news.module';
 
 @NgModule({
   declarations: [
@@ -39,11 +40,11 @@ import { ActualiteComponent } from './components/actualite/actualite.component';
     NextexpositionComponent,
     FriendsComponent,
     MediationComponent,
-    ActualiteComponent,
 
   ],
   imports: [
     BrowserModule,
+    NewsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

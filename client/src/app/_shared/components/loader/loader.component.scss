@@ -4,26 +4,27 @@
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(73, 73, 73, 0.7);
+  background-color: white;
   z-index: 99999999999999999;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: url('../../../../assets/img/raymondfarbos-logo (2).png'), auto 10 20; /* Remplace le curseur par une image */
+  cursor: url('../../../../assets/img/raymondfarbos-logo-miniature.png') 12 12, auto; /* Remplace le curseur par une image */
+  // animation: spin 1s linear infinite;
 }
 
 .loader,
 .loader:before,
 .loader:after {
   border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
+  width: 2.2em;
+  height: 2.2em;
   animation-fill-mode: both;
   animation: bblFadInOut 1.8s infinite ease-in-out;
 }
 
 .loader {
-  color: #FFF;
+  color: grey;
   font-size: 7px;
   position: relative;
   text-indent: -9999em;
