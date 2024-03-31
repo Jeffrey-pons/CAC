@@ -18,7 +18,7 @@ export class NewsService {
   getNewsById(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`).pipe(
       tap(data => {
-        console.log('News data:', data); // Ajoutez cette ligne
+        // console.log('News data:', data); // Ajoutez cette ligne
       })
     );
   }

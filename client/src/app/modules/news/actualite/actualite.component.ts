@@ -1,3 +1,4 @@
+import { IdService } from '../../../services/idService/Id.service';
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { NewsService } from '../../../services/newsService/news.service';
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class ActualiteComponent implements OnInit {
   news: News[] = [];
 
-  constructor(private newsService: NewsService, private router: Router) { }
+  constructor(private newsService: NewsService, private router: Router, private idService: IdService) { }
 
   ngOnInit(): void {
     this.newsService.getNews().subscribe((data: NewsResponse) => {
@@ -25,7 +26,9 @@ export class ActualiteComponent implements OnInit {
       console.error('Error:', error);
     });
   }
-  navigateToDetail(newsId: string) {
-    this.router.navigate(['/news', newsId]);
+  navigateToDetail(newsId: string, title: string) {
+  this.idService.setId(newsId);
+    this.router.navigate(['/news', title]);
   }
+  
 }

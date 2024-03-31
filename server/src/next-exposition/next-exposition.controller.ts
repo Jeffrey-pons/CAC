@@ -78,7 +78,6 @@ export class NextExpositionController {
   }
 
   @Get('/:id')
-  @UseGuards(AdminGuard)
   async findOneNextExpo(@Res() response, @Param('id') id: string) {
     try {
       const nextExpo = await this.nextExpositionService.findOneNextExpo(id);

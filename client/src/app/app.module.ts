@@ -17,12 +17,11 @@ import { AuthAdminComponent } from './modules/back-office/login/login.component'
 import { ArchiveComponent } from './components/archives/archives.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NextexpositionComponent } from './components/nextexposition/nextexposition.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { MediationComponent } from './components/mediation/mediation.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ActualiteComponent } from './modules/news/actualite/actualite.component';
 import { NewsModule } from './modules/news/news.module';
+import { NextExpositionModule } from './modules/next-exposition/next-exposition.module';
 
 @NgModule({
   declarations: [
@@ -37,19 +36,19 @@ import { NewsModule } from './modules/news/news.module';
     ArchiveComponent,
     CollectionpermanenteComponent,
     NotFoundComponent,
-    NextexpositionComponent,
     FriendsComponent,
     MediationComponent,
 
   ],
   imports: [
     BrowserModule,
-    NewsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     CommonModule,
     NgxPaginationModule,
+    NewsModule,
+    NextExpositionModule,
   ],
   providers: [
     {

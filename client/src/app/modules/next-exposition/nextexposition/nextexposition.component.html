@@ -15,8 +15,8 @@
   <section class="NextExpo_Container">
     <h2 *ngIf="allSameYear">Programmation {{ nextExpositions[0].titleDate }}</h2>
     <div class="nextExpo_Article">
-    <div *ngFor="let expo of nextExpositions">
-      <div class="card">
+    <div *ngFor="let expo of nextExpositions" >
+      <div class="card" (click)="navigateToDetail(expo._id, expo.name)">
         <img [src]="expo.image" alt="{{ expo.name }}">
         <div class="card-content">
           <h3>{{expo.name}}</h3>

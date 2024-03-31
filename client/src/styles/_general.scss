@@ -236,6 +236,24 @@ main {
   
 }
 
+.model-detail-article {
+  .header-model-details {
+    h2 {
+      text-align: center;
+    }
+  }
+  .content-model-details {
+    width: 881px;
+    gap: 74px;
+    display: flex;
+    .content-model-left {
+    }
+    .content-model-right {
+      flex: 1;
+    }
+  }
+}
+
 .svg-container {
   width: 32px;
   height: 32px;

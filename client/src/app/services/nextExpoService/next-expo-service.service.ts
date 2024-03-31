@@ -15,6 +15,10 @@ export class NextExpoServiceService {
   getNextExpo(): Observable<NextExpoResponse> {
     return this.http.get<NextExpoResponse>(`${this.baseUrl}`);
   }
+
+  getNextExpoById(id: string): Observable<NextExpoResponse> {
+    return this.http.get<NextExpoResponse>(`${this.baseUrl}/${id}`);
+  }
 }
 
 

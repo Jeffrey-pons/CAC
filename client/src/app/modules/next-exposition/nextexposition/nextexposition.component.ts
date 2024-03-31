@@ -1,7 +1,9 @@
+import { IdService } from '../../../services/idService/Id.service';
 import { Component, ElementRef } from '@angular/core';
-import { NextExpoServiceService } from '../../services/nextExpoService/next-expo-service.service';
+import { NextExpoServiceService } from '../../../services/nextExpoService/next-expo-service.service';
 import { OnInit } from '@angular/core';
-import { NextExpo, NextExpoResponse } from '../../interfaces/nextExpo.interface';
+import { NextExpo, NextExpoResponse } from '../../../interfaces/nextExpo.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nextexposition',
@@ -13,7 +15,7 @@ export class NextexpositionComponent implements OnInit {
   allSameYear: boolean = false;
 
 
-  constructor(private nextExpoService: NextExpoServiceService, private el: ElementRef) { }
+  constructor(private nextExpoService: NextExpoServiceService, private el: ElementRef, private router: Router, private idService: IdService) { }
 
   ngOnInit(): void {
     this.nextExpoService.getNextExpo().subscribe((data: NextExpoResponse) => {
@@ -29,7 +31,11 @@ export class NextexpositionComponent implements OnInit {
     });
   }
 
-
+  navigateToDetail(nextExpoId: string, name: string) {
+    this.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.idService.setId(nextExpoId);
+    this.router.navigate(['/next-exposition', name]);
+  }
 
 
 }

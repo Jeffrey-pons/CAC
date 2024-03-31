@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { NextexpositionComponent } from './components/nextexposition/nextexposition.component';
+import { NextexpositionComponent } from './modules/next-exposition/nextexposition/nextexposition.component';
 import { ArchiveComponent } from './components/archives/archives.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
@@ -12,13 +12,15 @@ import { MediationComponent } from './components/mediation/mediation.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { ActualiteComponent } from '../app/modules/news/actualite/actualite.component';
 import { ActualiteDetailsComponent } from './modules/news/actualite-details/actualite-details.component';
+import { NextexpositionDetailsComponent } from './modules/next-exposition/nextexposition-details/nextexposition-details.component';
 
 const routes: Routes = [
-  { path: '', component: ActualiteComponent }, // Définissez ActualiteComponent comme le composant de la route par défaut
-  { path: 'news/:id', component: ActualiteDetailsComponent },
+  { path: '', component: ActualiteComponent }, 
+  { path: 'news/:title', component: ActualiteDetailsComponent },
   { path: 'a-propos', component: AboutusComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'prochaine-exposition', component: NextexpositionComponent },
+  { path: 'next-exposition', component: NextexpositionComponent },
+  { path: 'next-exposition/:name', component: NextexpositionDetailsComponent},
   { path: 'archives', component: ArchiveComponent },
   { path: 'mentions-legales', component: LegalnoticeComponent },
   { path: 'collection-permanente', component: CollectionpermanenteComponent },

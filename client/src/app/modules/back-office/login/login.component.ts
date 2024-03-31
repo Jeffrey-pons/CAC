@@ -16,8 +16,6 @@ export class AuthAdminComponent {
   submitLoginForm() {
     this.authService.login(this.email, this.password).subscribe(
       () => {
-        localStorage.setItem('token', 'votre_token');
-
         this.router.navigate(['/']);
       },
       error => {

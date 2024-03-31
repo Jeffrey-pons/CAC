@@ -24,6 +24,9 @@ export class CreateNewsDto {
     readonly rencontretext: string;
 
     @IsString()
+    readonly event: string;
+
+    @IsString()
     readonly soutien: string;
 
 }

@@ -22,8 +22,10 @@ type: string
 rencontretext: string;
 
 @Prop()
-soutien: string;
+event: string;
 
+@Prop()
+soutien: string;
 
 }
 
