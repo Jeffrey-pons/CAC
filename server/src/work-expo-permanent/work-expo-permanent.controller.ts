@@ -58,7 +58,7 @@ export class WorkExpoPermanentController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Artwork not created!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -75,7 +75,7 @@ export class WorkExpoPermanentController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Artworks not found!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -92,7 +92,7 @@ export class WorkExpoPermanentController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Artwork not found!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -135,7 +135,7 @@ export class WorkExpoPermanentController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Artwork not updated!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -153,7 +153,7 @@ export class WorkExpoPermanentController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Artwork not deleted!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }

@@ -5,8 +5,9 @@ export interface News {
     month: string;
     description: string;
     type: string;
-    rencontretext: string;
-    soutien :string;
+    rencontretext: string[];
+    event: string[];
+    soutien :string[];
 }
 
 export interface NewsResponse {

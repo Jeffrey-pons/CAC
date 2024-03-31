@@ -18,14 +18,14 @@ export class News extends Document {
   @Prop()
   type: string;
 
-  @Prop()
-  rencontretext: string;
+  @Prop({ type: [String] })
+  rencontretext: string[];
 
-  @Prop()
-  event: string;
+  @Prop({ type: [String] })
+  event: string[];
 
-  @Prop()
-  soutien: string;
+  @Prop({ type: [String] })
+  soutien: string[];
 }
 
 export const NewsSchema = SchemaFactory.createForClass(News);

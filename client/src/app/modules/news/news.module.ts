@@ -4,8 +4,6 @@ import { ActualiteComponent } from './actualite/actualite.component';
 import { ActualiteDetailsComponent } from './actualite-details/actualite-details.component';
 import {  RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [ActualiteComponent, ActualiteDetailsComponent],
   imports: [
@@ -14,4 +12,4 @@ import {  RouterModule } from '@angular/router';
   ],
   exports: [ActualiteComponent]
 })
-export class NewsModule { }
+export class NewsModule {}

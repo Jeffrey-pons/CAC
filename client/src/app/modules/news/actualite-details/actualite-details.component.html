@@ -10,25 +10,23 @@
       </div>
       <div class="content-model-details">
         <div class="content-model-left">
-          <div class="info-mode-left">
-            <div class="date-model-detail">
+          <div class="infos-model-left">
+            <div class="info-model-detail">
               <p>{{news.type}}</p>
               <p>{{ news.month }}</p>
             </div>
-            <div class="horaire_bloc_contact">
-              <p>Ouvert le mercredi, le jeudi, le vendredi de 14 h à 19 h, le samedi de 10 h à 13 h et de 14 h à 18 h</p>
-            </div>
+              <p class="info-model-detail">{{news.rencontretext}}</p>
+             <p class="info-model-detail">{{news.event}}</p>
           </div>
         </div>
         <div class="content-model-right">
-          <p>{{ news.description | slice:0:1000 }}</p> <!-- Affiche les 1000 premiers caractères de la description -->
+          <p>{{ news.description | slice:0:1000 }}</p> 
           <div *ngFor="let img of news.image; let i = index">
             <img *ngIf="i !== 0" [src]="img" alt="Image de la nouvelle">
           </div>
-          <p>{{ news.description | slice:1000 }}</p> <!-- Affiche le reste de la description -->
+          <p>{{ news.description | slice:1000 }}</p> 
         </div>
       </div>
-      <p>{{ news.rencontretext }}</p>
       <p>{{ news.soutien }}</p>
     </div>
   </section>

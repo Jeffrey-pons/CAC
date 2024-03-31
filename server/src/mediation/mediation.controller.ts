@@ -54,8 +54,9 @@ export class MediationController {
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
+        statueCode: 400,
         message: 'Error: Mediation not created',
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -70,8 +71,9 @@ export class MediationController {
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
+        statusCode: 400,
         message: 'Error: Mediation data not found',
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -86,8 +88,9 @@ export class MediationController {
       });
     } catch (err) {
       return response.status(HttpStatus.NOT_FOUND).json({
+        statusCode: 404,
         message: 'Error: Mediation data not found',
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -125,8 +128,9 @@ export class MediationController {
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
+        statusCode: 400,
         message: 'Error: Mediation not updated',
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -142,8 +146,9 @@ export class MediationController {
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
+        statusCode: 400,
         message: 'Error: Mediation not deleted',
-        status: 'error',
+        error: err.message,
       });
     }
   }

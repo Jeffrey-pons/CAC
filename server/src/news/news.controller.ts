@@ -56,7 +56,7 @@ export class NewsController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: News not created!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -73,7 +73,7 @@ export class NewsController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: News not found!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -90,7 +90,7 @@ export class NewsController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: News not found!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -118,7 +118,7 @@ export class NewsController {
     @UploadedFiles() files: Express.Multer.File[],
   ) {
     try {
-      if (files.length > 0) {
+      if (files && files.length > 0) {
         updateNewsDto.image = files.map((file) => file.path);
       }
       const news = await this.newsService.updateNews(id, updateNewsDto);
@@ -130,7 +130,7 @@ export class NewsController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: News not updated!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -148,7 +148,7 @@ export class NewsController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: News not deleted!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }

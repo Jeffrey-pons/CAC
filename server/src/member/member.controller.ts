@@ -31,7 +31,7 @@ export class MemberController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Member not created!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -89,7 +89,7 @@ export class MemberController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Member not updated!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }

@@ -19,12 +19,12 @@ export class CreateNewsDto {
   @IsNotEmpty()
   readonly type: string;
 
-  @IsString()
-  readonly rencontretext: string;
+  @IsString({ each: true })
+  readonly rencontretext: string[];
 
-  @IsString()
-  readonly event: string;
+  @IsString({ each: true })
+  readonly event: string[];
 
-  @IsString()
-  readonly soutien: string;
+  @IsString({ each: true })
+  readonly soutien: string[];
 }

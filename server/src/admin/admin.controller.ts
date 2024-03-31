@@ -35,7 +35,7 @@ export class AdminController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Admin not created!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }

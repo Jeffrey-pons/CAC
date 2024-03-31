@@ -55,8 +55,9 @@ export class NextExpositionController {
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
+        statueCode: 400,
         message: 'Error: Next exposition not created',
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -71,8 +72,9 @@ export class NextExpositionController {
       });
     } catch (err) {
       return response.status(HttpStatus.NOT_FOUND).json({
+        statueCode: 404,
         message: 'Next exposition data not found!',
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -87,8 +89,9 @@ export class NextExpositionController {
       });
     } catch (err) {
       return response.status(HttpStatus.NOT_FOUND).json({
+        statueCode: 404,
         message: `Next exposition #${id} not found`,
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -129,8 +132,9 @@ export class NextExpositionController {
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
+        statueCode: 400,
         message: `Error: Next exposition #${id} not found`,
-        status: 'error',
+        error: err.message,
       });
     }
   }
@@ -146,8 +150,9 @@ export class NextExpositionController {
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
+        statueCode: 400,
         message: `Error: Next exposition #${id} not found`,
-        status: 'error',
+        error: err.message,
       });
     }
   }

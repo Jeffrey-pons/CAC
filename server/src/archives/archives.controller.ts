@@ -56,7 +56,7 @@ export class ArchivesController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Archive not created!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -73,7 +73,7 @@ export class ArchivesController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Archives not found!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -90,7 +90,7 @@ export class ArchivesController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Archive not found!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -130,7 +130,7 @@ export class ArchivesController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Archive not updated!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }
@@ -148,7 +148,7 @@ export class ArchivesController {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
         message: 'Error: Archive not deleted!',
-        error: 'Bad Request',
+        error: err.message,
       });
     }
   }

@@ -42,8 +42,7 @@ main {
         padding-top: 32px;
         button {
           color: grey;
-          font-size: 15px;
-          padding: 15px 16px;
+          padding: 12px 13px;
           border-color: grey;
         }
         button:hover {
@@ -52,7 +51,7 @@ main {
         }
       }
       .button_mediation:hover {
-        transform: translateX(7px);
+        transform: translateX(4px);
         color: black;
       }
 
