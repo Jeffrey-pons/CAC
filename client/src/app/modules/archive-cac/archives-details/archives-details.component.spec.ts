@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthAdminComponent } from './auth-admin.component';
+import { ArchivesDetailsComponent } from './archives-details.component';
 
-describe('AuthAdminComponent', () => {
-  let component: AuthAdminComponent;
-  let fixture: ComponentFixture<AuthAdminComponent>;
+describe('ArchivesDetailsComponent', () => {
+  let component: ArchivesDetailsComponent;
+  let fixture: ComponentFixture<ArchivesDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AuthAdminComponent]
+      imports: [ArchivesDetailsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AuthAdminComponent);
+    fixture = TestBed.createComponent(ArchivesDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

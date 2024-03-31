@@ -21,7 +21,7 @@
     <h2>{{item.title}}</h2>
     <p>{{item.intro}}</p>
     <div class="button_mediation">
-      <button class="buttonOne">&#62; Plus d'informations</button>
+      <button class="buttonOne" (click)="navigateToDetail(item._id, item.title)">&#62; Plus d'informations</button>
     </div>
   </div>
 </div>

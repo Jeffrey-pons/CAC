@@ -81,7 +81,6 @@ export class WorkExpoPermanentController {
   }
 
   @Get('/:id')
-  @UseGuards(AdminGuard)
   async findOneArtWork(@Res() response, @Param('id') id: string) {
     try {
       const artWork = await this.workExpoPermanentService.findOneArtWork(id);

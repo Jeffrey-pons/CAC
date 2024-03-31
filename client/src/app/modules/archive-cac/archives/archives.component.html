@@ -55,12 +55,12 @@
       <ng-container *ngFor="let group of archives | paginate: { itemsPerPage:10, currentPage: page }">
         <div class="container_archive" [ngClass]="{'pre-2019': group.year < 2019}" *ngIf="group.archives.length > 0">
           <p class="p-group-year" [ngClass]="{'baseline': group.year < 2019, 'no-baseline': group.year >= 2019}" *ngIf="!isKeywordFilterApplied">{{ group.year }}</p>
-          <ul [ngClass]="{'pre-2019-flex': group.year < 2019, 'post-2019': group.year >= 2019}">
+          <ul [ngClass]="{'pre-2019-flex': group.year < 2019, 'post-2019': group.year >= 2019}" >
             <ng-container *ngIf="group.year < 2019">
               <li class="pre-2019-artist">{{ group.archives[0].artist }}</li>
             </ng-container>
             <ng-container *ngIf="group.year >= 2019">
-              <li *ngFor="let archive of group.archives" class="card">
+              <li *ngFor="let archive of group.archives" class="card" (click)="navigateToDetail(archive._id, archive.artist)">
                 <ng-container *ngIf="archive.image.length > 0">
                   <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
                   <h3>{{ archive.title }}</h3>

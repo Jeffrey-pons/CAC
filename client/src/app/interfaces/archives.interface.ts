@@ -1,4 +1,5 @@
 export interface Archive {
+  _id: string; 
   date: number;
   artist: string;
   title: string;

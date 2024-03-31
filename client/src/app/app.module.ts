@@ -14,14 +14,13 @@ import { AdhesionComponent } from './_shared/components/adhesion/adhesion.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FormsModule } from '@angular/forms';
 import { AuthAdminComponent } from './modules/back-office/login/login.component';
-import { ArchiveComponent } from './components/archives/archives.component';
-import { CollectionpermanenteComponent } from './components/collectionpermanente/collectionpermanente.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FriendsComponent } from './components/friends/friends.component';
-import { MediationComponent } from './components/mediation/mediation.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { NewsModule } from './modules/news/news.module';
 import { NextExpositionModule } from './modules/next-exposition/next-exposition.module';
+import { MediationModule } from './modules/mediation-cac/mediation.module';
+import { CollectionModule } from './modules/collection/collection.module';
+import { ArchiveCacModule } from './modules/archive-cac/archive-cac.module';
 
 @NgModule({
   declarations: [
@@ -33,11 +32,8 @@ import { NextExpositionModule } from './modules/next-exposition/next-exposition.
     AdhesionComponent,
     AboutusComponent,
     AuthAdminComponent,
-    ArchiveComponent,
-    CollectionpermanenteComponent,
     NotFoundComponent,
     FriendsComponent,
-    MediationComponent,
 
   ],
   imports: [
@@ -46,9 +42,11 @@ import { NextExpositionModule } from './modules/next-exposition/next-exposition.
     HttpClientModule,
     FormsModule,
     CommonModule,
-    NgxPaginationModule,
     NewsModule,
     NextExpositionModule,
+    MediationModule,
+    CollectionModule,
+    ArchiveCacModule,
   ],
   providers: [
     {

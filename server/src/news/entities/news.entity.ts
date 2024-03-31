@@ -3,30 +3,29 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class News extends Document {
-@Prop()
-title: string;
+  @Prop()
+  title: string;
 
-@Prop()
-image: string[];
+  @Prop()
+  image: string[];
 
-@Prop()
-month: string;
+  @Prop()
+  month: string;
 
-@Prop()
-description: string;
+  @Prop()
+  description: string;
 
-@Prop()
-type: string
+  @Prop()
+  type: string;
 
-@Prop()
-rencontretext: string;
+  @Prop()
+  rencontretext: string;
 
-@Prop()
-event: string;
+  @Prop()
+  event: string;
 
-@Prop()
-soutien: string;
-
+  @Prop()
+  soutien: string;
 }
 
 export const NewsSchema = SchemaFactory.createForClass(News);

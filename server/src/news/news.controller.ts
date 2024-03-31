@@ -44,7 +44,7 @@ export class NewsController {
     @Res() response,
     @Body() createNewsDto: CreateNewsDto,
     @UploadedFiles() files: Express.Multer.File[],
-    ) {
+  ) {
     try {
       createNewsDto.image = files.map((file) => file.path);
       const { newNews } = await this.newsService.createNews(createNewsDto);
@@ -113,10 +113,10 @@ export class NewsController {
   )
   async updateNews(
     @Res() response,
-    @Param('id') id: string, 
+    @Param('id') id: string,
     @Body() updateNewsDto: UpdateNewsDto,
     @UploadedFiles() files: Express.Multer.File[],
-  ){
+  ) {
     try {
       if (files.length > 0) {
         updateNewsDto.image = files.map((file) => file.path);

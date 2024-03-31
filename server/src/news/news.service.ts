@@ -23,7 +23,7 @@ export class NewsService {
     return newsData;
   }
 
-  async findOneNews(id: string):Promise<News> {
+  async findOneNews(id: string): Promise<News> {
     const news = await this.newsModel.findById(id).exec();
     if (!news) {
       throw new Error(`News #${id} not found`);
@@ -31,17 +31,17 @@ export class NewsService {
     return news;
   }
 
-  async updateNews(id: string, updateNewsDto: UpdateNewsDto):Promise<News> {
+  async updateNews(id: string, updateNewsDto: UpdateNewsDto): Promise<News> {
     const existingNews = await this.newsModel.findByIdAndUpdate(id, updateNewsDto, {
       new: true,
-      });
+    });
     if (!existingNews) {
       throw new Error(`News #${id} not found`);
     }
     return existingNews;
   }
 
-  async removeNews(id: string):Promise<News> {
+  async removeNews(id: string): Promise<News> {
     const deletedNews = await this.newsModel.findByIdAndDelete(id);
     if (!deletedNews) {
       throw new Error(`News #${id} not found`);

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ArchivesService } from '../../services/archiveservice/archives.service';
-import { Archive } from '../../interfaces/archives.interface';
+import { ArchivesService } from '../../../services/archiveservice/archives.service';
+import { Archive } from '../../../interfaces/archives.interface';
+import { Router } from '@angular/router';
+import { IdService } from '../../../services/idService/Id.service';
 
 @Component({
   selector: 'app-archives',
@@ -17,7 +19,7 @@ export class ArchiveComponent implements OnInit {
   isKeywordFilterApplied: boolean = false;
   page: number = 1;
 
-  constructor(private archivesService: ArchivesService) {}
+  constructor(private archivesService: ArchivesService, private router: Router, private idService: IdService) {}
 
 
   ngOnInit(): void {
@@ -67,5 +69,9 @@ export class ArchiveComponent implements OnInit {
   changePage(newPage: number) {
     this.page = newPage;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  navigateToDetail(archiveId: string, artist: string) {
+    this.idService.setId(archiveId);
+    this.router.navigate(['/archive', artist]);
   }
 }

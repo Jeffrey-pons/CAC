@@ -5,7 +5,6 @@ import { NewsService } from '../../../services/newsService/news.service';
 import { News, NewsResponse } from '../../../interfaces/news.interface';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-actualite',
   templateUrl: './actualite.component.html',

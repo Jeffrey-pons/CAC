@@ -77,7 +77,6 @@ export class MediationController {
   }
 
   @Get('/:id')
-  @UseGuards(AdminGuard)
   async findOneMediation(@Res() response, @Param('id') id: string) {
     try {
       const mediation = await this.mediationService.findOneMediation(id);

@@ -1,4 +1,5 @@
 export interface CollectionPermanente {
+  _id: string;
   title: string;
   image: string;
   artist: string;

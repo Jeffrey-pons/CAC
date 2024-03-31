@@ -79,7 +79,6 @@ export class ArchivesController {
   }
 
   @Get('/:id')
-  @UseGuards(AdminGuard)
   async findOneArchive(@Res() response, @Param('id') id: string) {
     try {
       const archive = await this.archivesService.findOneArchive(id);

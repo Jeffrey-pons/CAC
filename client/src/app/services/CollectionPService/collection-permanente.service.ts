@@ -14,4 +14,7 @@ export class CollectionPermanenteService {
     return this.http.get<ArtWorkResponse>(`${this.baseUrl}`);
   }
 
+  getArtWorkById(id: string): Observable<ArtWorkResponse> {
+    return this.http.get<ArtWorkResponse>(`${this.baseUrl}/${id}`);
+  }
 }

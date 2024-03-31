@@ -15,4 +15,8 @@ export class MediationService {
   getAllMediation(): Observable<MediationResponse> {
     return this.http.get<MediationResponse>(`${this.baseUrl}`);
   }
+
+  getMediationById(id: string): Observable<MediationResponse> {
+    return this.http.get<MediationResponse>(`${this.baseUrl}/${id}`);
+  }
 }

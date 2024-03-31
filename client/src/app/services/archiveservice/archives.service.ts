@@ -13,4 +13,8 @@ export class ArchivesService {
   getArchives(): Observable<any> {
     return this.http.get<any[]>(`${this.baseUrl}`);
   }
+
+  getArchivesById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }
 }

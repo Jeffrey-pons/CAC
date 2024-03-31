@@ -1,0 +1,12 @@
+<main>
+    <section>
+        <div *ngIf="archive">
+            <h1>{{ archive?.title }}</h1>
+            <div *ngFor="let img of archive?.image">
+                <img [src]="img" alt="Archive image">
+            </div>
+            <p>{{archive?.description}}</p>
+            <!-- Add more fields as needed -->
+        </div>
+    </section>
+</main>

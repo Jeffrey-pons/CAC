@@ -1,6 +1,8 @@
-import { CollectionPermanente, ArtWorkResponse } from './../../interfaces/collectionP.interface';
+import { IdService } from './../../../services/idService/Id.service';
+import { CollectionPermanente, ArtWorkResponse } from '../../../interfaces/collectionP.interface';
 import { Component, OnInit } from '@angular/core';
-import { CollectionPermanenteService } from './../../services/CollectionPService/collection-permanente.service';
+import { CollectionPermanenteService } from '../../../services/CollectionPService/collection-permanente.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +14,7 @@ export class CollectionpermanenteComponent implements OnInit{
   artworks: CollectionPermanente[] = [];
   page: number = 1;
 
-  constructor(private collectionPermanenteService: CollectionPermanenteService) {}
+  constructor(private collectionPermanenteService: CollectionPermanenteService, private router: Router, private idService: IdService ) {}
 
   ngOnInit(): void {
     this.collectionPermanenteService.getArtWork().subscribe((data: ArtWorkResponse) => {
@@ -30,4 +32,9 @@ export class CollectionpermanenteComponent implements OnInit{
     this.page = newPage;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  navigateToDetail(artWorkId: string, artist: string) {
+    this.idService.setId(artWorkId);
+      this.router.navigate(['/collection', artist]);
+    }
 }
