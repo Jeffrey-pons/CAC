@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../modules/back-office/login/services/auth-service.service';
 import { Subscription } from 'rxjs';
@@ -10,10 +10,14 @@ import { OnClickService } from '../../../utils/onClick.utils';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy{
+  @ViewChild('navbar') navbar!: ElementRef;
+
   isDropdownOpen: boolean = false;
   userInitial: string = '';
   isLoggedIn: boolean = false;
   private authSubscription: Subscription;
+  isFirstImageHovered: boolean = false
+  intervalId: any;
 
   constructor(private router: Router, private authService: AuthService, private onClickService: OnClickService) {
     this.authSubscription = this.authService.isLoggedIn$.subscribe((loggedIn: boolean) => {
@@ -35,6 +39,22 @@ export class NavbarComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.authSubscription.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        this.intervalId = setInterval(() => {
+          this.isFirstImageHovered = !this.isFirstImageHovered;
+        }, 5000);
+      } else {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+        }
+      }
+    });
+
+    observer.observe(this.navbar.nativeElement);
   }
 
   loadUserInitial(): void {
@@ -65,18 +85,6 @@ export class NavbarComponent implements OnInit, OnDestroy{
   isLinkActive(link: string): boolean {
     return this.router.isActive(link, true);
   }
-
-  isFirstImageHovered: boolean = true;
-
-  handleHover() {
-    this.isFirstImageHovered = !this.isFirstImageHovered;
-  }
-
-  handleMouseOut() {
-    //none
-  }
-
-
   handleFocus() {
     this.onClickService.handleFocus();
   }

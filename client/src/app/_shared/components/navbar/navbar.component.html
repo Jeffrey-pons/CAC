@@ -9,10 +9,10 @@
             </ul>
         </div>
         <div class="img-navbar">
-          <a [routerLink]="['/']" class="logo-container"  (focus)="handleFocus()" (blur)="handleBlur()" tabindex="0" (keyup)="handleKeyUp($event)" (keydown)="handleKeyDown($event)">
-            <div class="logo" (mouseover)="handleHover()" (mouseout)="handleMouseOut()">
-              <img src="../../../../assets/img/raymondfarbos-logo (2).png" alt="Logo CAC" class="logo-back" [class.hidden]="isFirstImageHovered" (focus)="handleFocus()" (blur)="handleBlur()">
-              <!-- <img src="../../../../assets/img/raymondfarbos-logo (1).png" alt="Logo CAC" class="logo-front" [class.hidden]="!isFirstImageHovered" (focus)="handleFocus()" (blur)="handleBlur()"> -->
+          <a [routerLink]="['/']" class="logo-container">
+            <div #navbar class="logo"[class.show]="isFirstImageHovered">
+              <img src="../../../../assets/img/raymondfarbos-logo (2)c.png" alt="Logo CAC" class="logo-back">
+              <img src="../../../../assets/img/raymondfarbos-logo (1).png" alt="Logo CAC" class="logo-front">
             </div>
           </a>
         </div>
