@@ -11,11 +11,12 @@
   align-items: center;
   cursor: none;
   #custom-cursor {
+    display: none;
     position: absolute;
     cursor: none;
     width: 92px;
     height: 92px;
-    background-image: url('../../../../assets/img/raymondfarbos-logo-miniature.png');
+    background-image: url('../../../../assets/img/raymondfarbos-logo-miniature.png'),;
     background-size: cover;
     pointer-events: none;
     z-index: 99999999999999999;

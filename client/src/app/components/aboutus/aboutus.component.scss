@@ -46,12 +46,15 @@ main {
                         text-align: center;
                         font-family: $fontTitle;
                         cursor: pointer;
-                        color: rgb(75, 74, 74);
-                        padding: 6px;
+                        color: rgba(75, 74, 74, 0.777);
+                        padding: 3px 38px;
+                        font-size: 16px;
+                        transition: all 0.5s ease;
                     }
                     p:hover {
                       color: black;
-                      cursor: url('../../../assets/img/loader.svg'), auto;
+                      transition: all 0.3s ease;
+                      cursor: url('../../../assets/img/bulle_img.png') -500 60, pointer;
 
                     }
                     img {

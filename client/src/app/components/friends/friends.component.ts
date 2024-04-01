@@ -36,13 +36,17 @@ export class FriendsComponent implements OnInit {
 
     const displayModal = () => {
       modal.style.display = 'block';
+      modal.classList.add('open');
       document.body.classList.add('noscroll');
     };
-
+    
     const closeModal = () => {
-      modal.style.display = 'none';
-      document.body.classList.remove('noscroll');
-      this.resetFormValues();
+      modal.classList.remove('open');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.classList.remove('noscroll');
+        this.resetFormValues();
+      }, 100); // correspond à la durée de la transition CSS
     };
 
     links.forEach(link => {
