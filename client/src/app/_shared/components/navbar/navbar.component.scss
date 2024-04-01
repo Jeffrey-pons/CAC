@@ -2,7 +2,7 @@
 @import '../../../../styles/variables';
 
 nav {
-    padding: 1.5em 2em;
+    padding: 1.5em 2em 0em 2em;
     @include flex-center-space;
     align-items: start;
     
