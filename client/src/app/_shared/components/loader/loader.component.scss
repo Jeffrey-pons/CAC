@@ -9,22 +9,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: url('../../../../assets/img/raymondfarbos-logo-miniature.png') 12 12, auto; /* Remplace le curseur par une image */
-  // animation: spin 1s linear infinite;
+  cursor: none;
+  #custom-cursor {
+    position: absolute;
+    cursor: none;
+    width: 92px;
+    height: 92px;
+    background-image: url('../../../../assets/img/raymondfarbos-logo-miniature.png');
+    background-size: cover;
+    pointer-events: none;
+    z-index: 99999999999999999;
+    animation: spin 1s linear infinite;
+  }
 }
 
 .loader,
 .loader:before,
 .loader:after {
   border-radius: 50%;
-  width: 2.2em;
-  height: 2.2em;
+  width: 1.5em;
+  height: 1.5em;
   animation-fill-mode: both;
   animation: bblFadInOut 1.8s infinite ease-in-out;
 }
 
 .loader {
-  color: grey;
+  color: rgb(106, 106, 106);
   font-size: 7px;
   position: relative;
   text-indent: -9999em;
@@ -40,12 +50,12 @@
 }
 
 .loader:before {
-  left: -3.5em;
+  left: -2.8em;
   animation-delay: -0.32s;
 }
 
 .loader:after {
-  left: 3.5em;
+  left: 2.8em;
 }
 
 @keyframes bblFadInOut {
