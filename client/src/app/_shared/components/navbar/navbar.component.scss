@@ -2,17 +2,14 @@
 @import '../../../../styles/variables';
 
 nav {
-    padding: 1.5em 2em 0em 2em;
+    padding: 1.5em 2em 1.5em 2em;
     @include flex-center-space;
     align-items: start;
-    
-
     .img-navbar {
         img {
             max-width: 100px;
         }
     }
-
     .link-categories-left, .link-categories-right {
         ul {
             display: flex;
@@ -106,7 +103,7 @@ nav {
 .logo {
   position: relative;
   width: 114px;
-  height: 114px;
+  height: 77px;
   overflow: hidden;
 }
 

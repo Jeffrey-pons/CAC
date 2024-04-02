@@ -2,16 +2,18 @@
   <div class="bloc-separation">
     <div class="separationTwo"></div>
   </div>
+  <div class="actualite">
   <p>Actualité</p>
+</div>
   <section>
     <ng-container *ngFor="let new of news; let i = index" >
-      <div *ngIf="i === 0" class="first-news">
-        <div>
+      <div *ngIf="i === 0" class="first-news" (click)="navigateToDetail(new._id, new.title)">
+        <div >
         <img [src]="new.image[0]" alt="Image de la nouvelle">
       </div>
-      <div>
-        <h2>{{ new.title }}</h2>
-        <p>{{ new.month }}</p>
+      <div class="card">
+        <h1 >{{ new.title }}</h1>
+        <i>{{ new.month }}</i>
         <div class="button-tag">
           <button id="tag">{{new.type}}</button>
           </div>
