@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NextExpoServiceService } from '../../../services/nextExpoService/next-expo-service.service';
 import { NextExpo, NextExpoResponse } from '../../../interfaces/nextExpo.interface';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nextexposition-details',
@@ -16,6 +17,7 @@ export class NextexpositionDetailsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private nextExpoService: NextExpoServiceService,
     private idService: IdService,
+    private location: Location,
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +35,9 @@ export class NextexpositionDetailsComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.idService.setId('');
+  }
+  goBack(): void {
+    this.location.back();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

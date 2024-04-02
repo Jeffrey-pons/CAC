@@ -10,24 +10,32 @@
       </div>
       <div class="content-model-details">
         <div class="content-model-left">
-          <div class="infos-model-left">
-            <div class="info-model-detail">
-              <p>{{news.type}}</p>
+          <div class="info-mode-left">
+            <div class="date-model-detail">
+              <p class="type-model">{{news.type}}</p>
               <p>{{ news.month }}</p>
             </div>
-              <p class="info-model-detail">{{news.rencontretext}}</p>
-             <p class="info-model-detail">{{news.event}}</p>
+              <p class="date-model-detail">{{news.rencontretext}}</p>
+             <p class="date-model-detail">{{news.event}}</p>
+          </div>
+          <div class="soutien-model-detail" >
+            <p class="soutien-title">AVEC LE SOUTIEN DE</p>
+            <ul>
+              <li *ngFor="let support of news.soutien">{{ support }}</li>
+
+            </ul>
           </div>
         </div>
         <div class="content-model-right">
-          <p>{{ news.description | slice:0:1000 }}</p> 
-          <div *ngFor="let img of news.image; let i = index">
-            <img *ngIf="i !== 0" [src]="img" alt="Image de la nouvelle">
-          </div>
-          <p>{{ news.description | slice:1000 }}</p> 
+          <ng-container *ngFor="let item of splitDescription(news.description, 3)">
+            <p *ngIf="!item.isImage">{{ item.content }}</p>
+            <img *ngIf="item.isImage" [src]="news.image[1]" alt="Image de la nouvelle">
+          </ng-container>
         </div>
       </div>
-      <p>{{ news.soutien }}</p>
     </div>
+    <div class="button-model-detail">
+    <button class="buttonOne"(click)="goBack()">Retour à la page précédente</button>
+  </div>
   </section>
 </main>

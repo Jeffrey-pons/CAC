@@ -2,6 +2,7 @@ import { CollectionPermanenteService } from './../../../services/CollectionPServ
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IdService } from '../../../services/idService/Id.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class CollectionpermanenteDetailsComponent {
     private route: ActivatedRoute,
     private collectionPermanenteService: CollectionPermanenteService,
     private idService: IdService,
+    private location : Location,
   ) {}
 
 
@@ -35,4 +37,25 @@ export class CollectionpermanenteDetailsComponent {
   ngOnDestroy(): void {
     this.idService.setId('');
   }
+  goBack(): void {
+    this.location.back();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  splitDescription(description: string, linesPerBreak: number): string[] {
+    const lines = description.split('\n').filter(line => line.trim() !== '');
+    const result: string[] = [];
+    let temp = '';
+
+    for (let i = 0; i < lines.length; i++) {
+      temp += lines[i] + '\n';
+
+      if ((i + 1) % linesPerBreak === 0 || i === lines.length - 1) {
+        result.push(temp);
+        temp = '';
+      }
+    }
+
+    return result;
+  }
+
 }

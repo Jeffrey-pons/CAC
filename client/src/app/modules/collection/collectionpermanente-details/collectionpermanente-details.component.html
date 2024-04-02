@@ -1,6 +1,35 @@
-<div *ngIf="artwork">
-    <h1>{{ artwork?.title }}</h1>
-    <img [src]="artwork?.image" alt="Artwork image">
-    <p>{{artwork?.description}}</p>
-    <!-- Add more fields as needed -->
-</div>
+
+<main>
+  <section class="model-detail-article">
+    <div *ngIf="artwork">
+      <div class="header-model-details">
+        <img [src]="artwork.image" alt="{{ artwork.title }}">
+        <h2>{{ artwork.artist }}</h2>
+        <div class="bloc-separation">
+          <div class="separationTwo"></div>
+        </div>
+      </div>
+      <div class="content-model-details">
+        <div class="content-model-left">
+          <div class="info-mode-left">
+            <div class="date-model-detail">
+              <p class="type-model">{{artwork.type}}</p>
+              <p>{{artwork.dateOfExposition}}</p>
+            </div>
+            <div class="date-model-detail">
+              <p>Ouvert le mercredi, le jeudi, le vendredi de 14 h à 19 h, le samedi de 10 h à 13 h et de 14 h à 18 h</p>
+            </div>
+          </div>
+        </div>
+        <div  class="content-model-right">
+          <ng-container *ngFor="let item of splitDescription(artwork.description, 3)">
+              <p>{{ item }}</p>
+          </ng-container>
+        </div>
+      </div>
+  </div>
+  <div class="button-model-detail">
+    <button class="buttonOne"(click)="goBack()">Retour à la page précédente</button>
+  </div>
+  </section>
+</main>

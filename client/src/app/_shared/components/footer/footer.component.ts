@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ScrollService } from '../../../services/scrollservice/scroll.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,10 +7,13 @@ import { ScrollService } from '../../../services/scrollservice/scroll.service';
 })
 export class FooterComponent {
 
-  constructor(private scrollService: ScrollService) {}
+  constructor() {}
 
   scrollToTop() {
-    this.scrollService.scrollToTop();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   handleKeyPress(event: KeyboardEvent) {

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MediationService } from '../../../services/mediationService/mediation.service';
 import { Mediation, MediationResponse } from '../../../interfaces/mediation.interface';
 import { IdService } from '../../../services/idService/Id.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-mediation-details',
@@ -12,7 +13,7 @@ import { IdService } from '../../../services/idService/Id.service';
 export class MediationDetailsComponent implements OnInit, OnDestroy {
   mediation: Mediation | any = null;
 
-  constructor(private mediationService: MediationService, private route: ActivatedRoute, private idService: IdService) { }
+  constructor(private mediationService: MediationService, private route: ActivatedRoute, private idService: IdService, private location: Location) { }
 
   ngOnInit(): void {
     const id = this.idService.getId();
@@ -33,5 +34,9 @@ export class MediationDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.idService.setId('');
+  }
+  goBack(): void {
+    this.location.back();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

@@ -12,24 +12,22 @@
   <div class="content-model-left">
     <div class="info-mode-left">
       <div class="date-model-detail">
-        <p>{{expo.type}}</p>
+        <p class="type-model">{{expo.type}}</p>
         <p>{{expo.dateOfExpo}}</p>
       </div>
-      <div class="horaire_bloc_contact">
+      <div class="date-model-detail">
         <p>Ouvert le mercredi, le jeudi, le vendredi de 14 h à 19 h, le samedi de 10 h à 13 h et de 14 h à 18 h</p>
       </div>
     </div>
   </div>
   <div  class="content-model-right">
     <p>{{expo.description}}</p>
-    <div *ngFor="let img of expo.image; let i = index">
-      <img *ngIf="i !== 0" [src]="img" alt="Expo image">
-    </div>
-    
+
   </div>
 </div>
 </div>
+<div class="button-model-detail">
+  <button class="buttonOne"(click)="goBack()">Retour à la page précédente</button>
+</div>
 </section>
-<div class="horaire_bloc_contact">
-              <p>Ouvert le mercredi, le jeudi, le vendredi de 14 h à 19 h, le samedi de 10 h à 13 h et de 14 h à 18 h</p>
-            </div></main>
+</main>

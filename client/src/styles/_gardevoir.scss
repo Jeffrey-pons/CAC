@@ -15,9 +15,6 @@
   display: block;
 }
 
-:where(p + p) {
-  margin-top: 1rem;
-}
 
 :where(a) {
   background-color: transparent;

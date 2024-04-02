@@ -1,6 +1,33 @@
-<div *ngIf="mediation">
-    <h1>{{ mediation.title }}</h1>
-    <img [src]="mediation.image" alt="{{ mediation.title }}">
-    <p>{{ mediation.intro }}</p>
-    <!-- Ajoutez plus de champs ici si nécessaire -->
-  </div>
+<main>
+  <section class="model-detail-article">
+    <div *ngIf="mediation">
+      <div class="header-model-details">
+      <img [src]="mediation.image" alt="{{ mediation.title }}">
+      <h2>{{ mediation.title }}</h2>
+      <div class="bloc-separation">
+        <div class="separationTwo"></div>
+      </div>
+    </div>
+    <div class="content-model-details">
+      <div class="content-model-left">
+        <div class="info-mode-left">
+
+            <p class="date-model-detail-mediation">{{mediation.infosupp}}</p>
+
+          <div class="date-model-detail">
+            <p>Ouvert le mercredi, le jeudi, le vendredi de 14 h à 19 h, le samedi de 10 h à 13 h et de 14 h à 18 h</p>
+          </div>
+        </div>
+      </div>
+      <div  class="content-model-right">
+        <p>{{mediation.intro}}</p>
+        <h2>{{mediation.subtitle}}</h2>
+        <p>{{mediation.description}}</p>
+      </div>
+    </div>
+    </div>
+    <div class="button-model-detail">
+      <button class="buttonOne"(click)="goBack()">Retour à la page précédente</button>
+    </div>
+  </section>
+</main>

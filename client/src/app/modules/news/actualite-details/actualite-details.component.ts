@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsService } from '../../../services/newsService/news.service';
 import { News, NewsResponse } from '../../../interfaces/news.interface';
 import { IdService } from '../../../services/idService/Id.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-actualite-details',
@@ -11,8 +12,9 @@ import { IdService } from '../../../services/idService/Id.service';
 })
 export class ActualiteDetailsComponent implements OnInit, OnDestroy {
   news: any = null;
+  @Input() new: any;
 
-  constructor(private newsService: NewsService, private route: ActivatedRoute, private idService: IdService) { }
+  constructor(private newsService: NewsService, private route: ActivatedRoute, private idService: IdService, private location: Location) { }
 
   ngOnInit(): void {
     const id = this.idService.getId();
@@ -30,4 +32,33 @@ export class ActualiteDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.idService.setId('');
   }
+  goBack(): void {
+    this.location.back();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  }
+
+  splitDescription(description: string, linesPerBreak: number): { content: string, isImage: boolean }[] {
+    const lines = description.split('\n');
+    const result: { content: string, isImage: boolean }[] = [];
+    let temp = '';
+
+    for (let i = 0; i < lines.length; i++) {
+      temp += lines[i] + '\n';
+
+      if ((i + 1) % linesPerBreak === 0 || i === lines.length - 1) {
+        result.push({ content: temp, isImage: false });
+        temp = '';
+
+        if ((i + 1) % (linesPerBreak * 3) === 0 || i === lines.length - 1) {
+          result.push({ content: '', isImage: true });
+        }
+      }
+    }
+
+    return result;
+  }
+
+
 }
+
