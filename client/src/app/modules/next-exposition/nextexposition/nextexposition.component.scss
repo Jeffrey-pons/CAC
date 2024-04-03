@@ -1,4 +1,8 @@
+@import '../../../../styles/variables.scss';
 main {
+  .bloc-separation {
+    padding: 0px 0px 10px 0px;
+}
     padding-bottom: 80px;
     h1 {
         text-align: center;
@@ -15,11 +19,97 @@ main {
             text-align: center;
             display: grid;
             justify-content: center;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 65px;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 75px;
             align-items: center;
-            padding-top: 48px;
+            .next-expo-card {
+              cursor: pointer;
+              img {
+                width: 556px;
+                height: 344px;
+                object-fit: cover;
+                text-align: center;
+                margin: auto;
+              }
+              .next-expo-card-content {
+                display: flex;
+                gap: 51px;
+                padding-left: 81px;
+                justify-content: flex-start;
+              }
+            }
         }
 
     }
+}
+.calendar {
+  text-transform: uppercase;
+  width: 205px;
+  margin-top: 20px;
+  position: fixed;
+  top: 257px;
+  right: 188px;
+  border-radius: 5px;
+  overflow: hidden;
+  .soutien-model-detail {
+    padding-top: 22px;
+    cursor: pointer;
+    .soutien-title {
+      border-top: 0.5px solid #ccc;
+      border-bottom: 0.5px solid #ccc;
+      padding:6px 0;
+      font-size: 12px;
+      color: grey;
+      font-weight: 500;
+      transition: 1s ease smooth;
+    }
+    p:hover {
+      color: black;
+      font-weight: 500;
+    }
+}
+}
+
+
+.calendar-header {
+  background-color: transparent;
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  h6 {
+    font-family: $fontParagraph;
+    color:grey;
+    font-size: 12px;
+
+  }
+  button {
+    background: transparent;
+    font-family: $fontParagraph;
+    color:grey;
+    cursor:pointer;
+  }
+}
+
+.calendar-body {
+  padding: 10px;
+}
+
+.calendar-weekdays, .calendar-dates {
+  font-weight: 500;
+  color:grey;
+  opacity: 0.6;
+  display: grid;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: $fontParagraph;
+  font-size: 11.5px;
+  line-height: 22px;
+  grid-template-columns: repeat(7, 1fr);
+
+}
+
+.expo-date {
+  font-weight: 700;
 }

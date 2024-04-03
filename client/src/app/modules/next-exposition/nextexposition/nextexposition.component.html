@@ -1,34 +1,51 @@
-<main>
-  <div class="bloc-separation-title">
-    <div class="bloc-separation">
-      <div class="separationTwo"></div>
-  </div>
-  <h1>Expositions à venir</h1>
+<main class="main-content">
   <div class="bloc-separation">
     <div class="separationTwo"></div>
   </div>
-</div>
-  <section>
-    <p>Depuis 1986 à Mont-de-Marsan, le Centre d'art contemporain Raymond Farbos soutient les artistes (plasticiens, photographes, graphistes...) et promeut les arts visuels, à destination de tous les publics...</p>
-    <p>Une nouvelle étape de la vie du CAC se prépare en cette fin d'année 2023... Nous fermons nos portes temporairement mais nous avons déjà hâte de vous retrouver en Janvier 2024 pour la reprise de nos expositions... [🌼] À bientôt !</p>
-  </section>
+  <div class="actualite">
+    <p *ngIf="allSameYear">Programmation {{ nextExpositions[0].titleDate }}</p>
+  </div>
   <section class="NextExpo_Container">
-    <h2 *ngIf="allSameYear">Programmation {{ nextExpositions[0].titleDate }}</h2>
     <div class="nextExpo_Article">
-    <div *ngFor="let expo of nextExpositions" >
-      <div class="card" (click)="navigateToDetail(expo._id, expo.name)">
-        <img [src]="expo.image" alt="{{ expo.name }}">
-        <div class="card-content">
-          <h3>{{expo.name}}</h3>
-          <p>{{ expo.dateOfExpo }}</p>
+      <div *ngFor="let expo of nextExpositions" >
+        <div class="next-expo-card" (click)="navigateToDetail(expo._id, expo.name)">
+          <div class="next-expo-card-content">
+            <div>
+              <p>{{ expo.dateOfExpo }}</p>
+              <div class="button-tag">
+                <button id="tag">{{expo.type}}</button>
+              </div>
+            </div>
+            <div>
+              <img [src]="expo.image" alt="{{ expo.name }}">
+              <h3>{{expo.name}}</h3>
+            </div>
+          </div>
         </div>
-        <div class="button-tag">
-        <button id="tag">{{expo.type}}</button>
       </div>
-      </div>
-    </div>
     </div>
   </section>
-
-
+  <section class="calendar">
+    <div class="calendar-header">
+      <button id="prevMonthBtn">&lt;</button>
+      <h6 id="currentMonth">Avril 2024</h6>
+      <button id="nextMonthBtn">&gt;</button>
+    </div>
+    <div class="calendar-body">
+      <div class="calendar-weekdays">
+        <div class="weekday">Lu</div>
+        <div class="weekday">Ma</div>
+        <div class="weekday">Me</div>
+        <div class="weekday">Je</div>
+        <div class="weekday">Ve</div>
+        <div class="weekday">Sa</div>
+        <div class="weekday">Di</div>
+      </div>
+      <div class="calendar-dates" id="calendarDates">
+      </div>
+    </div>
+    <div class="soutien-model-detail">
+      <p [routerLink]="['/archive']" class="soutien-title">Événements passés</p>
+    </div>
+  </section>
 </main>

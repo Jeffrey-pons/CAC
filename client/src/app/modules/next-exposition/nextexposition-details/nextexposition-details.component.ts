@@ -40,4 +40,5 @@ export class NextexpositionDetailsComponent implements OnInit, OnDestroy {
     this.location.back();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
 }
