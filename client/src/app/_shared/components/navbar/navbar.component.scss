@@ -72,10 +72,12 @@ nav {
               margin: 0;
               margin-top: 12px;
               border-radius: 4px;
+              width: 116px;
+              text-align: center;
               border: 1px solid #00000073;
-              font-size: 13px;
+              font-size: 12px;
                 li {
-                  padding: 0.6em 0.8em;
+                  padding: 0.6em 1em;
                   cursor: pointer;
                   color: black;
                   opacity: 0.6;
@@ -84,9 +86,10 @@ nav {
                   a {
                     color: black;
                     font-family: $fontParagraph;
+
                   }
                   &:last-child {
-                    border-bottom: none; 
+                    border-bottom: none;
                   }
                 }
                 li:hover {
@@ -96,7 +99,7 @@ nav {
           }
 
     }
-    
+
 }
 
 
@@ -117,14 +120,14 @@ nav {
 .logo-back {
   transform: translateY(0);
   opacity: 1;
-  transition: transform 2s ease, opacity 2s ease; 
+  transition: transform 2s ease, opacity 2s ease;
 
 }
 
 .logo-front {
   transform: translateY(100%);
   opacity: 0;
-  transition: transform 2s ease, opacity 2s ease; 
+  transition: transform 2s ease, opacity 2s ease;
 
 }
 
@@ -132,7 +135,7 @@ nav {
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
-  transition: transform 2s ease, opacity 2s ease; 
+  transition: transform 2s ease, opacity 2s ease;
 
 }
 
@@ -140,6 +143,6 @@ nav {
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
-  transition: transform 2s ease, opacity 2s ease; 
+  transition: transform 2s ease, opacity 2s ease;
 
 }

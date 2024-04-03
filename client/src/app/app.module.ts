@@ -12,7 +12,6 @@ import { LoadingInterceptor } from './interceptor/loading';
 import { AdhesionComponent } from './_shared/components/adhesion/adhesion.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FormsModule } from '@angular/forms';
-import { AuthAdminComponent } from './modules/back-office/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { NewsModule } from './modules/news/news.module';
@@ -20,6 +19,9 @@ import { NextExpositionModule } from './modules/next-exposition/next-exposition.
 import { MediationModule } from './modules/mediation-cac/mediation.module';
 import { CollectionModule } from './modules/collection/collection.module';
 import { ArchiveCacModule } from './modules/archive-cac/archive-cac.module';
+import { BackOfficeModule } from './modules/back-office/back-office.module';
+import { NotificationBannerComponent } from './modules/back-office/notification-banner/notification-banner.component';
+import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,9 @@ import { ArchiveCacModule } from './modules/archive-cac/archive-cac.module';
     LoaderComponent,
     AdhesionComponent,
     AboutusComponent,
-    AuthAdminComponent,
     NotFoundComponent,
     FriendsComponent,
+    NotificationBannerComponent,
 
   ],
   imports: [
@@ -46,6 +48,9 @@ import { ArchiveCacModule } from './modules/archive-cac/archive-cac.module';
     MediationModule,
     CollectionModule,
     ArchiveCacModule,
+    BackOfficeModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [
     {

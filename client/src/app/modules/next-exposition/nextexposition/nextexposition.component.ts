@@ -30,8 +30,9 @@ export class NextexpositionComponent implements OnInit {
         i === 0 || expo.titleDate === arr[i - 1].titleDate
       );
       }
+      this.updateCalendar();
     });
-    this.updateCalendar();
+
     const prevMonthBtn = document.getElementById('prevMonthBtn');
     const nextMonthBtn = document.getElementById('nextMonthBtn');
 
@@ -56,7 +57,6 @@ export class NextexpositionComponent implements OnInit {
         const lastDayOfMonth = new Date(year, month + 1, 0).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        // Ajouter les jours du mois précédent jusqu'au premier jour du mois
         for (let i = firstDayOfMonth; i > 0; i--) {
             const dateElement = document.createElement('div');
             dateElement.classList.add('date', 'previous-month');
@@ -64,24 +64,21 @@ export class NextexpositionComponent implements OnInit {
             calendarDates.appendChild(dateElement);
         }
 
-        // Ajouter les jours du mois actuel
         for (let day = 1; day <= daysInMonth; day++) {
             const dateElement = document.createElement('div');
             dateElement.classList.add('date', 'current-month');
 
-            // Vérifier si la date correspond à une exposition
-            const expoDate = this.formatDate(year, month, day); // Formatage de la date
+            const expoDate = this.formatDate(year, month, day);
             const isExpoDate = this.nextExpositions.some(expo => expo.dateOfExpo.includes(expoDate));
 
             if (isExpoDate) {
-                dateElement.classList.add('expo-date'); // Ajout de la classe pour les dates d'exposition
+                dateElement.classList.add('expo-date');
             }
 
             dateElement.textContent = day.toString();
             calendarDates.appendChild(dateElement);
         }
 
-        // Ajouter les jours du mois suivant jusqu'à la fin de la semaine
         for (let i = 1; i < 7 - lastDayOfMonth; i++) {
             const dateElement = document.createElement('div');
             dateElement.classList.add('date', 'next-month');
@@ -101,10 +98,10 @@ formatDate(year: number, month: number, day: number): string {
 parseExpoDate(dateString: string): Date {
   const dateParts = dateString.trim().split(' ');
   const day = parseInt(dateParts[0]);
-  const monthName = dateParts[dateParts.length - 2]; // Obtenir le mois en prenant l'avant-dernière partie de la chaîne
+  const monthName = dateParts[dateParts.length - 2];
   const monthIndex = this.getMonthIndex(monthName);
-  const yearPart = dateParts[dateParts.length - 1]; // Obtenir l'année en prenant la dernière partie de la chaîne
-  const year = parseInt(yearPart); // Convertir l'année en nombre
+  const yearPart = dateParts[dateParts.length - 1];
+  const year = parseInt(yearPart);
   return new Date(year, monthIndex, day);
 }
 

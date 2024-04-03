@@ -1,0 +1,20 @@
+.notification-banner {
+  background-color: #ffffff;
+  color: #ffffff;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  width: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+
+
+  p {
+    margin: 0;
+  }
+}
