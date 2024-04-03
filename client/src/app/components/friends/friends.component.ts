@@ -80,6 +80,8 @@ export class FriendsComponent implements OnInit {
     }
     this.MemberService.createMember(formDataMember).subscribe(
       () => {
+        setTimeout(() => {
+
         const modalThanks = document.getElementById("ModalThanks");
         if (modalThanks) {
           modalThanks.style.display = "block";
@@ -87,6 +89,7 @@ export class FriendsComponent implements OnInit {
           console.error('Element "ModalThanks" not found.');
         }
         this.resetFormValues();
+        } ,1000);
       },
       error => {
         console.error('Erreur lors de la création du membre :', error);

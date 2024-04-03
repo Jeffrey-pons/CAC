@@ -6,20 +6,36 @@
     <p>Gestion des adhésions</p>
   </div>
   <section>
-    <div *ngIf="membres.length > 0; else noMembers">
+    <div *ngIf="membres.length > 0;">
       <h2>Liste des adhérents</h2>
-      <ul>
-        <li *ngFor="let membre of membres">
-          <p>Nom: {{ membre.lastname }}</p>
-          <p>Prénom: {{ membre.firstname }}</p>
-          <p>Email: {{ membre.email }}</p>
-          <!-- Ajoutez d'autres propriétés des membres à afficher selon vos besoins -->
-        </li>
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th><p>Nom</p></th>
+            <th><p>Prénom</p></th>
+            <th><p>Email</p></th>
+            <th><p>Adresse</p></th>
+            <th><p>Ville</p></th>
+            <th><p>Type d'adhésion</p></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let membre of membres">
+            <td><p>{{ membre.firstname }}</p></td>
+            <td><p>{{ membre.lastname }}</p></td>
+            <td><p>{{ membre.email }}</p></td>
+            <td><p>{{ membre.adresse }}</p></td>
+            <td><p>{{ membre.city}}</p></td>
+            <td><p>{{ membre.type}}</p></td>
+            <td>
+              <button>Modifier</button>
+              <button (click)="deleteMember(membre)">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <ng-template #noMembers>
-      <p>Aucun adhérent trouvé.</p>
-    </ng-template>
+  
   </section>
 </main>

@@ -1,23 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
+import { Member, MemberResponse } from '../../interfaces/members.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberServiceService {
-  private apiUrl = 'http://localhost:5000/member';
+  private baseUrlMember = 'http://localhost:5000/member';
 
   constructor(private http: HttpClient) { }
 
-  createMember(formDataMember: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, formDataMember);
+  get token(): string {
+    return localStorage.getItem('auth_token') || '';
   }
 
-  getAllMembers(): Observable<any[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      map(response => response.members)
-    );
+  get headers(): HttpHeaders {
+    return new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+  }
+
+  createMember(formDataMember: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrlMember}/register`, formDataMember);
+  }
+
+  getAllMembers(): Observable<MemberResponse> {
+    return this.http.get<MemberResponse>(this.baseUrlMember, { headers: this.headers });
+  }
+  updateMember(memberId: string, updatedData: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrlMember}/${memberId}`, updatedData, { headers: this.headers });
+  }
+  
+  deleteMember(memberId: string): Observable<MemberResponse> {
+    return this.http.delete<MemberResponse>(`${this.baseUrlMember}/${memberId}`, { headers: this.headers });
   }
 }
