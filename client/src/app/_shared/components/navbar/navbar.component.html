@@ -28,9 +28,9 @@
         <div class="profile-initial" (focus)="handleFocus()" (blur)="handleBlur()" (click)="toggleDropdown()" (keyup)="handleKeyUp($event)" tabindex="0">{{ userInitial }}</div>
         <div class="dropdown" *ngIf="isDropdownOpen" (focus)="handleFocus()" (blur)="handleBlur()">
           <ul>
-            <li><a [routerLink]="['/admin/dashboard']">Back Office</a></li>
-            <li><a [routerLink]="['/admin/dashboard']">Gestion admin</a></li>
-            <li><a [routerLink]="['/admin/dashboard']">Gestion adhér</a></li>
+            <li><a [routerLink]="['/back-office/content']">Back Office</a></li>
+            <li><a [routerLink]="['/back-office/administrateurs']">Gestion admin</a></li>
+            <li><a [routerLink]="['/back-office/adherents']">Gestion adhér</a></li>
             <li (click)="logout()" (focus)="handleFocus()" (keyup)="handleKeyUp($event)" tabindex="0">Déconnexion</li>
           </ul>
         </div>

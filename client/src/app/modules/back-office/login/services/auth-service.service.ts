@@ -5,7 +5,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from '../../notification-banner/services/notification.service';
 
-
 @Injectable({
   providedIn: 'root'
 })

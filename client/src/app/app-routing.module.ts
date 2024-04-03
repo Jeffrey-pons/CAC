@@ -16,9 +16,13 @@ import { NextexpositionDetailsComponent } from './modules/next-exposition/nextex
 import { MediationDetailsComponent } from './modules/mediation-cac/mediation-details/mediation-details.component';
 import { CollectionpermanenteDetailsComponent } from './modules/collection/collectionpermanente-details/collectionpermanente-details.component';
 import { ArchivesDetailsComponent } from './modules/archive-cac/archives-details/archives-details.component';
+import { AdminComponent } from './modules/back-office/admin/admin.component';
+import { AdherentsComponent } from './modules/back-office/adherents/adherents.component';
+import { BackofficeComponent } from './modules/back-office/backoffice/backoffice.component';
+import { AuthGuard } from './modules/back-office/guards/AdminAuthGuard';
 
 const routes: Routes = [
-  { path: '', component: ActualiteComponent }, 
+  { path: '', component: ActualiteComponent },
   { path: 'news/:title', component: ActualiteDetailsComponent },
   { path: 'about', component: AboutusComponent },
   { path: 'contact', component: ContactComponent },
@@ -30,6 +34,9 @@ const routes: Routes = [
   { path: 'collection', component: CollectionpermanenteComponent },
   { path: 'collection/:artist', component: CollectionpermanenteDetailsComponent },
   { path: 'back-office', component: AuthAdminComponent },
+  { path: 'back-office/administrateurs', component: AdminComponent, canActivate: [AuthGuard]},
+  { path: 'back-office/adherents', component: AdherentsComponent, canActivate: [AuthGuard] },
+  { path: 'back-office/content', component: BackofficeComponent, canActivate: [AuthGuard] },
   { path: 'mediation', component: MediationComponent },
   { path: 'mediation/:title', component: MediationDetailsComponent},
   { path: 'friends', component: FriendsComponent },
