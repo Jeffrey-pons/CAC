@@ -1,1 +1,83 @@
-<p>admin works!</p>
+<main>
+  <div class="bloc-separation">
+    <div class="separationTwo"></div>
+  </div>
+  <div class="actualite">
+    <p>Gestion des administrateurs</p>
+  </div>
+  <section>
+    <div class="list-members" *ngIf="admins.length > 0;">
+      <h2>Liste des administrateurs</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Prénom / Nom</th>
+            <th>Rôle</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let admin of admins">
+            <td>
+              <ng-container *ngIf="!admin.editMode">{{ admin.name }}</ng-container>
+              <input [ngClass]="{'editable-row': admin.editMode}" *ngIf="admin.editMode" type="text" [(ngModel)]="admin.name">
+            </td>
+            <td>
+              <ng-container *ngIf="!admin.editMode">{{ admin.role }}</ng-container>
+              <input [ngClass]="{'editable-row': admin.editMode}" *ngIf="admin.editMode" type="text" [(ngModel)]="admin.role">
+            </td>
+            <td>
+              <ng-container *ngIf="!admin.editMode">{{ admin.email }}</ng-container>
+              <input [ngClass]="{'editable-row': admin.editMode}" *ngIf="admin.editMode" type="text" [(ngModel)]="admin.email">
+            </td>
+
+            <td class="actions-cell">
+              <button (click)="admin.editMode ? updateAdmin(admin) : toggleEditMode(admin)">
+                <ng-container *ngIf="!admin.editMode">
+                  <img src="../../../../assets/img/icon-edit.png" alt="edit">
+                </ng-container>
+                <ng-container *ngIf="admin.editMode">
+                  <img src="../../../../assets/img/mark.png" alt="confirmer">
+                </ng-container>
+              </button>
+              <button (click)="cancelEdit(admin)" *ngIf="admin.editMode">
+                <img src="../../../../assets/img/cancel.png" alt="annuler">
+              </button>
+              <button (click)="deleteAdmin(admin)"><img src="../../../../assets/img/icon-delete.png" alt="supprimer"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+    <div class="list-members">
+      <h2>Ajouter un nouvel administrateur</h2>
+      <form class="createAdmin" (submit)="createAdmin()">
+        <table>
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Rôle</th>
+              <th>Email</th>
+              <th>Mot de passe</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id="name" [(ngModel)]="newAdmin.name" name="name" required></td>
+              <td><input type="text" id="role" [(ngModel)]="newAdmin.role" name="role" required></td>
+              <td><input type="email" id="email" [(ngModel)]="newAdmin.email" name="email" required></td>
+              <td><input type="password" id="password" [(ngModel)]="newAdmin.password" name="password" required></td>
+              <td><button type="submit">
+                <img src="../../../../assets/img/plus.png" alt="">
+              </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </section>
+</main>

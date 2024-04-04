@@ -72,6 +72,7 @@ export class AdminService {
     }
     return existingAdmin;
   }
+  
   async getAllAdmin(): Promise<Admin[]> {
     const adminData = await this.adminModel.find();
     if (!adminData || adminData.length == 0) {
