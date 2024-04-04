@@ -1,26 +1,53 @@
+@import '../../../../styles/variables.scss';
 main {
   .bloc-separation {
     padding: 0px 0px 10px 0px;
 }
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+section {
+ .list-members {
+  display: grid;
+  gap: 30px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+  th, td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    font-family: $fontParagraph;
+    font-size: 13px;
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+    button {
+      background: transparent;
 
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
+      img {
+        max-width: 32px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+
+  }
+
+ }
+ .editable-row {
+  border: 2px solid #4dd180;
+  padding: 5px 0px;
+  width: auto;
+  border-radius: 3px;
+}
+}
+.actions-cell {
+  display: flex;
+}
 }

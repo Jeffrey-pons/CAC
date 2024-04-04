@@ -26,10 +26,10 @@ export class MemberServiceService {
   getAllMembers(): Observable<MemberResponse> {
     return this.http.get<MemberResponse>(this.baseUrlMember, { headers: this.headers });
   }
-  updateMember(memberId: string, updatedData: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrlMember}/${memberId}`, updatedData, { headers: this.headers });
+  updateMember(memberId: string, updatedData: any): Observable<MemberResponse> {
+    return this.http.patch<MemberResponse>(`${this.baseUrlMember}/${memberId}`, updatedData, { headers: this.headers });
   }
-  
+
   deleteMember(memberId: string): Observable<MemberResponse> {
     return this.http.delete<MemberResponse>(`${this.baseUrlMember}/${memberId}`, { headers: this.headers });
   }

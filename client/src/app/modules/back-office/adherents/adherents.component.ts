@@ -20,12 +20,35 @@ export class AdherentsComponent implements OnInit {
   getAllMembers(): void {
     this.memberService.getAllMembers().subscribe(
       response => {
-        this.membres = response.members;
+        this.membres = response.members.map(membre => ({ ...membre, editMode: false }));
       },
       error => {
         console.error('Erreur lors de la récupération des membres :', error);
         this.notificationService.setNotification('Erreur lors de la récupération des membre');
 
+      }
+    );
+  }
+
+  toggleEditMode(membre: any) {
+    membre.editMode = !membre.editMode;
+  }
+
+  cancelEdit(membre: any) {
+    membre.editMode = false;
+
+  }
+
+  updateMember(membre: any) {
+    this.memberService.updateMember(membre._id, membre).subscribe(
+      () => {
+        this.notificationService.setNotification("Les informations de l'adhérent ont été mises à jour avec succès. \u2713");
+        membre.editMode = false;
+
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de la mise à jour des informations de l\'adhérent. \u2613');
+        console.error('Erreur lors de la mise à jour du membre :', error);
       }
     );
   }
@@ -37,7 +60,7 @@ export class AdherentsComponent implements OnInit {
         this.membres = this.membres.filter(m => m._id !== membre._id);
       },
       error => {
-        this.notificationService.setNotification('Erreur lors de la suppression du membre');
+        this.notificationService.setNotification('Erreur lors de la suppression du membre \u2613');
         console.error('Erreur lors de la suppression du membre :', error);
       }
     );

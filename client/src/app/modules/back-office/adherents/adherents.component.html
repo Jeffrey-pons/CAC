@@ -6,36 +6,64 @@
     <p>Gestion des adhésions</p>
   </div>
   <section>
-    <div *ngIf="membres.length > 0;">
+    <div class="list-members" *ngIf="membres.length > 0;">
       <h2>Liste des adhérents</h2>
       <table>
         <thead>
           <tr>
-            <th><p>Nom</p></th>
-            <th><p>Prénom</p></th>
-            <th><p>Email</p></th>
-            <th><p>Adresse</p></th>
-            <th><p>Ville</p></th>
-            <th><p>Type d'adhésion</p></th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>Type d'adhésion</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let membre of membres">
-            <td><p>{{ membre.firstname }}</p></td>
-            <td><p>{{ membre.lastname }}</p></td>
-            <td><p>{{ membre.email }}</p></td>
-            <td><p>{{ membre.adresse }}</p></td>
-            <td><p>{{ membre.city}}</p></td>
-            <td><p>{{ membre.type}}</p></td>
+          <tr *ngFor="let membre of membres" >
             <td>
-              <button>Modifier</button>
-              <button (click)="deleteMember(membre)">Supprimer</button>
+              <ng-container *ngIf="!membre.editMode">{{ membre.firstname }}</ng-container>
+              <input [ngClass]="{'editable-row': membre.editMode}" *ngIf="membre.editMode" type="text" [(ngModel)]="membre.firstname">
+            </td>
+            <td>
+              <ng-container *ngIf="!membre.editMode">{{ membre.lastname }}</ng-container>
+              <input [ngClass]="{'editable-row': membre.editMode}" *ngIf="membre.editMode" type="text" [(ngModel)]="membre.lastname">
+            </td>
+            <td>
+              <ng-container *ngIf="!membre.editMode">{{ membre.email }}</ng-container>
+              <input [ngClass]="{'editable-row': membre.editMode}" *ngIf="membre.editMode" type="text" [(ngModel)]="membre.email">
+            </td>
+            <td>  <ng-container *ngIf="!membre.editMode">{{ membre.adresse }}</ng-container>
+              <input [ngClass]="{'editable-row': membre.editMode}" *ngIf="membre.editMode" type="text" [(ngModel)]="membre.adresse">
+            </td>
+            <td>
+              <ng-container *ngIf="!membre.editMode">{{ membre.city }}</ng-container>
+              <input [ngClass]="{'editable-row': membre.editMode}" *ngIf="membre.editMode" type="text" [(ngModel)]="membre.city">
+            </td>
+            <td>
+              <ng-container *ngIf="!membre.editMode">{{ membre.type }}</ng-container>
+              <input [ngClass]="{'editable-row': membre.editMode}" *ngIf="membre.editMode" type="text" [(ngModel)]="membre.type">
+            </td>
+            <td class="actions-cell">
+              <button (click)="membre.editMode ? updateMember(membre) : toggleEditMode(membre)">
+                <ng-container *ngIf="!membre.editMode">
+                  <img src="../../../../assets/img/icon-edit.png" alt="edit">
+                </ng-container>
+                <ng-container *ngIf="membre.editMode">
+                  <img src="../../../../assets/img/mark.png" alt="">
+                </ng-container>
+              </button>
+              <button (click)="cancelEdit(membre)" *ngIf="membre.editMode">
+                <img src="../../../../assets/img/cancel.png" alt="">
+              </button>
+              <button (click)="deleteMember(membre)"><img src="../../../../assets/img/icon-delete.png" alt=""></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-  
+
   </section>
 </main>
