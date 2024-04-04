@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Admin, AdminResponse } from '../../interfaces/admin.interface';
+import { AdminResponse } from '../../interfaces/admin.interface';
 
 @Injectable({
   providedIn: 'root'

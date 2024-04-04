@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MediationService } from '../../../services/mediationService/mediation.service';
-import { Mediation, MediationResponse } from '../../../interfaces/mediation.interface';
+import { Mediation } from '../../../interfaces/mediation.interface';
 import { IdService } from '../../../services/idService/Id.service';
 import { Location } from '@angular/common';
 

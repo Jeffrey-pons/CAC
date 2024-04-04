@@ -12,23 +12,23 @@ export class UpdateAdminDto {
   @IsString()
   @MaxLength(30)
   @IsNotEmpty()
-  @IsOptional() 
+  @IsOptional()
   readonly name?: string;
 
   @IsString()
   @IsNotEmpty()
-  @IsOptional() 
+  @IsOptional()
   readonly role?: string;
 
   @IsString()
   @IsEmail()
   @IsNotEmpty()
-  @IsOptional() 
+  @IsOptional()
   readonly email?: string;
 
   @IsString()
   @MinLength(8)
-  @IsOptional() 
+  @IsOptional()
   @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, {
     message: 'password too weak',
   })

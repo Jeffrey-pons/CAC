@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsService } from '../../../services/newsService/news.service';
-import { News, NewsResponse } from '../../../interfaces/news.interface';
 import { IdService } from '../../../services/idService/Id.service';
 import { Location } from '@angular/common';
 

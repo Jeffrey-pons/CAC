@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../modules/back-office/login/services/auth-service.service';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { OnClickService } from '../../../utils/onClick.utils';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy{
+export class NavbarComponent implements OnInit, OnDestroy, AfterViewInit{
   @ViewChild('navbar') navbar!: ElementRef;
 
   isDropdownOpen: boolean = false;

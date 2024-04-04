@@ -1,5 +1,5 @@
 import { CollectionPermanenteService } from './../../../services/CollectionPService/collection-permanente.service';
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IdService } from '../../../services/idService/Id.service';
 import { Location } from '@angular/common';
@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   templateUrl: './collectionpermanente-details.component.html',
   styleUrl: './collectionpermanente-details.component.scss'
 })
-export class CollectionpermanenteDetailsComponent {
+export class CollectionpermanenteDetailsComponent implements OnInit, OnDestroy {
   artwork: any = null;
 
   constructor(
@@ -19,7 +19,6 @@ export class CollectionpermanenteDetailsComponent {
     private idService: IdService,
     private location : Location,
   ) {}
-
 
   ngOnInit(): void {
     const id = this.idService.getId();

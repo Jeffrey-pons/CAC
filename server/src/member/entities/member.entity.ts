@@ -32,6 +32,5 @@ export class Member extends Document {
 
   @Prop({ type: String, enum: MemberType, required: true })
   type: MemberType;
-
 }
 export const MemberSchema = SchemaFactory.createForClass(Member);

@@ -2,7 +2,6 @@ import { IdService } from '../../../services/idService/Id.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NextExpoServiceService } from '../../../services/nextExpoService/next-expo-service.service';
-import { NextExpo, NextExpoResponse } from '../../../interfaces/nextExpo.interface';
 import { Location } from '@angular/common';
 
 @Component({

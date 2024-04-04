@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArchivesService } from '../../../services/archiveservice/archives.service';
 import { IdService } from '../../../services/idService/Id.service';
@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
   templateUrl: './archives-details.component.html',
   styleUrl: './archives-details.component.scss'
 })
-export class ArchivesDetailsComponent {
+export class ArchivesDetailsComponent implements OnInit, OnDestroy{
 archive: any = null;
 constructor(private archivesService: ArchivesService, private route: ActivatedRoute, private idService: IdService, private location: Location) { }
 

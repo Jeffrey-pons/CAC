@@ -41,5 +41,4 @@ export class CreateMemberDto {
   @MaxLength(10)
   @IsNotEmpty()
   readonly type: MemberType;
-
 }
