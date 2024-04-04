@@ -10,12 +10,46 @@ import { MemberServiceService } from '../../../services/memberService/member-ser
 export class AdherentsComponent implements OnInit {
   membres: any[] = [];
   deleting: boolean = false;
+  newMember: any = {
+    firstname: '',
+    lastname: '',
+    adresse: '',
+    postaladresse: '',
+    city: '',
+    country: '',
+    email: '',
+    type: ''
+  };
 
   constructor(private memberService: MemberServiceService, public notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.getAllMembers();
   }
+
+  createMember() {
+    this.memberService.createMember(this.newMember).subscribe(
+      () => {
+        this.notificationService.setNotification("L'adhérent a été ajouté avec succès. \u2713");
+        this.newMember = {
+          firstname: '',
+          lastname: '',
+          adresse: '',
+          postaladresse: '',
+          city: '',
+          country: '',
+          email: '',
+          type: ''
+        };
+       this.getAllMembers();
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de l\'ajout de l\'adhérent. \u2613');
+        console.error('Erreur lors de l\'ajout de l\'adhérent :', error);
+      }
+    );
+  }
+
 
   getAllMembers(): void {
     this.memberService.getAllMembers().subscribe(

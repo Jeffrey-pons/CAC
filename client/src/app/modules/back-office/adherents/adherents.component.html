@@ -66,4 +66,41 @@
 
 
   </section>
+  <section>
+    <div class="list-members">
+      <h2>Ajouter un nouvel adhérent</h2>
+      <form class="createMember" (submit)="createMember()">
+        <table>
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Adresse</th>
+              <th>Adresse postale</th>
+              <th>Ville</th>
+              <th>Pays</th>
+              <th>Type d'adhésion</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id="nom" [(ngModel)]="newMember.firstname" name="nom" required></td>
+              <td><input type="text" id="prenom" [(ngModel)]="newMember.lastname" name="prenom" required></td>
+              <td><input type="email" id="email" [(ngModel)]="newMember.email" name="email" required></td>
+              <td><input type="text" id="adresse" [(ngModel)]="newMember.adresse" name="adresse" required></td>
+              <td><input type="text" id="postaladresse" [(ngModel)]="newMember.postaladresse" name="adresse postale" required></td>
+              <td><input type="text" id="ville" [(ngModel)]="newMember.city" name="ville" required></td>
+              <td><input type="text" id="pays" [(ngModel)]="newMember.country" name="pays" required></td>
+              <td><input type="text" id="type" [(ngModel)]="newMember.type" name="type" required></td>
+              <td><button type="submit">
+                <img src="../../../../assets/img/plus.png" alt="">
+              </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </section>
 </main>
