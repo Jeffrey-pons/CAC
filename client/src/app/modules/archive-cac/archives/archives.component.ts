@@ -3,6 +3,7 @@ import { ArchivesService } from '../../../services/archiveservice/archives.servi
 import { Archive } from '../../../interfaces/archives.interface';
 import { Router } from '@angular/router';
 import { IdService } from '../../../services/idService/Id.service';
+import { OnClickService } from '../../../utils/onClick.utils';
 
 @Component({
   selector: 'app-archives',
@@ -19,7 +20,7 @@ export class ArchiveComponent implements OnInit {
   isKeywordFilterApplied: boolean = false;
   page: number = 1;
 
-  constructor(private archivesService: ArchivesService, private router: Router, private idService: IdService) {}
+  constructor(private archivesService: ArchivesService, private router: Router, private idService: IdService, private onClickService: OnClickService) {}
 
 
   ngOnInit(): void {
@@ -73,5 +74,25 @@ export class ArchiveComponent implements OnInit {
   navigateToDetail(archiveId: string, artist: string) {
     this.idService.setId(archiveId);
     this.router.navigate(['/archive', artist]);
+  }
+
+  handleFocus() {
+    this.onClickService.handleFocus();
+  }
+
+  handleBlur() {
+    this.onClickService.handleBlur();
+  }
+
+  handleClick() {
+    this.onClickService.handleClick();
+  }
+
+  handleKeyUp(event: KeyboardEvent) {
+    this.onClickService.handleKeyUp(event);
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    this.onClickService.handleKeyDown(event);
   }
 }

@@ -18,6 +18,95 @@
   <section class="mediation-backoffice">
     <div class="list-members">
       <h2>Gestion des médiations</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Introduction</th>
+            <th>Image</th>
+            <th>Sous-titre</th>
+            <th>Description</th>
+            <th>Infos supplémentaires</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mediation of mediations">
+            <td>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.title }}</ng-container>
+              <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.title">
+            </td>
+            <td>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.intro.slice(0, (mediation.intro.length * 0.2)) + "[...]" }}</ng-container>
+              <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.intro">
+            </td>
+            <td>
+              <ng-container *ngIf="!mediation.editMode">
+                <img [src]="mediation.image" alt="Image de la médiation">
+              </ng-container>
+              <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="file" [(ngModel)]="mediation.image">
+            </td>
+            <td>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.subtitle }}</ng-container>
+              <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.subtitle">
+            </td>
+            <td>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.description.slice(0, (mediation.description.length * 0.2)) + "[...]" }}</ng-container>
+              <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.description">
+            </td>
+            <td>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.infosupp.slice(0, (mediation.infosupp.length * 0.2)) + "[...]" }}</ng-container>
+              <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.infosupp">
+            </td>
+
+            <td class="actions-cell">
+              <button (click)="mediation.editMode ? updateMediation(mediation) : toggleEditModeMediation(mediation)">
+                <ng-container *ngIf="!mediation.editMode">
+                  <img src="../../../../assets/img/icon-edit.png" alt="edit">
+                </ng-container>
+                <ng-container *ngIf="mediation.editMode">
+                  <img src="../../../../assets/img/mark.png" alt="confirmer">
+                </ng-container>
+              </button>
+              <button (click)="cancelEditMediation(mediation)" *ngIf="mediation.editMode">
+                <img src="../../../../assets/img/cancel.png" alt="annuler">
+              </button>
+              <button (click)="deleteMediation(mediation)"><img src="../../../../assets/img/icon-delete.png" alt="supprimer"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="list-members">
+      <h2>Ajouter une nouvelle médiation</h2>
+      <form class="createMediation" (submit)="createMediation(newMediation)">
+        <table>
+          <thead>
+            <tr>
+              <th>Titre</th>
+              <th>Introduction</th>
+              <th>Image</th>
+              <th>Sous-titre</th>
+              <th>Description</th>
+              <th>Infos supplémentaires</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id="title" [(ngModel)]="newMediation.title" name="title" required></td>
+              <td><input type="text" id="intro" [(ngModel)]="newMediation.intro" name="intro" required></td>
+              <td><input type="file" id="image" (change)="handleFileInputMediation($event)" name="image" required></td>
+              <td><input type="text" id="subtitle" [(ngModel)]="newMediation.subtitle" name="subtitle" required></td>
+              <td><input type="text" id="description" [(ngModel)]="newMediation.description" name="description" required></td>
+              <td><input type="text" id="infosupp" [(ngModel)]="newMediation.infosupp" name="infosupp" required></td>
+              <td><button type="submit">
+                <img src="../../../../assets/img/plus.png" alt="">
+              </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
   </section>
   <section class="collection-backoffice">

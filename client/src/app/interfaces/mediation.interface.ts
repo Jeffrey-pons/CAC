@@ -6,6 +6,7 @@ export interface Mediation {
   subtitle: string;
   description: string;
   infosupp: string;
+  editMode?: boolean;
 }
 
 export interface MediationResponse {
