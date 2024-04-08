@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ArchivesService } from '../../../services/archiveservice/archives.service';
-import { Archive } from '../../../interfaces/archives.interface';
+import { Archive, ArchiveResponse } from '../../../interfaces/archives.interface';
 import { Router } from '@angular/router';
 import { IdService } from '../../../services/idService/Id.service';
 import { OnClickService } from '../../../utils/onClick.utils';
@@ -9,90 +9,83 @@ import { OnClickService } from '../../../utils/onClick.utils';
   selector: 'app-archives',
   templateUrl: './archives.component.html',
   styleUrls: ['./archives.component.scss'],
-  //style pour ngx pagination
   encapsulation: ViewEncapsulation.None
 })
 export class ArchiveComponent implements OnInit {
-  allArchives: { year: number; archives: Archive[] }[] = [];
-  archives: { year: number; archives: Archive[] }[] = [];
+  allArchives: Archive[] = [];
+  archives: Archive[] = [];
   yearFilter: string = '';
   keywordFilter: string = '';
   isKeywordFilterApplied: boolean = false;
   page: number = 1;
 
-  constructor(private archivesService: ArchivesService, private router: Router, private idService: IdService, private onClickService: OnClickService) {}
-
+  constructor(
+    private archivesService: ArchivesService,
+    private router: Router,
+    private idService: IdService,
+    private onClickService: OnClickService
+  ) {}
 
   ngOnInit(): void {
-    this.archivesService.getArchives().subscribe(data => {
-      const groupedArchives = data.ArchivesData.reduce((acc: any, archive: any) => {
-        const year = archive.date; // Récupérer l'année de l'archive
-        if (!acc[year]) {
-          acc[year] = []; // Créer un tableau vide s'il n'existe pas encore pour cette année
-        }
-        acc[year].push(archive);
-        return acc;
-      }, {});
-
-      this.archives = Object.keys(groupedArchives).map(year => ({
-        year: parseInt(year, 10),
-        archives: groupedArchives[year]
-      })).reverse();
-      this.archives.forEach(group => {
-        if (group.year < 2019) {
-          group.archives[0].artist = group.archives.map((archive, index, array) => {
-            return archive.artist + (index < array.length - 1 ? '  |  ' : ' ');
-          }).join('');
-        }
-      });
-      this.allArchives = this.archives;
-      this.applyFilters();
-    });
+    this.fetchArchives();
   }
-  applyFilters() {
+
+  fetchArchives(): void {
+    this.archivesService.getArchives().subscribe(
+      (response: ArchiveResponse) => {
+        this.allArchives = response.archivesData;
+        this.applyFilters();
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des archives :', error);
+      }
+    );
+  }
+
+  applyFilters(): void {
     this.isKeywordFilterApplied = !!this.keywordFilter;
     this.archives = this.allArchives
-      .filter(group => group.year.toString().includes(this.yearFilter))
-      .map(group => ({
-        year: group.year,
-        archives: group.archives.filter(archive => archive.artist.includes(this.keywordFilter))
-      }));
+    .filter(archive => archive.date && archive.date.toString().includes(this.yearFilter))
+    .filter(archive => archive.artist && archive.artist.includes(this.keywordFilter));
   }
-  applyYearFilter(filterValue: string) {
+
+  applyYearFilter(filterValue: string): void {
     this.yearFilter = filterValue;
     this.applyFilters();
   }
 
-  applyKeywordFilter(filterValue: string) {
+  applyKeywordFilter(filterValue: string): void {
     this.keywordFilter = filterValue;
     this.applyFilters();
   }
-  changePage(newPage: number) {
+
+  changePage(newPage: number): void {
     this.page = newPage;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  navigateToDetail(archiveId: string, artist: string) {
+
+  navigateToDetail(archiveId: string, artist: string): void {
     this.idService.setId(archiveId);
     this.router.navigate(['/archive', artist]);
   }
 
-  handleFocus() {
+  handleFocus(): void {
     this.onClickService.handleFocus();
   }
 
-  handleBlur() {
+  handleBlur(): void {
     this.onClickService.handleBlur();
   }
 
-  handleClick() {
+  handleClick(): void {
     this.onClickService.handleClick();
   }
 
-  handleKeyUp(event: KeyboardEvent) {
+  handleKeyUp(event: KeyboardEvent): void {
     this.onClickService.handleKeyUp(event);
   }
 
-  handleKeyDown(event: KeyboardEvent) {
+  handleKeyDown(event: KeyboardEvent): void {
     this.onClickService.handleKeyDown(event);
   }
 }

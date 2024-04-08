@@ -6,6 +6,10 @@ import { CollectionPermanenteService } from '../../../services/CollectionPServic
 import { CollectionPermanente, ArtWorkResponse } from '../../../interfaces/collectionP.interface';
 import { NextExpo, NextExpoResponse } from '../../../interfaces/nextExpo.interface';
 import { NextExpoServiceService } from '../../../services/nextExpoService/next-expo-service.service';
+import { NewsService } from '../../../services/newsService/news.service';
+import { News, NewsResponse } from '../../../interfaces/news.interface';
+import { ArchivesService } from '../../../services/archiveservice/archives.service';
+import { Archive, ArchiveResponse } from '../../../interfaces/archives.interface';
 
 @Component({
   selector: 'app-backoffice',
@@ -19,11 +23,17 @@ export class BackofficeComponent implements OnInit {
   newArtWork: any = {};
   nextExpositions: NextExpo[] = [];
   newNextExpo: any = {};
+  news: News[] = [];
+  newNews: any = {};
+  archives: Archive[] = [];
+  newArchive: any = {};
 
   constructor(
     private mediationService: MediationService,
     private collectionService: CollectionPermanenteService,
     private nextExpoService: NextExpoServiceService,
+    private newService: NewsService,
+    private archivesService: ArchivesService,
     public notificationService: NotificationService
     ) {}
 
@@ -31,7 +41,78 @@ export class BackofficeComponent implements OnInit {
       this.getAllMediations();
       this.getArtWork();
       this.getNextExpo();
+      this.getNews();
+      this.getArchives();
     }
+
+  // News CRUD operations
+  createNews(news: News) {
+    this.newService.createNews(news).subscribe(
+      (response: NewsResponse) => {
+        this.notificationService.setNotification("Le nouveau post a été créé avec succès. \u2713");
+        if (response && response.newsData && Array.isArray(response.newsData)) {
+          this.news.push(...response.newsData);
+          this.newNews = {};
+        }
+        this.getNews();
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de la création du nouveau post. \u2613');
+        console.error('Erreur lors de la création du nouveau post :', error);
+      }
+    );
+  }
+  handleFileInputNews(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    this.newNews.image = file;
+  }
+  getNews(): void {
+    this.newService.getNews().subscribe(
+      (response: NewsResponse) => {
+        if (response && response.newsData && Array.isArray(response.newsData)) {
+          this.news = response.newsData.map((news: News) => ({
+            ...news,
+            editMode: false,
+            image: news.image.length > 0 ? ['http://localhost:5000/' + news.image[0].replace(/\\/g, '/')] : []
+
+          }));
+        }
+      },
+      error => {
+        console.error('Erreur lors de la récupération des posts :', error);
+      }
+    );
+  }
+  toggleEditModeNews(news: any) {
+    news.editMode = !news.editMode;
+  }
+  cancelEditNews(news: any) {
+    news.editMode = false;
+  }
+  updateNews(news: News) {
+    this.newService.updateNews(news._id, news).subscribe(
+      () => {
+        this.notificationService.setNotification("Les informations du post ont été mises à jour avec succès. \u2713");
+        news.editMode = false;
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de la mise à jour des informations du post. \u2613');
+        console.error('Erreur lors de la mise à jour du post :', error);
+      }
+    );
+  }
+  deleteNews(news: any) {
+    this.newService.deleteNewsbyId(news._id).subscribe(
+      () => {
+        this.notificationService.setNotification(" Ce post a bien été supprimé des posts du Cac \u2713");
+        this.news = this.news.filter(n => n._id !== news._id);
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de la suppression du post. \u2613');
+        console.error('Erreur lors de la suppression du post :', error);
+      }
+    );
+  }
 
   // NextExpo CRUD operations
   createNextExpo(nextExpo: NextExpo) {
@@ -233,6 +314,78 @@ export class BackofficeComponent implements OnInit {
       error => {
         this.notificationService.setNotification('Erreur lors de la suppression de l\'oeuvre. \u2613');
         console.error('Erreur lors de la suppression de l\'oeuvre :', error);
+      }
+    );
+  }
+
+  // Archives CRUD operations
+  createArchive(archive: Archive) {
+    this.archivesService.createArchive(archive).subscribe(
+      (response: ArchiveResponse) => {
+        this.notificationService.setNotification("La nouvelle archive a été créée avec succès. \u2713");
+        if (response && response.archivesData && Array.isArray(response.archivesData)) {
+          this.archives.push(...response.archivesData);
+          this.newArchive = {};
+        }
+        this.getArchives();
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de la création de la nouvelle archive. \u2613');
+        console.error('Erreur lors de la création de la nouvelle archive :', error);
+      }
+    );
+  }
+  handleFileInputArchive(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    this.newArchive.image = file;
+  }
+  getArchives(): void {
+    this.archivesService.getArchives().subscribe(
+      (response: ArchiveResponse) => {
+        console.log('Données brutes des archives :', response)
+        if (response && response.archivesData && Array.isArray(response.archivesData)) {
+          this.archives = response.archivesData.map((archive: Archive) => ({
+            ...archive,
+            editMode: false,
+            image: archive.image && archive.image.length > 0 ? ['http://localhost:5000/' + archive.image[0].replace(/\\/g, '/')] : []
+          }));
+          console.log('Archives après manipulation :', this.archives); // Afficher les données manipulées
+        }
+      },
+      error => {
+        console.error('Erreur lors de la récupération des archives :', error);
+      }
+    );
+  }
+
+
+  toggleEditModeArchive(archive: any) {
+    archive.editMode = !archive.editMode;
+  }
+  cancelEditArchive(archive: any) {
+    archive.editMode = false;
+  }
+  updateArchive(archive: Archive) {
+    this.archivesService.updateArchive(archive._id, archive).subscribe(
+      () => {
+        this.notificationService.setNotification("Les informations de l'archive ont été mises à jour avec succès. \u2713");
+        archive.editMode = false;
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de la mise à jour des informations de l\'archive. \u2613');
+        console.error('Erreur lors de la mise à jour de l\'archive :', error);
+      }
+    );
+  }
+  deleteArchive(archive: any) {
+    this.archivesService.deleteArchivebyId(archive._id).subscribe(
+      () => {
+        this.notificationService.setNotification(" Cette archive a bien été supprimé des archives du Cac \u2713");
+        this.archives = this.archives.filter(a => a._id !== archive._id);
+      },
+      error => {
+        this.notificationService.setNotification('Erreur lors de la suppression de l\'archive. \u2613');
+        console.error('Erreur lors de la suppression de l\'archive :', error);
       }
     );
   }

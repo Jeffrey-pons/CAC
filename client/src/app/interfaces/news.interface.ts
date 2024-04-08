@@ -8,6 +8,7 @@ export interface News {
     rencontretext: string[];
     event: string[];
     soutien :string[];
+    editMode?: boolean;
 }
 
 export interface NewsResponse {

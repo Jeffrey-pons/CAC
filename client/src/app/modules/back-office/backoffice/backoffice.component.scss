@@ -1,5 +1,5 @@
 @import '../adherents/adherents.component.scss';
-.mediation-backoffice, .collection-backoffice, .nextExpo-backoffice {
+.mediation-backoffice, .collection-backoffice, .nextExpo-backoffice, .news-backoffice {
 td {
   height: 130px;
   text-align: center;
@@ -7,4 +7,10 @@ td {
     max-width: 40%;
 }
 }
+}
+
+.news-backoffice {
+  .editable-row {
+    width: 107px!important;
+  }
 }

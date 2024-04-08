@@ -44,14 +44,14 @@ section {
  .editable-row {
   border: 2px solid #4dd180;
   padding: 5px 0px;
-  width: auto;
+  width: 150px;
   border-radius: 3px;
 }
 }
 .actions-cell {
   display: flex;
 }
-.createMember, .createAdmin, .createMediation, .createArtwork {
+.createMember, .createAdmin, .createMediation, .createArtwork, .createNextExpo, .createNews {
   input {
   border: 2px solid #4dd18073;
   padding: 2px 0px;
@@ -60,7 +60,7 @@ section {
   font-family: $fontParagraph;
 }
 }
-.createMember,.createMediation {
+.createMember,.createMediation, .createNextExpo, .createNews {
  table {
   input {
     width: 123px;
