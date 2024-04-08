@@ -6,6 +6,7 @@ export interface CollectionPermanente {
   description: string;
   dateOfExposition: string;
   type: string;
+  editMode?: boolean;
 }
 
 export interface ArtWorkResponse {

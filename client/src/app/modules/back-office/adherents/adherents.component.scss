@@ -18,6 +18,7 @@ section {
     font-family: $fontParagraph;
     font-size: 13px;
 
+
     button {
       background: transparent;
 
@@ -50,7 +51,7 @@ section {
 .actions-cell {
   display: flex;
 }
-.createMember, .createAdmin, .createMediation {
+.createMember, .createAdmin, .createMediation, .createArtwork {
   input {
   border: 2px solid #4dd18073;
   padding: 2px 0px;

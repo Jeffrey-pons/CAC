@@ -13,6 +13,64 @@
   <section class="nextExpo-backoffice">
     <div class="list-members">
       <h2>Gestion des évènements à venir</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Année</th>
+            <th>Titre</th>
+            <th>Image</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let expo of nextExpositions">
+            <td>
+              <ng-container *ngIf="!expo.editMode">{{ expo.titleDate }}</ng-container>
+              <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="text" [(ngModel)]="expo.titleDate">
+            </td>
+            <td>
+              <ng-container *ngIf="!expo.editMode">{{ expo.name }}</ng-container>
+              <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="text" [(ngModel)]="expo.name">
+            </td>
+            <td>
+              <ng-container *ngIf="!expo.editMode">
+                <img [src]="expo.image" alt="Image de la prochaine exposition">
+              </ng-container>
+              <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="file" [(ngModel)]="expo.image">
+            </td>
+            <td>
+              <ng-container *ngIf="!expo.editMode">{{ expo.dateOfExpo }}</ng-container>
+              <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="text" [(ngModel)]="expo.dateOfExpo">
+            </td>
+            <td>
+              <ng-container *ngIf="!expo.editMode">{{ expo.description.slice(0, (expo.description.length * 0.2)) + "[...]" }}</ng-container>
+              <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="text" [(ngModel)]="expo.description">
+            </td>
+            <td>
+              <ng-container *ngIf="!expo.editMode">{{ expo.type }}</ng-container>
+              <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="text" [(ngModel)]="expo.type">
+            </td>
+
+            <td class="actions-cell">
+              <button (click)="expo.editMode ? updateNextExpo(expo) : toggleEditModeNextExpo(expo)">
+                <ng-container *ngIf="!expo.editMode">
+                  <img src="../../../../assets/img/icon-edit.png" alt="edit">
+                </ng-container>
+                <ng-container *ngIf="expo.editMode">
+                  <img src="../../../../assets/img/mark.png" alt="confirmer">
+                </ng-container>
+              </button>
+              <button (click)="cancelEditNextExpo(expo)" *ngIf="expo.editMode">
+                <img src="../../../../assets/img/cancel.png" alt="annuler">
+              </button>
+              <button (click)="deleteNextExpo(expo)"><img src="../../../../assets/img/icon-delete.png" alt="supprimer"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
   <section class="mediation-backoffice">
@@ -112,6 +170,88 @@
   <section class="collection-backoffice">
     <div class="list-members">
       <h2>Gestion de la collection permanente</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Date d'exposition</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let artwork of artworks">
+            <td>
+              <ng-container *ngIf="!artwork.editMode">{{ artwork.artist }}</ng-container>
+              <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="text" [(ngModel)]="artwork.artist">
+            </td>
+            <td>
+              <ng-container *ngIf="!artwork.editMode">
+                <img [src]="artwork.image" alt="Image de l'oeuvre">
+              </ng-container>
+              <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="file" [(ngModel)]="artwork.image">
+            </td>
+            <td>
+              <ng-container *ngIf="!artwork.editMode">{{ artwork.description.slice(0, (artwork.description.length * 0.2)) + "[...]" }}</ng-container>
+              <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="text" [(ngModel)]="artwork.description">
+            </td>
+            <td>
+              <ng-container *ngIf="!artwork.editMode">{{ artwork.dateOfExposition.slice(0, (artwork.dateOfExposition.length * 0.2)) + "[...]" }}</ng-container>
+              <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="text" [(ngModel)]="artwork.dateOfExposition">
+            </td>
+            <td>
+              <ng-container *ngIf="!artwork.editMode">{{ artwork.type }}</ng-container>
+              <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="text" [(ngModel)]="artwork.type">
+            </td>
+
+            <td class="actions-cell">
+              <button (click)="artwork.editMode ? updateArtWork(artwork) : toggleEditModeArtWork(artwork)">
+                <ng-container *ngIf="!artwork.editMode">
+                  <img src="../../../../assets/img/icon-edit.png" alt="edit">
+                </ng-container>
+                <ng-container *ngIf="artwork.editMode">
+                  <img src="../../../../assets/img/mark.png" alt="confirmer">
+                </ng-container>
+              </button>
+              <button (click)="cancelEditArtWork(artwork)" *ngIf="artwork.editMode">
+                <img src="../../../../assets/img/cancel.png" alt="annuler">
+              </button>
+              <button (click)="deleteArtWork(artwork)"><img src="../../../../assets/img/icon-delete.png" alt="supprimer"></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="list-members">
+      <h2>Ajouter une nouvelle oeuvre à la collection permanente</h2>
+      <form class="createArtwork" (submit)="createArtWork(newArtWork)">
+        <table>
+          <thead>
+            <tr>
+              <th>Titre</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Date d'exposition</th>
+              <th>Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id="title" [(ngModel)]="newArtWork.artist" name="title" required></td>
+              <td><input type="file" id="image" (change)="handleFileInputArtwork($event)" name="image" required></td>
+              <td><input type="text" id="subtitle" [(ngModel)]="newArtWork.description" name="subtitle" required></td>
+              <td><input type="text" id="description" [(ngModel)]="newArtWork.dateOfExposition" name="description" required></td>
+              <td><input type="text" id="type" [(ngModel)]="newArtWork.type" name="type" required></td>
+              <td><button type="submit">
+                <img src="../../../../assets/img/plus.png" alt="">
+              </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
   </section>
   <section class="archives-backoffice">

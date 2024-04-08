@@ -1,8 +1,7 @@
-import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateWorkExpoPermanentDto {
-  @IsString()
-  @MaxLength(30)
+
   readonly title: string;
 
   public image: string;

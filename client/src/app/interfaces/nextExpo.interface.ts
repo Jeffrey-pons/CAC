@@ -6,9 +6,12 @@ export interface NextExpo {
   dateOfExpo: string;
   description: string;
   type: string;
+  editMode?: boolean;
+
 }
 
 export interface NextExpoResponse {
   nextExpoData: NextExpo;
-  
+
 }
+
