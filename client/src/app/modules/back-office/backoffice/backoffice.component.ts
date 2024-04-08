@@ -323,8 +323,8 @@ export class BackofficeComponent implements OnInit {
     this.archivesService.createArchive(archive).subscribe(
       (response: ArchiveResponse) => {
         this.notificationService.setNotification("La nouvelle archive a été créée avec succès. \u2713");
-        if (response && response.archivesData && Array.isArray(response.archivesData)) {
-          this.archives.push(...response.archivesData);
+        if (response && response.ArchivesData && Array.isArray(response.ArchivesData)) {
+          this.archives.push(...response.ArchivesData);
           this.newArchive = {};
         }
         this.getArchives();
@@ -343,8 +343,8 @@ export class BackofficeComponent implements OnInit {
     this.archivesService.getArchives().subscribe(
       (response: ArchiveResponse) => {
         console.log('Données brutes des archives :', response)
-        if (response && response.archivesData && Array.isArray(response.archivesData)) {
-          this.archives = response.archivesData.map((archive: Archive) => ({
+        if (response && response.ArchivesData && Array.isArray(response.ArchivesData)) {
+          this.archives = response.ArchivesData.map((archive: Archive) => ({
             ...archive,
             editMode: false,
             image: archive.image && archive.image.length > 0 ? ['http://localhost:5000/' + archive.image[0].replace(/\\/g, '/')] : []

@@ -14,9 +14,6 @@ import { OnClickService } from '../../../utils/onClick.utils';
 export class ArchiveComponent implements OnInit {
   allArchives: Archive[] = [];
   archives: Archive[] = [];
-  yearFilter: string = '';
-  keywordFilter: string = '';
-  isKeywordFilterApplied: boolean = false;
   page: number = 1;
 
   constructor(
@@ -27,14 +24,24 @@ export class ArchiveComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchArchives();
+    this.getArchives();
   }
 
-  fetchArchives(): void {
+  getArchives(): void {
     this.archivesService.getArchives().subscribe(
       (response: ArchiveResponse) => {
-        this.allArchives = response.archivesData;
-        this.applyFilters();
+        console.log(response);
+        console.log(JSON.stringify(response, null, 2))
+        this.allArchives = response.ArchivesData;
+        console.log(this.allArchives); // Add this line
+        if (this.allArchives) { // Add this line
+          this.allArchives.sort((a, b) => {
+            if (!a.date || !b.date) {
+              return 0;
+            }
+            return b.date - a.date;
+          });
+        } // Add this line
       },
       (error) => {
         console.error('Erreur lors de la récupération des archives :', error);
@@ -42,22 +49,7 @@ export class ArchiveComponent implements OnInit {
     );
   }
 
-  applyFilters(): void {
-    this.isKeywordFilterApplied = !!this.keywordFilter;
-    this.archives = this.allArchives
-    .filter(archive => archive.date && archive.date.toString().includes(this.yearFilter))
-    .filter(archive => archive.artist && archive.artist.includes(this.keywordFilter));
-  }
-
-  applyYearFilter(filterValue: string): void {
-    this.yearFilter = filterValue;
-    this.applyFilters();
-  }
-
-  applyKeywordFilter(filterValue: string): void {
-    this.keywordFilter = filterValue;
-    this.applyFilters();
-  }
+ 
 
   changePage(newPage: number): void {
     this.page = newPage;

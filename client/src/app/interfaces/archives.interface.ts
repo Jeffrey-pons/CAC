@@ -1,7 +1,7 @@
 export interface Archive {
   _id: string;
-  date?: number;
-  artist?: string;
+  date: number;
+  artist: string;
   title?: string;
   month?: string;
   image?: string[];
@@ -12,5 +12,5 @@ export interface Archive {
 }
 
 export interface ArchiveResponse {
-  archivesData: Archive[];
+  ArchivesData: Archive[];
 }
