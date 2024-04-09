@@ -9,8 +9,8 @@ export class Archive extends Document {
   @Prop()
   artist: string;
 
-  @Prop()
-  title: string;
+  @Prop({ required: false })
+  title?: string;
 
   @Prop()
   month: string;

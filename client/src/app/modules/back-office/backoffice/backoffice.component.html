@@ -25,7 +25,7 @@
         <tbody>
           <tr *ngFor="let new of news">
             <td>
-              <ng-container *ngIf="!new.editMode">{{ new.title }}</ng-container>
+              <ng-container *ngIf="!new.editMode">{{ new.title.slice(0, (new.title.length * 0.5)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="text" [(ngModel)]="new.title">
             </td>
             <td>
@@ -35,11 +35,11 @@
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="file" [(ngModel)]="new.image">
             </td>
             <td>
-              <ng-container *ngIf="!new.editMode">{{ new.month }}</ng-container>
+              <ng-container *ngIf="!new.editMode">{{ new.month.slice(0, (new.month.length * 0.8)) }}</ng-container>
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="text" [(ngModel)]="new.month">
             </td>
             <td>
-              <ng-container *ngIf="!new.editMode">{{ new.description.slice(0, (new.description.length * 0.03)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!new.editMode">{{ new.description.slice(0, (new.description.length * 0)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="text" [(ngModel)]="new.description">
             </td>
             <td>
@@ -47,15 +47,15 @@
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="text" [(ngModel)]="new.type">
             </td>
             <td>
-              <ng-container *ngIf="!new.editMode">{{ new.rencontretext }}</ng-container>
+              <ng-container *ngIf="!new.editMode">{{ new.rencontretext.slice(0, (new.rencontretext.length * 0)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="text" [(ngModel)]="new.rencontretext">
             </td>
             <td>
-              <ng-container *ngIf="!new.editMode">{{ new.soutien.slice(0, (new.description.length * 0.03)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!new.editMode">{{ new.soutien.slice(0, (new.soutien.length * 0)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="text" [(ngModel)]="new.soutien">
             </td>
             <td>
-              <ng-container *ngIf="!new.editMode">{{ new.event.slice(0, (new.description.length * 0.02)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!new.editMode">{{ new.event.slice(0, (new.event.length * 0)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="text" [(ngModel)]="new.event">
             </td>
 
@@ -80,36 +80,26 @@
     <div class="list-members">
       <h2>Ajouter une nouvelle exposition</h2>
       <form class="createNews" (submit)="createNews(newNews)">
-        <table>
-          <thead>
-            <tr>
-              <th>Titre</th>
-              <th>Images</th>
-              <th>Date</th>
-              <th>Description</th>
-              <th>Type</th>
-              <th>Rencontres</th>
-              <th>Soutiens</th>
-              <th>Evènements</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text" id="title" [(ngModel)]="newNews.title" name="title" required></td>
-              <td><input type="file" id="image" (change)="handleFileInputNews($event)" name="image" required></td>
-              <td><input type="text" id="dateOfExpo" [(ngModel)]="newNews.month" name="dateOfExpo" required></td>
-              <td><input type="text" id="description" [(ngModel)]="newNews.description" name="description" required></td>
-              <td><input type="text" id="type" [(ngModel)]="newNews.type" name="type" required></td>
-              <td><input type="text" id="rencontre" [(ngModel)]="newNews.rencontretext" name="rencontre" required></td>
-              <td><input type="text" id="soutiens" [(ngModel)]="newNews.soutien" name="soutiens" required></td>
-              <td><input type="text" id="event" [(ngModel)]="newNews.event" name="event" required></td>
-              <td><button type="submit">
+              <h2>Titre</h2>
+              <input type="text" id="title" [(ngModel)]="newNews.title" name="title" required>
+              <h2>Images</h2>
+              <input type="file" id="image" (change)="handleFileInputNews($event)" name="image" required>
+              <h2>Date</h2>
+              <input type="text" id="dateOfExpo" [(ngModel)]="newNews.month" name="dateOfExpo" required>
+              <h2>Description</h2>
+              <input type="text" id="description" [(ngModel)]="newNews.description" name="description" required>
+              <h2>Type</h2>
+              <input type="text" id="type" [(ngModel)]="newNews.type" name="type" required>
+              <h2>Rencontres</h2>
+              <input type="text" id="rencontre" [(ngModel)]="newNews.rencontretext" name="rencontre" required>
+              <h2>Soutiens</h2>
+              <input type="text" id="soutiens" [(ngModel)]="newNews.soutien" name="soutiens" required>
+              <h2>Evènements</h2>
+              <input type="text" id="event" [(ngModel)]="newNews.event" name="event" required>
+              <h2>Actions</h2>
+              <button type="submit">
                 <img src="../../../../assets/img/plus.png" alt="">
-              </button></td>
-            </tr>
-          </tbody>
-        </table>
+              </button>
       </form>
     </div>
   </section>
@@ -318,7 +308,7 @@
         <tbody>
           <tr *ngFor="let artwork of artworks">
             <td>
-              <ng-container *ngIf="!artwork.editMode">{{ artwork.artist }}</ng-container>
+              <ng-container *ngIf="!artwork.editMode">{{ artwork.artist.slice(0, (artwork.artist.length * 0.40)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="text" [(ngModel)]="artwork.artist">
             </td>
             <td>
@@ -328,7 +318,7 @@
               <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="file" [(ngModel)]="artwork.image">
             </td>
             <td>
-              <ng-container *ngIf="!artwork.editMode">{{ artwork.description.slice(0, (artwork.description.length * 0.2)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!artwork.editMode">{{ artwork.description.slice(0, (artwork.description.length * 0.01)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="text" [(ngModel)]="artwork.description">
             </td>
             <td>
@@ -395,12 +385,7 @@
         <thead>
           <tr>
             <th>Titre</th>
-            <th>Images</th>
-            <th>Année</th>
             <th>Date</th>
-            <th>Description</th>
-            <th>Type</th>
-            <th>Rencontres</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -411,32 +396,8 @@
               <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.artist">
             </td>
             <td>
-              <ng-container *ngIf="!archi.editMode">
-                <img [src]="archi.image" alt="Image de l'archive'">
-              </ng-container>
-              <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="file" [(ngModel)]="archi.image">
-            </td>
-            <td>
               <ng-container *ngIf="!archi.editMode">{{ archi.date }}</ng-container>
               <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.date">
-            </td>
-            <td>
-              <ng-container *ngIf="!archi.editMode">{{ archi.month }}</ng-container>
-              <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.month">
-            </td>
-            <td>
-              <ng-container *ngIf="archi.description">
-                <ng-container *ngIf="!archi.editMode">{{ archi.description.slice(0, (archi.description.length * 0.03)) + '[...]' }}</ng-container>
-                <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.description">
-              </ng-container>
-            </td>
-            <td>
-              <ng-container *ngIf="!archi.editMode">{{ archi.type }}</ng-container>
-              <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.type">
-            </td>
-            <td>
-              <ng-container *ngIf="!archi.editMode">{{ archi.rencontretext }}</ng-container>
-              <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.rencontretext">
             </td>
             <td class="actions-cell">
               <button (click)="archi.editMode ? updateArchive(archi) : toggleEditModeArchive(archi)">
@@ -455,41 +416,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="list-members">
-      <h2>Ajouter une nouvelle archive</h2>
-      <form class="createArchive" (submit)="createArchive(newArchive)">
-        <table>
-          <thead>
-            <tr>
-              <th>Titre</th>
-              <th>Images</th>
-              <th>Année</th>
-              <th>Date</th>
-              <th>Description</th>
-              <th>Type</th>
-              <th>Rencontres</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text" id="title" [(ngModel)]="newArchive.artist" name="title" required></td>
-              <td><input type="file" id="image" (change)="handleFileInputArchive($event)" name="image" required></td>
-              <td><input type="number" id="number" [(ngModel)]="newArchive.date" name="number" required></td>
-              <td><input type="year" id="year" [(ngModel)]="newArchive.month" name="year" required></td>
-              <td><input type="text" id="subtitle" [(ngModel)]="newArchive.description" name="subtitle" required></td>
-              <td><input type="text" id="type" [(ngModel)]="newArchive.type" name="type" required></td>
-              <td><input type="text" id="rencontre" [(ngModel)]="newArchive.rencontretext" name="rencontre" required></td>
-              <td>
-                <button type="submit">
-                <img src="../../../../assets/img/plus.png" alt="">
-              </button>
-            </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
     </div>
   </section>
 </main>

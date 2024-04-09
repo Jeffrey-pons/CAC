@@ -2,7 +2,7 @@ export interface Archive {
   _id: string;
   date: number;
   artist: string;
-  title?: string;
+  title: string;
   month?: string;
   image?: string[];
   description?: string;

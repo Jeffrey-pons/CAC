@@ -1,14 +1,12 @@
 @import '../adherents/adherents.component.scss';
-.mediation-backoffice, .collection-backoffice, .nextExpo-backoffice, .news-backoffice, .archives-backoffice {
+.mediation-backoffice, .nextExpo-backoffice, .news-backoffice, .collection-backoffice{
 td {
-  height: 130px;
   text-align: center;
   img {
-    max-width: 40%;
+    max-width: 4%;
 }
 }
 }
-
 .news-backoffice {
   .editable-row {
     width: 107px!important;

@@ -319,22 +319,6 @@ export class BackofficeComponent implements OnInit {
   }
 
   // Archives CRUD operations
-  createArchive(archive: Archive) {
-    this.archivesService.createArchive(archive).subscribe(
-      (response: ArchiveResponse) => {
-        this.notificationService.setNotification("La nouvelle archive a été créée avec succès. \u2713");
-        if (response && response.ArchivesData && Array.isArray(response.ArchivesData)) {
-          this.archives.push(...response.ArchivesData);
-          this.newArchive = {};
-        }
-        this.getArchives();
-      },
-      error => {
-        this.notificationService.setNotification('Erreur lors de la création de la nouvelle archive. \u2613');
-        console.error('Erreur lors de la création de la nouvelle archive :', error);
-      }
-    );
-  }
   handleFileInputArchive(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     this.newArchive.image = file;
@@ -347,7 +331,7 @@ export class BackofficeComponent implements OnInit {
             ...archive,
             editMode: false,
             image: archive.image && archive.image.length > 0 ? ['http://localhost:5000/' + archive.image[0].replace(/\\/g, '/')] : []
-          }));
+          })).reverse();
         }
       },
       error => {
@@ -364,6 +348,7 @@ export class BackofficeComponent implements OnInit {
     archive.editMode = false;
   }
   updateArchive(archive: Archive) {
+    console.log(archive);
     this.archivesService.updateArchive(archive._id, archive).subscribe(
       () => {
         this.notificationService.setNotification("Les informations de l'archive ont été mises à jour avec succès. \u2713");
