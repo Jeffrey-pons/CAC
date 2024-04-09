@@ -407,8 +407,8 @@
         <tbody>
           <tr *ngFor="let archi of archives">
             <td>
-              <ng-container *ngIf="!archi.editMode">{{ archi.title }}</ng-container>
-              <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.title">
+              <ng-container *ngIf="!archi.editMode">{{ archi.artist }}</ng-container>
+              <input [ngClass]="{'editable-row': archi.editMode}" *ngIf="archi.editMode" type="text" [(ngModel)]="archi.artist">
             </td>
             <td>
               <ng-container *ngIf="!archi.editMode">
@@ -455,6 +455,41 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="list-members">
+      <h2>Ajouter une nouvelle archive</h2>
+      <form class="createArchive" (submit)="createArchive(newArchive)">
+        <table>
+          <thead>
+            <tr>
+              <th>Titre</th>
+              <th>Images</th>
+              <th>Année</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Rencontres</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id="title" [(ngModel)]="newArchive.artist" name="title" required></td>
+              <td><input type="file" id="image" (change)="handleFileInputArchive($event)" name="image" required></td>
+              <td><input type="number" id="number" [(ngModel)]="newArchive.date" name="number" required></td>
+              <td><input type="year" id="year" [(ngModel)]="newArchive.month" name="year" required></td>
+              <td><input type="text" id="subtitle" [(ngModel)]="newArchive.description" name="subtitle" required></td>
+              <td><input type="text" id="type" [(ngModel)]="newArchive.type" name="type" required></td>
+              <td><input type="text" id="rencontre" [(ngModel)]="newArchive.rencontretext" name="rencontre" required></td>
+              <td>
+                <button type="submit">
+                <img src="../../../../assets/img/plus.png" alt="">
+              </button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
   </section>
 </main>

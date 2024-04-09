@@ -56,9 +56,8 @@
       <section class="archive">
         <ng-container *ngFor="let archive of allArchives | paginate: { itemsPerPage:10, currentPage: page }">
         <div class="container_archive" >
-          <p class="p-group-year" [ngClass]="{'baseline': archive.date < 2019, 'no-baseline': archive.date  >= 2019}" *ngIf="">{{ archive.date  }}</p>
-          <ul [ngClass]="{'pre-2019-flex': archive.date < 2019, 'post-2019': archive.date >= 2019}">
-            
+          <p class="p-group-year" [ngClass]="{'baseline': archive.date < 2019, 'no-baseline': archive.date  >= 2019}">{{ archive.date  }}</p>
+          <ul [ngClass]="{'pre-2019': archive.date < 2019, 'post-2019': archive.date >= 2019}">
             <li class="card"(click)="navigateToDetail(archive._id, archive.artist ? archive.artist : 'default')" (keyup)="handleKeyUp($event)">
               <ng-container  *ngIf="archive.image && archive.image.length > 0">
                 <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">

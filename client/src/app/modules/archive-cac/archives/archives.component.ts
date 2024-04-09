@@ -30,26 +30,21 @@ export class ArchiveComponent implements OnInit {
   getArchives(): void {
     this.archivesService.getArchives().subscribe(
       (response: ArchiveResponse) => {
-        console.log(response);
-        console.log(JSON.stringify(response, null, 2))
         this.allArchives = response.ArchivesData;
-        console.log(this.allArchives); // Add this line
-        if (this.allArchives) { // Add this line
+        if (this.allArchives) {
           this.allArchives.sort((a, b) => {
             if (!a.date || !b.date) {
               return 0;
             }
             return b.date - a.date;
           });
-        } // Add this line
+        }
       },
       (error) => {
         console.error('Erreur lors de la récupération des archives :', error);
       }
     );
   }
-
- 
 
   changePage(newPage: number): void {
     this.page = newPage;

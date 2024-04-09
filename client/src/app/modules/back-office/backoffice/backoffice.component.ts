@@ -342,14 +342,12 @@ export class BackofficeComponent implements OnInit {
   getArchives(): void {
     this.archivesService.getArchives().subscribe(
       (response: ArchiveResponse) => {
-        console.log('Données brutes des archives :', response)
         if (response && response.ArchivesData && Array.isArray(response.ArchivesData)) {
           this.archives = response.ArchivesData.map((archive: Archive) => ({
             ...archive,
             editMode: false,
             image: archive.image && archive.image.length > 0 ? ['http://localhost:5000/' + archive.image[0].replace(/\\/g, '/')] : []
           }));
-          console.log('Archives après manipulation :', this.archives); // Afficher les données manipulées
         }
       },
       error => {
