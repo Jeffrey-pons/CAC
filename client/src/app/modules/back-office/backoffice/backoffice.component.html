@@ -79,14 +79,15 @@
       </table>
     </div>
     <div class="add-button">
-      <button class="buttonOne" (click)="toggleAddContent()">
+      <button class="buttonOne" (click)="toggleAddNews()">
         <p>Ajoutez une actualité</p>
       </button>
     </div>
     <div class="create-content">
-    <div class="add-content" *ngIf="showAddContent">
-      <button class="close-button" (click)="toggleAddContent()">Fermer</button>
+    <div class="add-content" *ngIf="showAddNews">
       <form class="createNews" (submit)="createNews(newNews)">
+      <button class="close-button" (click)="toggleAddNews()">&#10007;</button>
+
         <h2>Ajouter une nouvelle exposition</h2>
         <div class="form-group full-width">
           <h3>Titre</h3>
@@ -136,7 +137,7 @@
   </div>
   </section>
   <section class="nextExpo-backoffice">
-    <div class="list-members">
+    <div class="list-nextExpo">
       <h2>Gestion des évènements à venir</h2>
       <table>
         <thead>
@@ -162,7 +163,7 @@
             </td>
             <td>
               <ng-container *ngIf="!expo.editMode">
-                <img [src]="expo.image" alt="Image de la prochaine exposition">
+                <p>[..]</p>
               </ng-container>
               <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="file" [(ngModel)]="expo.image">
             </td>
@@ -171,7 +172,7 @@
               <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="text" [(ngModel)]="expo.dateOfExpo">
             </td>
             <td>
-              <ng-container *ngIf="!expo.editMode">{{ expo.description.slice(0, (expo.description.length * 0.2)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!expo.editMode">{{ expo.description.slice(0, (expo.description.length * 0.1)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': expo.editMode}" *ngIf="expo.editMode" type="text" [(ngModel)]="expo.description">
             </td>
             <td>
@@ -197,40 +198,55 @@
         </tbody>
       </table>
     </div>
-    <div class="list-members">
-      <h2>Ajouter un nouvel évènement à venir</h2>
-      <form class="createNextExpo" (submit)="createNextExpo(newNextExpo)">
-        <table>
-          <thead>
-            <tr>
-              <th>Année</th>
-              <th>Titre</th>
-              <th>Image</th>
-              <th>Date</th>
-              <th>Description</th>
-              <th>Type</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text" id="title" [(ngModel)]="newNextExpo.titleDate" name="title" required></td>
-              <td><input type="text" id="intro" [(ngModel)]="newNextExpo.name" name="intro" required></td>
-              <td><input type="file" id="image" (change)="handleFileInputNextExpo($event)" name="image" required></td>
-              <td><input type="text" id="dateOfExpo" [(ngModel)]="newNextExpo.dateOfExpo" name="dateOfExpo" required></td>
-              <td><input type="text" id="description" [(ngModel)]="newNextExpo.description" name="description" required></td>
-              <td><input type="text" id="type" [(ngModel)]="newNextExpo.type" name="type" required></td>
-              <td><button type="submit">
-                <img src="../../../../assets/img/plus.png" alt="">
-              </button></td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+    <div class="add-button">
+      <button class="buttonOne" (click)="toggleAddNextExpo()">
+        <p>Ajoutez un évènement à venir</p>
+      </button>
+    </div>
+    <div class="create-content">
+      <div  class="add-content" *ngIf="showAddNextExpo">
+        <button class="close-button" (click)="toggleAddNextExpo()">&#10007;</button>
+        <form class="createNextExpo" (submit)="createNextExpo(newNextExpo)">
+          <h2>Ajouter un nouvel évènement à venir</h2>
+                <div class="form-group full-width">
+                <h3>Titre</h3>
+                <input type="text" id="intro" [(ngModel)]="newNextExpo.name" name="intro" required>
+                </div>
+                <div class="form-group-row">
+                  <div class="form-group">
+                  <h3>Image</h3>
+                  <input type="file" id="image" (change)="handleFileInputNextExpo($event)" name="image" required>
+                </div>
+                  <div class="form-group">
+                <h3>Année</h3>
+                <input type="text" id="title" [(ngModel)]="newNextExpo.titleDate" name="title" required>
+                </div>
+                <div class="form-group">
+                  <h3>Date</h3>
+                  <input type="text" id="dateOfExpo" [(ngModel)]="newNextExpo.dateOfExpo" name="dateOfExpo" required>
+                </div>
+                <div class="form-group">
+                  <h3>Type</h3>
+                <input type="text" id="type" [(ngModel)]="newNextExpo.type" name="type" required>
+                </div>
+                </div>
+                <div class="form-group full-width">
+                  <h3>Description</h3>
+                  <input type="text" id="description" [(ngModel)]="newNextExpo.description" name="description" required>
+                </div>
+                
+                <div class="submit-button">
+                  <button type="submit">
+                      Soumettre la nouvelle actualité
+                  </button>
+                </div>
+              </form>
+      </div>
+   
     </div>
   </section>
   <section class="mediation-backoffice">
-    <div class="list-members">
+    <div class="list-mediation">
       <h2>Gestion des médiations</h2>
       <table>
         <thead>
@@ -251,12 +267,12 @@
               <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.title">
             </td>
             <td>
-              <ng-container *ngIf="!mediation.editMode">{{ mediation.intro.slice(0, (mediation.intro.length * 0.2)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.intro.slice(0, (mediation.intro.length * 0.1)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.intro">
             </td>
             <td>
               <ng-container *ngIf="!mediation.editMode">
-                <img [src]="mediation.image" alt="Image de la médiation">
+                <p>[...]</p>
               </ng-container>
               <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="file" [(ngModel)]="mediation.image">
             </td>
@@ -265,11 +281,11 @@
               <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.subtitle">
             </td>
             <td>
-              <ng-container *ngIf="!mediation.editMode">{{ mediation.description.slice(0, (mediation.description.length * 0.2)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.description.slice(0, (mediation.description.length * 0.1)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.description">
             </td>
             <td>
-              <ng-container *ngIf="!mediation.editMode">{{ mediation.infosupp.slice(0, (mediation.infosupp.length * 0.2)) + "[...]" }}</ng-container>
+              <ng-container *ngIf="!mediation.editMode">{{ mediation.infosupp.slice(0, (mediation.infosupp.length * 0.1)) + "[...]" }}</ng-container>
               <input [ngClass]="{'editable-row': mediation.editMode}" *ngIf="mediation.editMode" type="text" [(ngModel)]="mediation.infosupp">
             </td>
 
@@ -291,9 +307,16 @@
         </tbody>
       </table>
     </div>
-    <div class="list-members">
-      <h2>Ajouter une nouvelle médiation</h2>
+    <div class="add-button">
+      <button class="buttonOne" (click)="toggleAddMediation()">
+        <p>Ajoutez une nouvelle médiation</p>
+      </button>
+    </div>
+    <div class="create-content">
+    <div class="add-content" *ngIf="showAddMediation">
+      <button class="close-button" (click)="toggleAddMediation()">Fermer</button>
       <form class="createMediation" (submit)="createMediation(newMediation)">
+        <h2>Ajouter une nouvelle médiation</h2>
         <table>
           <thead>
             <tr>
@@ -315,16 +338,17 @@
               <td><input type="text" id="description" [(ngModel)]="newMediation.description" name="description" required></td>
               <td><input type="text" id="infosupp" [(ngModel)]="newMediation.infosupp" name="infosupp" required></td>
               <td><button type="submit">
-                <img src="../../../../assets/img/plus.png" alt="">
+                <p>Soumettre la nouvelle médiation</p>
               </button></td>
             </tr>
           </tbody>
         </table>
       </form>
     </div>
+  </div>
   </section>
   <section class="collection-backoffice">
-    <div class="list-members">
+    <div class="list-collection">
       <h2>Gestion de la collection permanente</h2>
       <table>
         <thead>
@@ -345,7 +369,7 @@
             </td>
             <td>
               <ng-container *ngIf="!artwork.editMode">
-                <img [src]="artwork.image" alt="Image de l'oeuvre">
+                <p> [...] </p>
               </ng-container>
               <input [ngClass]="{'editable-row': artwork.editMode}" *ngIf="artwork.editMode" type="file" [(ngModel)]="artwork.image">
             </td>
@@ -380,9 +404,16 @@
         </tbody>
       </table>
     </div>
-    <div class="list-members">
-      <h2>Ajouter une nouvelle oeuvre à la collection permanente</h2>
+    <div class="add-button">
+      <button class="buttonOne" (click)="toggleAddArtWork()">
+        <p>Ajouter une nouvelle oeuvre à la collection permanente</p>
+      </button>
+    </div>
+    <div class="create-content">
+    <div class="add-content" *ngIf="showAddArtWork">
+      <button class="close-button" (click)="toggleAddArtWork()">Fermer</button>
       <form class="createArtwork" (submit)="createArtWork(newArtWork)">
+        <h2>Ajouter une nouvelle oeuvre à la collection permanente</h2>
         <table>
           <thead>
             <tr>
@@ -409,9 +440,10 @@
         </table>
       </form>
     </div>
+  </div>
   </section>
   <section class="archives-backoffice">
-    <div class="list-members">
+    <div class="list-archives">
       <h2>Gestion des archives</h2>
       <table>
         <thead>

@@ -28,7 +28,11 @@ export class BackofficeComponent implements OnInit {
   newNews: any = {};
   archives: Archive[] = [];
   newArchive: any = {};
-  showAddContent = false;
+  showAddNews = false;
+  showAddNextExpo = false;
+  showAddMediation = false;
+  showAddArtWork = false;
+  showAddArchive = false;
 
   constructor(
     private mediationService: MediationService,
@@ -47,10 +51,6 @@ export class BackofficeComponent implements OnInit {
       this.getArchives();
     }
 
-    toggleAddContent() {
-      this.showAddContent = !this.showAddContent;
-    }
-
   // News CRUD operations
   createNews(news: News) {
     this.newService.createNews(news).subscribe(
@@ -61,7 +61,7 @@ export class BackofficeComponent implements OnInit {
           this.newNews = {};
         }
         this.getNews();
-        this.toggleAddContent();
+        this.toggleAddNews();
       },
       error => {
         this.notificationService.setNotification('Erreur lors de la création du nouveau post. \u2613');
@@ -122,6 +122,9 @@ export class BackofficeComponent implements OnInit {
       }
     );
   }
+  toggleAddNews() {
+    this.showAddNews = !this.showAddNews;
+  }
 
   // NextExpo CRUD operations
   createNextExpo(nextExpo: NextExpo) {
@@ -133,6 +136,7 @@ export class BackofficeComponent implements OnInit {
           this.newNextExpo = {};
         }
         this.getNextExpo();
+        this.toggleAddNextExpo()
       },
       error => {
         this.notificationService.setNotification('Erreur lors de la création de la nouvelle exposition. \u2613');
@@ -190,6 +194,9 @@ export class BackofficeComponent implements OnInit {
       }
     );
   }
+  toggleAddNextExpo() {
+    this.showAddNextExpo = !this.showAddNextExpo;
+  }
 
   // Mediation CRUD operations
   createMediation(mediation: Mediation) {
@@ -201,6 +208,7 @@ export class BackofficeComponent implements OnInit {
           this.newMediation = {}
         }
         this.getAllMediations();
+        this.toggleAddMediation();
       },
       error => {
         this.notificationService.setNotification('Erreur lors de la création de la nouvelle médiation. \u2613');
@@ -258,6 +266,9 @@ export class BackofficeComponent implements OnInit {
       }
     );
   }
+  toggleAddMediation() {
+    this.showAddMediation = !this.showAddMediation;
+  }
 
   // Collection Permanente CRUD operations
   createArtWork(artwork: CollectionPermanente) {
@@ -269,6 +280,7 @@ export class BackofficeComponent implements OnInit {
           this.newArtWork = {};
         }
         this.getArtWork();
+        this.toggleAddArtWork();
       },
       error => {
         this.notificationService.setNotification('Erreur lors de la création de la nouvelle oeuvre. \u2613');
@@ -326,6 +338,9 @@ export class BackofficeComponent implements OnInit {
       }
     );
   }
+  toggleAddArtWork() {
+    this.showAddArtWork = !this.showAddArtWork;
+  }
 
   // Archives CRUD operations
   handleFileInputArchive(event: Event) {
@@ -380,5 +395,8 @@ export class BackofficeComponent implements OnInit {
         console.error('Erreur lors de la suppression de l\'archive :', error);
       }
     );
+  }
+  toggleAddArchive() {
+    this.showAddArchive = !this.showAddArchive;
   }
 }
