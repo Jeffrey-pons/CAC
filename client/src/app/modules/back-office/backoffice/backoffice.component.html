@@ -6,7 +6,7 @@
     <p>Back office : Gestion du contenus</p>
   </div>
   <section class="news-backoffice">
-    <div class="list-members">
+    <div class="list-news">
       <h2>Gestion des actualités</h2>
       <table>
         <thead>
@@ -30,7 +30,7 @@
             </td>
             <td>
               <ng-container *ngIf="!new.editMode">
-                <img [src]="new.image" alt="Image de la prochaine exposition">
+                <p>[...]</p>
               </ng-container>
               <input [ngClass]="{'editable-row': new.editMode}" *ngIf="new.editMode" type="file" [(ngModel)]="new.image">
             </td>
@@ -72,36 +72,68 @@
                 <img src="../../../../assets/img/cancel.png" alt="annuler">
               </button>
               <button (click)="deleteNews(new)"><img src="../../../../assets/img/icon-delete.png" alt="supprimer"></button>
+
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="list-members">
-      <h2>Ajouter une nouvelle exposition</h2>
+    <div class="add-button">
+      <button class="buttonOne" (click)="toggleAddContent()">
+        <p>Ajoutez une actualité</p>
+      </button>
+    </div>
+    <div class="create-content">
+    <div class="add-content" *ngIf="showAddContent">
+      <button class="close-button" (click)="toggleAddContent()">Fermer</button>
       <form class="createNews" (submit)="createNews(newNews)">
-              <h2>Titre</h2>
-              <input type="text" id="title" [(ngModel)]="newNews.title" name="title" required>
-              <h2>Images</h2>
-              <input type="file" id="image" (change)="handleFileInputNews($event)" name="image" required>
-              <h2>Date</h2>
-              <input type="text" id="dateOfExpo" [(ngModel)]="newNews.month" name="dateOfExpo" required>
-              <h2>Description</h2>
-              <input type="text" id="description" [(ngModel)]="newNews.description" name="description" required>
-              <h2>Type</h2>
-              <input type="text" id="type" [(ngModel)]="newNews.type" name="type" required>
-              <h2>Rencontres</h2>
-              <input type="text" id="rencontre" [(ngModel)]="newNews.rencontretext" name="rencontre" required>
-              <h2>Soutiens</h2>
-              <input type="text" id="soutiens" [(ngModel)]="newNews.soutien" name="soutiens" required>
-              <h2>Evènements</h2>
-              <input type="text" id="event" [(ngModel)]="newNews.event" name="event" required>
-              <h2>Actions</h2>
-              <button type="submit">
-                <img src="../../../../assets/img/plus.png" alt="">
-              </button>
+        <h2>Ajouter une nouvelle exposition</h2>
+        <div class="form-group full-width">
+          <h3>Titre</h3>
+          <input type="text" id="title" [(ngModel)]="newNews.title" name="title" required>
+        </div>
+        <div class="form-group-row">
+          <div class="form-group">
+            <h3>Images</h3>
+            <input type="file" id="image" (change)="handleFileInputNews($event)" name="image" multiple required>
+          </div>
+          <div class="form-group">
+            <h3>Date</h3>
+            <input type="text" id="dateOfExpo" [(ngModel)]="newNews.month" name="dateOfExpo" required>
+          </div>
+        </div>
+        <div class="form-group full-width">
+          <h3>Description</h3>
+          <input type="text" id="description" [(ngModel)]="newNews.description" name="description" required>
+        </div>
+        <div class="form-group-row column-layout">
+          <div class="form-group">
+            <h3>Rencontres</h3>
+            <input type="text" id="rencontre" [(ngModel)]="newNews.rencontretext" name="rencontre" required>
+          </div>
+          <div class="form-group">
+            <h3>Evènements</h3>
+            <input type="text" id="event" [(ngModel)]="newNews.event" name="event" required>
+          </div>
+        </div>
+        <div class="form-group-row column-layout">
+          <div class="form-group">
+            <h3>Type</h3>
+            <input type="text" id="type" [(ngModel)]="newNews.type" name="type" required>
+          </div>
+          <div class="form-group">
+            <h3>Soutiens</h3>
+            <input type="text" id="soutiens" [(ngModel)]="newNews.soutien" name="soutiens" required>
+          </div>
+        </div>
+        <div class="submit-button">
+          <button type="submit">
+              Soumettre la nouvelle actualité
+          </button>
+        </div>
       </form>
     </div>
+  </div>
   </section>
   <section class="nextExpo-backoffice">
     <div class="list-members">

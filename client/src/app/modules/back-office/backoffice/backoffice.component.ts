@@ -11,6 +11,7 @@ import { News, NewsResponse } from '../../../interfaces/news.interface';
 import { ArchivesService } from '../../../services/archiveservice/archives.service';
 import { Archive, ArchiveResponse } from '../../../interfaces/archives.interface';
 
+
 @Component({
   selector: 'app-backoffice',
   templateUrl: './backoffice.component.html',
@@ -27,6 +28,7 @@ export class BackofficeComponent implements OnInit {
   newNews: any = {};
   archives: Archive[] = [];
   newArchive: any = {};
+  showAddContent = false;
 
   constructor(
     private mediationService: MediationService,
@@ -45,6 +47,10 @@ export class BackofficeComponent implements OnInit {
       this.getArchives();
     }
 
+    toggleAddContent() {
+      this.showAddContent = !this.showAddContent;
+    }
+
   // News CRUD operations
   createNews(news: News) {
     this.newService.createNews(news).subscribe(
@@ -55,6 +61,7 @@ export class BackofficeComponent implements OnInit {
           this.newNews = {};
         }
         this.getNews();
+        this.toggleAddContent();
       },
       error => {
         this.notificationService.setNotification('Erreur lors de la création du nouveau post. \u2613');
@@ -63,8 +70,10 @@ export class BackofficeComponent implements OnInit {
     );
   }
   handleFileInputNews(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    this.newNews.image = file;
+    const files = (event.target as HTMLInputElement).files;
+    if (files) {
+      this.newNews.images = Array.from(files);
+    }
   }
   getNews(): void {
     this.newService.getNews().subscribe(
