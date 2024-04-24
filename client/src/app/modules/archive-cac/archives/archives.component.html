@@ -52,27 +52,43 @@
       </select>
     </section>
     <main>
-      <!-- ... -->
       <section class="archive">
-        <ng-container *ngFor="let archive of allArchives | paginate: { itemsPerPage:10, currentPage: page }">
-        <div class="container_archive" >
-          <p class="p-group-year" [ngClass]="{'baseline': archive.date < 2019, 'no-baseline': archive.date  >= 2019}">{{ archive.date  }}</p>
-          <ul [ngClass]="{'pre-2019': archive.date < 2019, 'post-2019': archive.date >= 2019}">
-            <li class="card"(click)="navigateToDetail(archive._id, archive.artist ? archive.artist : 'default')" (keyup)="handleKeyUp($event)">
-              <ng-container  *ngIf="archive.image && archive.image.length > 0">
-                <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
-              </ng-container>
-              <h3>{{ archive.artist }}</h3>
-              <div class="button-tag">
-                <button id="tag">{{ archive.type }}</button>
-              </div>
-            </li>
-          </ul>
+        <!-- Archives après 2019 -->
+        <ng-container *ngFor="let yearWithArchives of allYearsWithArchives">
+          <h2>{{ yearWithArchives.year }}</h2>
+        <div class="post-2019">
+          <ng-container *ngFor="let archive of yearWithArchives.archives | paginate: { itemsPerPage:5, currentPage: page }">
+            <div class="container_archive" *ngIf="archive.date >= 2019">
+              <li class="card" (click)="navigateToDetail(archive._id, archive.artist ? archive.artist : 'default')" (keyup)="handleKeyUp($event)">
+                <ng-container *ngIf="archive.image && archive.image.length > 0">
+                  <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
+                </ng-container>
+                <h3>{{ archive.artist }}</h3>
+                <div class="button-tag">
+                  <button id="tag">{{ archive.type }}</button>
+                </div>
+              </li>
+            </div>
+          </ng-container>
         </div>
       </ng-container>
+        <!-- Archives avant 2019 regroupées par année -->
+        <div *ngFor="let year of getYearsBefore2019()" class="pre-2019">
+          <h2>{{ year }}</h2>
+          <ul>
+            <ng-container *ngFor="let archive of allArchives">
+              <ng-container *ngIf="archive.date === year && archive.date < 2019">
+                <li class="card">
+                  <h3>{{ archive.artist }}</h3>
+                </li>
+              </ng-container>
+            </ng-container>
+          </ul>
+        </div>
+
         <pagination-controls class="pagination" (pageChange)="changePage($event)" previousLabel="Précédent" nextLabel="Suivant" autoScroll="false" [maxSize]="0"></pagination-controls>
       </section>
-      <!-- ... -->
+
   </main>
   <div class="bloc-separation">
     <div class="separationTwo"></div>

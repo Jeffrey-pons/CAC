@@ -75,4 +75,30 @@ export class ArchiveComponent implements OnInit {
   handleKeyDown(event: KeyboardEvent): void {
     this.onClickService.handleKeyDown(event);
   }
+  getYearsBefore2019(): number[] {
+    const years: number[] = [];
+    this.allArchives.forEach((archive) => {
+      if (archive.date < 2019 && !years.includes(archive.date)) {
+        years.push(archive.date);
+      }
+    });
+    return years.sort((a, b) => b - a);
+  }
+  getYearsAfter2019(): { year: number, archives: Archive[] }[] {
+    const yearsWithArchives: { year: number, archives: Archive[] }[] = [];
+    const years: number[] = [];
+
+    for (let year = 2023; year >= 2019; year--) {
+      const yearArchives = this.allArchives.filter(a => a.date === year);
+      if (yearArchives.length > 0) {
+        yearsWithArchives.push({ year, archives: yearArchives });
+        years.push(year);
+      }
+    }
+    const filteredYearsWithArchives = years.map(year => yearsWithArchives.find(y => y.year === year)).filter(y => y !== undefined) as { year: number, archives: Archive[] }[];
+    return filteredYearsWithArchives;
+  }
+
+
 }
+
