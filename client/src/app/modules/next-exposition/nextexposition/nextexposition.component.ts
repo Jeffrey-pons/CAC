@@ -53,14 +53,13 @@ export class NextexpositionComponent implements OnInit {
     if (calendarDates) {
         calendarDates.innerHTML = '';
 
-        const firstDayOfMonth = new Date(year, month, 0).getDay();
+        const firstDayOfMonth = new Date(year, month, 1).getDay();
         const lastDayOfMonth = new Date(year, month + 1, 0).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
         for (let i = firstDayOfMonth; i > 0; i--) {
             const dateElement = document.createElement('div');
             dateElement.classList.add('date', 'previous-month');
-            dateElement.textContent = '';
             calendarDates.appendChild(dateElement);
         }
 
@@ -82,7 +81,7 @@ export class NextexpositionComponent implements OnInit {
         for (let i = 1; i < 7 - lastDayOfMonth; i++) {
             const dateElement = document.createElement('div');
             dateElement.classList.add('date', 'next-month');
-            dateElement.textContent = '';
+
             calendarDates.appendChild(dateElement);
         }
     }
@@ -91,9 +90,6 @@ export class NextexpositionComponent implements OnInit {
 formatDate(year: number, month: number, day: number): string {
     return `${day.toString().padStart(2, '0')} ${this.getMonthName(month)} ${year}`;
 }
-
-
-
 
 parseExpoDate(dateString: string): Date {
   const dateParts = dateString.trim().split(' ');

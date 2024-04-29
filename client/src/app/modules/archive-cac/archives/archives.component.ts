@@ -12,42 +12,88 @@ import { OnClickService } from '../../../utils/onClick.utils';
   encapsulation: ViewEncapsulation.None
 })
 export class ArchiveComponent implements OnInit {
+  previousYear: number;
   allArchives: Archive[] = [];
   archives: Archive[] = [];
+  yearFilter: string = '';
+  keywordFilter: string = '';
+  isKeywordFilterApplied: boolean = false;
+  pages: { [year: number]: number } = {};
   page: number = 1;
 
   constructor(
     private archivesService: ArchivesService,
     private router: Router,
     private idService: IdService,
-    private onClickService: OnClickService
-  ) {}
-
+    private onClickService: OnClickService,
+  ) {
+    this.previousYear = 0;
+  }
   ngOnInit(): void {
     this.getArchives();
+    this.previousYear = 0;
   }
 
   getArchives(): void {
     this.archivesService.getArchives().subscribe(
-      (response: ArchiveResponse) => {
-        this.allArchives = response.ArchivesData;
-        if (this.allArchives) {
-          this.allArchives.sort((a, b) => {
-            if (!a.date || !b.date) {
-              return 0;
+        (response: ArchiveResponse) => {
+            this.allArchives = response.ArchivesData.slice();
+            this.applyFilters();
+            if (this.allArchives) {
+                const uniqueYears = Array.from(new Set(this.allArchives.map(archive => archive.date)));
+                this.pages = {};
+                uniqueYears.forEach(year => {
+                  this.applyFilters();
+                    this.pages[year] = 1;
+                });
             }
-            return b.date - a.date;
-          });
+        },
+        (error) => {
+            console.error('Erreur lors de la récupération des archives :', error);
         }
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des archives :', error);
-      }
     );
+}
+
+showYearHeader(currentYear: number): boolean {
+  if (this.yearFilter !== '') {
+    return true;
+  }
+  const showHeader = currentYear !== this.previousYear && this.archives.some(archive => archive.date === currentYear);
+  this.previousYear = currentYear;
+  return showHeader;
+}
+
+  applyFilters(): void {
+    this.isKeywordFilterApplied = !!this.keywordFilter;
+    this.archives = this.allArchives
+        .filter(archive => {
+            if (this.yearFilter === '') {
+                return true;
+            } else {
+                return archive.date && archive.date.toString().includes(this.yearFilter);
+            }
+        })
+        .filter(archive => {
+          return archive.artist.toLowerCase().includes(this.keywordFilter.toLowerCase());
+        });
+        this.archives.sort((a, b) => b.date - a.date);
+
+}
+
+  applyYearFilter(filterValue: string): void {
+    this.yearFilter = filterValue;
+    this.applyFilters();
+  }
+
+  applyKeywordFilter(filterValue: string): void {
+    this.keywordFilter = filterValue;
+    this.applyFilters();
   }
 
   changePage(newPage: number): void {
     this.page = newPage;
+    this.previousYear = 0;
+    this.applyFilters();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -75,30 +121,5 @@ export class ArchiveComponent implements OnInit {
   handleKeyDown(event: KeyboardEvent): void {
     this.onClickService.handleKeyDown(event);
   }
-  getYearsBefore2019(): number[] {
-    const years: number[] = [];
-    this.allArchives.forEach((archive) => {
-      if (archive.date < 2019 && !years.includes(archive.date)) {
-        years.push(archive.date);
-      }
-    });
-    return years.sort((a, b) => b - a);
-  }
-  getYearsAfter2019(): { year: number, archives: Archive[] }[] {
-    const yearsWithArchives: { year: number, archives: Archive[] }[] = [];
-    const years: number[] = [];
-
-    for (let year = 2023; year >= 2019; year--) {
-      const yearArchives = this.allArchives.filter(a => a.date === year);
-      if (yearArchives.length > 0) {
-        yearsWithArchives.push({ year, archives: yearArchives });
-        years.push(year);
-      }
-    }
-    const filteredYearsWithArchives = years.map(year => yearsWithArchives.find(y => y.year === year)).filter(y => y !== undefined) as { year: number, archives: Archive[] }[];
-    return filteredYearsWithArchives;
-  }
-
-
 }
 
