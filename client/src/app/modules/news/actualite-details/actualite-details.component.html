@@ -27,9 +27,10 @@
           </div>
         </div>
         <div class="content-model-right">
-          <ng-container *ngFor="let item of splitDescription(news.description, 3)">
-            <p *ngIf="!item.isImage">{{ item.content }}</p>
-            <img *ngIf="item.isImage" [src]="news.image[1]" alt="Image de la nouvelle">
+          <ng-container *ngFor="let item of news.description.split('\n'); let i = index">
+            <img *ngIf="news.image && news.image.length > i" [src]="news.image[i]" alt="Image de la nouvelle">
+            <p>{{ item }}</p>
+            <p *ngIf="i < news.image.length"></p>
           </ng-container>
         </div>
       </div>

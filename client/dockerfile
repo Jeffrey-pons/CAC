@@ -1,0 +1,8 @@
+# Utiliser une image NGINX
+FROM nginx:alpine
+
+# Copier les fichiers de build de l'application Angular dans le répertoire de travail du conteneur NGINX
+COPY src/app /
+
+# Exposer le port 80 sur lequel NGINX écoute
+EXPOSE 80

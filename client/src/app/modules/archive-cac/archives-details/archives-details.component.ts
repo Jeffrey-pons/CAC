@@ -11,15 +11,25 @@ import { Location } from '@angular/common';
 })
 export class ArchivesDetailsComponent implements OnInit, OnDestroy{
 archive: any = null;
-constructor(private archivesService: ArchivesService, private route: ActivatedRoute, private idService: IdService, private location: Location) { }
+
+constructor(
+  private archivesService: ArchivesService,
+  private route: ActivatedRoute,
+  private idService: IdService,
+  private location: Location
+) { }
 
 ngOnInit(): void {
   const id = this.idService.getId();
   if (id) {
     this.archivesService.getArchivesById(id).subscribe((data: any) => {
+      let images: string[] = [];
+      if (data.archive.image && Array.isArray(data.archive.image)) {
+        images = data.archive.image.map((img: string) => 'http://localhost:5000/' + img.replace(/\\/g, '/'));
+      }
       this.archive = {
         ...data.archive,
-        image: data.archive.image.map((img: string) => 'http://localhost:5000/' + img.replace(/\\/g, '/'))
+        image: images
       }
     }, (error) => {
       console.error('Error:', error);
@@ -34,26 +44,31 @@ goBack(): void {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-splitDescription(description: string, linesPerBreak: number): { content: string, isImage: boolean }[] {
+splitDescription(description: string, linesPerBreak: number): { content: string, isImage: boolean, index: number, isLastImage: boolean }[] {
   const lines = description.split('\n');
-  const result: { content: string, isImage: boolean }[] = [];
-  let temp = '';
+  const result: { content: string, isImage: boolean, index: number, isLastImage: boolean }[] = [];
+  let imageIndex = 0;
 
   for (let i = 0; i < lines.length; i++) {
-    temp += lines[i] + '\n';
-
-    if ((i + 1) % linesPerBreak === 0 || i === lines.length - 1) {
-      // Ajouter le contenu du paragraphe au résultat
-      result.push({ content: temp, isImage: false });
-      temp = '';
-
-      // Si c'est le deuxième paragraphe, ajouter une image
-      if ((i + 1) % (linesPerBreak * 2) === 0 || i === lines.length - 1) {
-        result.push({ content: '', isImage: true });
+    if (i % linesPerBreak === 0) {
+      result.push({ content: lines[i], isImage: false, index: -1, isLastImage: false });
+    } else {
+      if (i % linesPerBreak === 1) {
+        const isLastImage = this.isLastImage(i, linesPerBreak, lines.length);
+        result.push({ content: lines[i], isImage: true, index: imageIndex, isLastImage: isLastImage });
+        imageIndex++;
+      } else {
+        result.push({ content: lines[i], isImage: false, index: -1, isLastImage: false });
       }
     }
   }
 
   return result;
 }
+
+isLastImage(currentIndex: number, linesPerBreak: number, totalLines: number): boolean {
+  const remainingLines = totalLines - currentIndex;
+  return remainingLines <= linesPerBreak;
+}
+
 }

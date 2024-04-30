@@ -1,43 +1,40 @@
 <main>
-    <section class="model-detail-article">
-        <div *ngIf="archive">
-          <div class="header-model-details">
-            <img [src]="archive.image[0]" alt="Image de l'archive">
-            <h1>{{ archive.artist }}</h1>
-            <div class="bloc-separation">
-              <div class="separationTwo"></div>
-              </div>
-          </div>
-          <div class="content-model-details">
-            <div class="content-model-left">
-              <div class="info-mode-left">
-                  <div class="date-model-detail">
-                    <p class="type-model">{{archive.type}}</p>
-                    <p>{{ archive.month }}</p>
-                  </div>
-                  <div class="date-model-detail">
-                    <p>Ouvert le mercredi, le jeudi, le vendredi de 14 h à 19 h, le samedi de 10 h à 13 h et de 14 h à 18 h</p>
-                  </div>
-                </div>
+  <section class="model-detail-article">
+    <div *ngIf="archive">
+      <div class="header-model-details">
+        <img *ngIf="archive.image && archive.image.length > 0" [src]="archive.image[0]" alt="Image de l'archive">
+        <h1>{{ archive.artist }}</h1>
+        <div class="bloc-separation">
+          <div class="separationTwo"></div>
+        </div>
+      </div>
+      <div class="content-model-details">
+        <div class="content-model-left">
+          <div class="info-mode-left">
+            <div class="date-model-detail">
+              <p class="type-model">{{ archive.type }}</p>
+              <p>{{ archive.month }}</p>
             </div>
-            <div class="content-model-right">
-              <ng-container *ngFor="let item of splitDescription(archive.description, 2)">
-                <ng-container *ngIf="!item.isImage; else imageBlock">
-                  <p>{{ item.content }}</p>
-                </ng-container>
-                <ng-template #imageBlock>
-                  <img [src]="archive.image[0]" alt="Image de l'archive">
-                </ng-template>
-              </ng-container>
-              <ng-container *ngFor="let item of splitDescription(archive.rencontretext, 5)">
-                <p>{{ item.content }}</p>
-              </ng-container>
+            <div class="date-model-detail">
+              <p>Ouvert le mercredi, le jeudi, le vendredi de 14 h à 19 h, le samedi de 10 h à 13 h et de 14 h à 18 h</p>
             </div>
-
           </div>
         </div>
-        <div class="button-model-detail">
-          <button class="buttonOne"(click)="goBack()">Retour à la page précédente</button>
+        <div class="content-model-right">
+          <ng-container *ngFor="let item of archive.description.split('\n'); let i = index">
+            <img *ngIf="archive.image && archive.image.length > i" [src]="archive.image[i]" alt="Image de l'archive">
+            <p>{{ item }}</p>
+            <p *ngIf="i < archive.image.length"></p>
+          </ng-container>
+          <ng-container *ngFor="let item of archive.rencontretext.split('\n'); let i = index">
+            <img *ngIf="archive.image && archive.image.length > (i + archive.description.split('\n').length)" [src]="archive.image[i + archive.description.split('\n').length]" alt="Image de l'archive">
+            <p>{{ item }}</p>
+          </ng-container>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="button-model-detail">
+      <button class="buttonOne" (click)="goBack()">Retour à la page précédente</button>
+    </div>
+  </section>
 </main>

@@ -1,0 +1,26 @@
+# image 
+FROM node:latest
+
+# répertoire pour l'application
+WORKDIR /server/src
+
+# Copier les fichiers de dépendances
+COPY package*.json ./
+
+# Installer les dépendances
+RUN npm install
+
+# Copier tous les fichiers source de l'application dans l'image
+COPY . .
+
+# Installation de Nest.js CLI de manière globale
+RUN npm install -g @nestjs/cli
+
+# Exécution de la construction du projet
+RUN nest build
+
+# Exposer le port que votre application utilise
+EXPOSE 5000
+
+# Définir la commande pour démarrer l'application
+CMD ["nest", "start"]

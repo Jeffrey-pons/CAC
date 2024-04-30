@@ -53,32 +53,37 @@
     </section>
     <main>
       <section class="archive">
-          <ng-container *ngFor="let archive of archives | paginate: { itemsPerPage:10, currentPage: page }">
-            <ng-container *ngIf="showYearHeader(archive.date)">
-              <h2>{{ archive.date }}</h2>
+
+        <div class="archive-container">
+            <ng-container *ngFor="let archive of archives | paginate: { itemsPerPage:10, currentPage: page }">
+              <ng-container *ngIf="showYearHeader(archive.date)">
+                <h2>{{ archive.date }}</h2>
             </ng-container>
-              <div class="container_archive">
-                  <div class="post-2019" *ngIf="archive.date >= 2019">
-                      <li class="card"
-                          (click)="navigateToDetail(archive._id, archive.artist ? archive.artist : 'default')"
-                          (keyup)="handleKeyUp($event)">
-                          <ng-container *ngIf="archive.image && archive.image.length > 0">
-                              <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
-                          </ng-container>
-                          <h3>{{ archive.artist }}</h3>
-                          <div class="button-tag">
-                              <button id="tag">{{ archive.type }}</button>
-                          </div>
-                      </li>
-                  </div>
-                  <div class="pre-2019" *ngIf="archive.date < 2019">
-                      <li class="card" disabled>
-                          <h3>{{ archive.artist }}</h3>
-                      </li>
-                  </div>
-              </div>
-          </ng-container>
-      </section>
+                <ng-container *ngIf="archive.date >= 2019">
+                    <div class="post-2019">
+                        <li class="card"
+                            (click)="navigateToDetail(archive._id, archive.artist ? archive.artist : 'default')"
+                            (keyup)="handleKeyUp($event)">
+                            <ng-container *ngIf="archive.image && archive.image.length > 0">
+                                <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
+                            </ng-container>
+                            <h3>{{ archive.artist }}</h3>
+                            <div class="button-tag">
+                                <button id="tag">{{ archive.type }}</button>
+                            </div>
+                        </li>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="archive.date < 2019">
+                    <div class="pre-2019">
+                        <li class="card" disabled>
+                            <h3>{{ archive.artist }}</h3>
+                        </li>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </section>
       <pagination-controls class="pagination"
                           (pageChange)="changePage($event)"
                           previousLabel="Précédent"

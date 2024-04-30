@@ -50,6 +50,8 @@ export class AuthService {
     this.notificationService.setNotification('Déconnexion réussie. Vous êtes maintenant bien déconnecté.  \u2713');
   }
 
+
+
   get isLoggedIn$(): Observable<boolean> {
     return this.isLoggedInSubject.asObservable();
   }

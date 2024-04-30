@@ -61,14 +61,7 @@ p {
       font-size: 1.1rem!important;
       font-weight: 500!important;
     }
-    .post-2019 {
-      padding: 14px 0px 14px 0px;
-      text-align: center;
-      display: grid;
-      gap: 12px;
-      justify-content: center;
-      grid-template-columns: repeat(3, 1fr);
-    }
+
     .pre-2019 {
       display: flex;
       align-items: center;
@@ -131,4 +124,16 @@ p {
 
 .ngx-pagination {
   padding-top: 40px;
+}
+.archive {
+  /* Autres styles */
+  .archive-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px; /* Espace entre les éléments */
+      /* Autres styles pour le conteneur de la grille */
+  }
+  .post-2019 {
+      /* Styles pour chaque élément d'archive */
+  }
 }
