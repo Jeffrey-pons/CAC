@@ -142,7 +142,22 @@ main {
 .noscroll {
         overflow: hidden;
 }
-
+#tag {
+  padding: 8px 16px;
+  text-transform: uppercase;
+  border-radius: 0.6rem;
+  background-color: #f1f1f1;
+  text-align: center;
+  display: inline-block;
+  margin-top: -1rem;
+  transition: all ease 0.4s;
+  cursor: pointer;
+  max-width: 12.4rem;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .card {
     cursor: pointer;
     -webkit-font-smoothing: antialiased;

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NextexpositionComponent } from './nextexposition/nextexposition.component';
 import { NextexpositionDetailsComponent } from './nextexposition-details/nextexposition-details.component';
 import { RouterModule } from '@angular/router';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 
 
@@ -11,6 +13,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    FullCalendarModule,
   ]
 })
 export class NextExpositionModule { }

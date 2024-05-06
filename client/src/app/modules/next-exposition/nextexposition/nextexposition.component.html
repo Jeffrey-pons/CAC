@@ -10,7 +10,7 @@
       <div *ngFor="let expo of nextExpositions" >
         <div class="next-expo-card" (click)="navigateToDetail(expo._id, expo.name)">
           <div class="next-expo-card-content">
-            <div>
+            <div class="dateOfExpo">
               <p>{{ expo.dateOfExpo }}</p>
               <div class="button-tag">
                 <button id="tag">{{expo.type}}</button>
@@ -18,7 +18,7 @@
             </div>
             <div>
               <img [src]="expo.image" alt="{{ expo.name }}">
-              <h3>{{expo.name}}</h3>
+              <h2>{{expo.name}}</h2>
             </div>
           </div>
         </div>
@@ -26,24 +26,7 @@
     </div>
   </section>
   <section class="calendar">
-    <div class="calendar-header">
-      <button id="prevMonthBtn">&lt;</button>
-      <h6 id="currentMonth">Avril 2024</h6>
-      <button id="nextMonthBtn">&gt;</button>
-    </div>
-    <div class="calendar-body">
-      <div class="calendar-weekdays">
-        <div class="weekday">Lu</div>
-        <div class="weekday">Ma</div>
-        <div class="weekday">Me</div>
-        <div class="weekday">Je</div>
-        <div class="weekday">Ve</div>
-        <div class="weekday">Sa</div>
-        <div class="weekday">Di</div>
-      </div>
-      <div class="calendar-dates" id="calendarDates">
-      </div>
-    </div>
+    <full-calendar [options]="calendarOptions"></full-calendar>
     <div class="soutien-model-detail">
       <p [routerLink]="['/archive']" class="soutien-title">Événements passés</p>
     </div>

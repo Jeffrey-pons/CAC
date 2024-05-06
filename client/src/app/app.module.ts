@@ -22,6 +22,8 @@ import { ArchiveCacModule } from './modules/archive-cac/archive-cac.module';
 import { BackOfficeModule } from './modules/back-office/back-office.module';
 import { NotificationBannerComponent } from './modules/back-office/notification-banner/notification-banner.component';
 import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
     ArchiveCacModule,
     BackOfficeModule,
     BrowserAnimationsModule,
+    FullCalendarModule,
 
   ],
   providers: [

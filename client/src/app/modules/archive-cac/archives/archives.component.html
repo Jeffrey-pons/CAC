@@ -7,7 +7,7 @@
       <div class="search-container">
         <input class='keywordFilter search-input'  placeholder="RECHERCHER..." [(ngModel)]="keywordFilter" (keyup.enter)="applyKeywordFilter(keywordFilter)">
         <button class="search-button" >
-          <img src="../../../assets/img/loupe.png" alt="Search" (click)="applyKeywordFilter(keywordFilter)">
+          <img src="../../../assets/img/loupe.png" alt="Search" (click)="applyKeywordFilter(keywordFilter)" (keyup)="handleKeyUp($event)" (focus)="handleFocus()">
         </button>
       </div>
       <select class='yearFilter' placeholder="TOUTES LES ANNEES" type="text" [(ngModel)]="yearFilter" (change)="applyYearFilter(yearFilter)">
@@ -60,10 +60,11 @@
                 <h2>{{ archive.date }}</h2>
             </ng-container>
                 <ng-container *ngIf="archive.date >= 2019">
-                    <div class="post-2019">
+                    <div class="post-2019" >
                         <li class="card"
                             (click)="navigateToDetail(archive._id, archive.artist ? archive.artist : 'default')"
-                            (keyup)="handleKeyUp($event)">
+                            (focus)="handleClick()"
+                            (keyup)="handleKeyUp($event)" >
                             <ng-container *ngIf="archive.image && archive.image.length > 0">
                                 <img [src]="'http://localhost:5000/' + archive.image[0]" alt="Image de l'exposition">
                             </ng-container>
