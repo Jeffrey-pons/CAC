@@ -63,14 +63,10 @@ main {
     .calendar {
       text-transform: uppercase;
       width: 205px;
-      margin-top: 20px;
       position: fixed;
       top: 257px;
       right: 188px;
-      border-radius: 5px;
-      overflow: hidden;
       .soutien-model-detail {
-        padding-top: 22px;
         cursor: pointer;
         .soutien-title {
           border-top: 0.5px solid #ccc;
@@ -88,17 +84,9 @@ main {
     }
     .fc {
       flex-direction: column;
-      font-size: 0.65em;
-      &.fc-daygrid-day-events {
-        min-height: 0em;
+      font-size: 0.7em;
 
-      }
-       .fc-daygrid-day-events {
-        min-height: 0em;
-        position: relative;
-      }
     }
-    }
+  }
+
 }
-
-

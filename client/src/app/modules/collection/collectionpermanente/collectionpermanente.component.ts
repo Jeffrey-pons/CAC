@@ -26,6 +26,7 @@ export class CollectionpermanenteComponent implements OnInit{
         this.artworks.reverse();
       }
     });
+
   }
 
   changePage(newPage: number) {
@@ -37,4 +38,7 @@ export class CollectionpermanenteComponent implements OnInit{
     this.idService.setId(artWorkId);
       this.router.navigate(['/collection', artist]);
     }
+
+
+
 }

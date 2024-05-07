@@ -136,4 +136,22 @@ p {
   .post-2019 {
       /* Styles pour chaque élément d'archive */
   }
+  .card {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    text-align: center;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card-visible {
+  opacity: 1;
 }

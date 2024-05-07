@@ -161,7 +161,8 @@ main {
 .card {
     cursor: pointer;
     -webkit-font-smoothing: antialiased;
-    transition: transform 333ms cubic-bezier(.4,0,.22,1), color 333ms cubic-bezier(.4,0,.22,1);
+    transition: position 2s ease, color 2s ease;
+    animation: 1s ease smooth;
   #tag {
       padding: 8px 16px;
       text-transform: uppercase;
@@ -198,9 +199,11 @@ main {
       font-size: 12.5px;
   }
 }
-.card:hover {
+.card:hover, .card-visible:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.044);
-  transform: translateY(-3px);
+  position: relative;
+  bottom: 1.5px;
+  transition: position 2s ease, color 2s ease;
   h3 {
       color: rgba(65, 65, 65, 0.777);
   }
@@ -351,3 +354,51 @@ main {
 
 }
 
+// FULL CALENDAR
+:root {
+  --fc-button-bg-color: transparent;
+  --fc-button-border-color: transparent;
+  --fc-button-text-color: black;
+  --fc-button-active-bg-color: transparent;
+  --fc-button-active-border-color: transparent;
+  --fc-button-hover-border-color: transparent;
+}
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events{min-height:0em;position:relative}
+.fc .fc-button-primary:focus, .fc .fc-button-primary:not(:disabled):active:focus {
+  box-shadow: rgba(255, 255, 255, 0) 0px 0px 0px 0.0rem;
+}
+.fc-theme-standard td, .fc-theme-standard th, .fc-theme-standard .fc-scrollgrid  {
+  border: 0px;
+  a {
+    color: grey;
+    cursor: pointer;
+  }
+  a:hover {
+    color: black;
+  }
+}
+.fc .fc-cell-shaded, .fc .fc-day-disabled {
+  background: transparent;
+}
+.fc .fc-button-primary:hover {
+  background-color: transparent;
+  border-color: none;
+  color: black;
+}
+.fc .fc-toolbar-title {
+  font-size: 1.45em;
+  margin: 0px;
+}
+
+.highlighted-date {
+  background-color: yellow;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
