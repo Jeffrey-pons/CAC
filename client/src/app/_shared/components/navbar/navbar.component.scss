@@ -146,3 +146,39 @@ nav {
   transition: transform 2s ease, opacity 2s ease;
 
 }
+
+// MEDIA QUERIES
+
+@media screen and (max-width: 950px) {
+  nav {
+    align-items: baseline;
+    .link-categories-right {
+      max-width: 125px;
+    }
+    .link-categories-left, .link-categories-right {
+      ul {
+          display: grid;
+          gap: 18px;
+          text-align: center;
+          li {
+              a {
+                color: #858585;
+                font-family: $fontTitle;
+              }
+              a:hover {
+                color: #000000;
+              }
+          }
+      }
+  }
+  }
+  .active {
+    a {
+          color: black!important;
+
+    }
+          border-bottom: none;
+          padding-bottom: none;
+          text-align: center;
+  }
+}

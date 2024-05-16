@@ -17,3 +17,9 @@
 .ferme{
   color: rgb(228, 16, 16);
 }
+
+@media screen and (max-width: 1240px) {
+  .ouverture-fermeture {
+   display: none;
+  }
+}

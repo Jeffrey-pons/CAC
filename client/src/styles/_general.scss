@@ -24,6 +24,7 @@ html {
   max-width: 1185px;
   margin: auto;
   padding: 0;
+  overflow-x:hidden
 }
 
 
@@ -134,9 +135,11 @@ main {
 .active {
   a {
         color: black!important;
+
   }
         border-bottom: 0.1px rgba(0, 0, 0, 0.315) solid;
         padding-bottom: 5px;
+        text-align: center;
 }
 
 .noscroll {
