@@ -51,3 +51,19 @@ main {
 .card-visible {
   opacity: 1;
 }
+
+@media screen and (max-width: 900px) {
+  main[_ngcontent-ng-c1640517205] .containerTwo_collectionPermanente[_ngcontent-ng-c1640517205] {
+    grid-template-columns: repeat(3, 1fr);
+}
+}
+@media screen and (max-width: 650px) {
+  main[_ngcontent-ng-c1640517205] .containerTwo_collectionPermanente[_ngcontent-ng-c1640517205] {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+@media screen and (max-width: 550px) {
+  main[_ngcontent-ng-c1640517205] .containerTwo_collectionPermanente[_ngcontent-ng-c1640517205] {
+    grid-template-columns: repeat(1, 1fr);
+}
+}

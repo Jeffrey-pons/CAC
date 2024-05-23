@@ -405,3 +405,10 @@ main {
   opacity: 1;
   transition: opacity 0.5s ease;
 }
+
+// MEDIA QUERYS
+@media screen and (max-width: 1200px) {
+  main section {
+    padding: 30px 20px 30px 20px;
+}
+}
