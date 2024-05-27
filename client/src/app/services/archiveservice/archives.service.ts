@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Archive, ArchiveResponse } from '../../interfaces/archives.interface';
+import { ArchiveResponse } from '../../interfaces/archives.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class ArchivesService {
   createArchive(newArchiveData: any): Observable<any> {
     const formData = new FormData();
     for (const key in newArchiveData) {
-      if (newArchiveData.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(newArchiveData, key)) {
         formData.append(key, newArchiveData[key]);
       }
     }

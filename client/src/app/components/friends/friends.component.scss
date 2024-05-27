@@ -56,11 +56,11 @@ main {
           }
           &:hover .img-container::after,
       &:hover .img-container .hover-text-friends::after,
-      &:hover .add-ami a::after { 
-        opacity: 0.9; 
+      &:hover .add-ami a::after {
+        opacity: 0.9;
       }
         }
-      
+
         p {
           text-align: center;
         }
@@ -97,7 +97,7 @@ main {
             font-weight: bold;
             z-index: 2;
           }
-        
+
           &::before {
             content: "";
             background-color: #fffe92;
@@ -112,7 +112,7 @@ main {
             left: 0;
             z-index: 1;
           }
-      
+
           .hover-text {
             position: absolute;
             top: 50%;
@@ -151,7 +151,7 @@ main {
           color: black;
           transition: all 333ms cubic-bezier(.4,0,.22,1);
         }
-    
+
         .add-ami {
           h1 {
             text-align: center;
@@ -178,7 +178,7 @@ main {
             color: black;
             transition: all 333ms cubic-bezier(.4,0,.22,1);
           }
-    
+
           .separation-top, .separation-bottom  {
             margin: -10px 0;
             border-top: 1px solid rgba(148, 148, 148, 0.466);
@@ -301,7 +301,7 @@ main {
         }
       }
     }
-    
+
     #ModalThanks {
       .modal-content {
         background-color: #fff2a8;
@@ -345,4 +345,44 @@ main {
       }
     }
 }
+@media screen and (max-width: 1150px) {
+  main[_ngcontent-ng-c3588821132] .rejoindre[_ngcontent-ng-c3588821132] .join_cards[_ngcontent-ng-c3588821132] {
+    grid-template-columns: repeat(2, 1fr);
+}
 
+}
+
+@media screen and (max-width: 750px) {
+  main{
+    .friend_cac, .soutenir_cac {
+      display: grid;
+      gap: 28px;
+      padding-bottom: 40px;
+    }
+    .infos_soutenir_cac {
+      display: grid;
+      gap: 28px;
+      padding-bottom: 40px;
+    }
+  }
+  main[_ngcontent-ng-c3588821132] .rejoindre[_ngcontent-ng-c3588821132] .join_cards[_ngcontent-ng-c3588821132] {
+    grid-template-columns: none;
+}
+
+}
+
+//POP UP => FRIENDS
+@media screen and (max-width: 850px) {
+    main {
+      .modalMember {
+        background-color: rgb(255 255 255);
+        .modal-content {
+          .modal {
+            display: grid;
+            gap: 34px;
+            background: white;
+        }
+      }
+}
+}
+}

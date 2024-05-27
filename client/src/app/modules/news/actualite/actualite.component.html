@@ -5,7 +5,7 @@
   <div class="actualite">
   <p>Actualité</p>
 </div>
-  <section>
+  <section class="actu-section">
     <ng-container *ngFor="let new of news; let i = index" >
       <div *ngIf="i === 0" class="first-news" (click)="navigateToDetail(new._id, new.title)">
         <div >

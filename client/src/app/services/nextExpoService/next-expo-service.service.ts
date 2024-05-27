@@ -23,7 +23,7 @@ export class NextExpoServiceService {
   createNextExpo(newNextExpoData: any): Observable<any> {
     const formData = new FormData();
     for (const key in newNextExpoData) {
-      if (newNextExpoData.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(newNextExpoData, key)) {
         formData.append(key, newNextExpoData[key]);
       }
     }

@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit, OnDestroy, AfterViewInit{
   isLoggedIn: boolean = false;
   private authSubscription: Subscription;
   isFirstImageHovered: boolean = false
-  intervalId: any;
+  intervalId: number | undefined;
 
   constructor(private router: Router, private authService: AuthService, private onClickService: OnClickService) {
     this.authSubscription = this.authService.isLoggedIn$.subscribe((loggedIn: boolean) => {
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy, AfterViewInit{
   ngAfterViewInit(): void {
     const observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        this.intervalId = setInterval(() => {
+        this.intervalId = window.setInterval(() => {
           this.isFirstImageHovered = !this.isFirstImageHovered;
         }, 5000);
       } else {

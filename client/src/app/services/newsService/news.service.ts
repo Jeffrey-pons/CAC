@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { News, NewsResponse } from '../../interfaces/news.interface';
+import { NewsResponse } from '../../interfaces/news.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class NewsService {
   createNews(newNewsData: any): Observable<any> {
     const formData = new FormData();
     for (const key in newNewsData) {
-      if (newNewsData.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(newNewsData, key)) {
         formData.append(key, newNewsData[key]);
       }
     }

@@ -1,7 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateWorkExpoPermanentDto {
-
   readonly title: string;
 
   public image: string;

@@ -262,7 +262,7 @@ main {
     margin: auto;
 }
 }
-
+// Details Model
 .model-detail-article {
   padding: 0px;
   padding-bottom: 88px;
@@ -353,9 +353,40 @@ main {
   to {
     transform: rotate(360deg);
   }
-
-
 }
+
+@media screen and (max-width: 950px) {
+.model-detail-article {
+  .header-model-details {
+    img {
+      max-width: 90%;
+    }
+  }
+  .content-model-details {
+    display: grid;
+    padding: 0px 42px;
+    width: auto;
+    margin: auto;
+    .content-model-left {
+      .info-mode-left {
+        display: flex;
+      }
+    }
+  }
+}
+}
+@media screen and (max-width: 600px) {
+  .model-detail-article {
+    .content-model-details {
+      .content-model-left {
+        .info-mode-left {
+          display: grid;
+        }
+      }
+    }
+  }
+}
+
 
 // FULL CALENDAR
 :root {
@@ -410,5 +441,10 @@ main {
 @media screen and (max-width: 1200px) {
   main section {
     padding: 30px 20px 30px 20px;
+
 }
+iframe {
+  max-width: 100%;
+ }
 }
+

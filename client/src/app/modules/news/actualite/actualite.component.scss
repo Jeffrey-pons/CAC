@@ -91,3 +91,27 @@ h2 {
 .card-visible {
   opacity: 1;
 }
+
+//MEDIA QUERIES
+@media screen and (max-width: 1050px) {
+   main {
+    .actu-section {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 60px 28px 14px 28px;
+  }
+  .first-news{
+    grid-column: span 2;
+  }
+   }
+}
+@media screen and (max-width: 750px) {
+  main {
+   .actu-section {
+     grid-template-columns: repeat(1, 1fr);
+     padding: 60px 28px 14px 28px;
+ }
+ .first-news{
+   grid-column: span 1;
+ }
+  }
+}

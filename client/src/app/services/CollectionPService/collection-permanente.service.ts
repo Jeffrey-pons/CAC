@@ -22,7 +22,7 @@ export class CollectionPermanenteService {
   createArtWork(newArtWorkData: any): Observable<any> {
     const formData = new FormData();
     for (const key in newArtWorkData) {
-      if (newArtWorkData.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(newArtWorkData, key)) {
         formData.append(key, newArtWorkData[key]);
       }
     }

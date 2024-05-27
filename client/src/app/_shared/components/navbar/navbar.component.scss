@@ -60,7 +60,7 @@ nav {
               content: "";
               position: absolute;
               top: 3px;
-              left: 18%;
+              left: 50%;
               transform: translateX(-50%);
               border-left: 8px solid transparent;
               border-right: 8px solid transparent;
@@ -71,6 +71,7 @@ nav {
               padding: 0;
               margin: 0;
               margin-top: 12px;
+              margin-left: -79px;
               border-radius: 4px;
               width: 116px;
               text-align: center;
@@ -170,6 +171,9 @@ nav {
               }
           }
       }
+  }
+  .auth-bubble  {
+    display: none;
   }
   }
   .active {

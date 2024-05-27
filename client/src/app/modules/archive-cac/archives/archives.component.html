@@ -56,10 +56,11 @@
         <div class="archive-container">
             <ng-container *ngFor="let archive of archives | paginate: { itemsPerPage:10, currentPage: page }">
               <ng-container *ngIf="showYearHeader(archive.date)">
-                <h2 class="year-header">{{ archive.date }}</h2>
+                <!-- <h2 class="year-header">{{ archive.date }}</h2> -->
             </ng-container>
                 <ng-container *ngIf="archive.date >= 2019">
                     <div class="post-2019" >
+
                         <li class="card"
                             (click)="navigateToDetail(archive._id, archive.artist ? archive.artist : 'default')"
                             (focus)="handleClick()"
@@ -76,7 +77,7 @@
                 </ng-container>
                 <ng-container *ngIf="archive.date < 2019">
                     <div class="pre-2019">
-                        <li class="card" disabled>
+                        <li  disabled>
                             <h3>{{ archive.artist }}</h3>
                         </li>
                     </div>

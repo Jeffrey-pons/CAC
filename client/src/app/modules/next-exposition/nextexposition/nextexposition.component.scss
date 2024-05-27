@@ -90,3 +90,39 @@ main {
   }
 
 }
+
+// MEDIA QUERIES
+@media screen and (max-width: 1400px) {
+  main {
+    .calendar {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width:1100px) {
+  main {
+    .NextExpo_Container {
+      .nextExpo_Article {
+        .next-expo-card {
+          .next-expo-card-content {
+            display: grid;
+            .dateOfExpo {
+              position: relative;
+              order: 2;
+              p {
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+  }
+  .NextExpo_Container {
+    h2 {
+      padding-top: 10px;
+      padding-bottom:0px;
+    }
+  }
+}
+}

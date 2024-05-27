@@ -59,3 +59,26 @@ main {
   }
 }
 
+@media screen and (max-width: 800px) {
+  main[_ngcontent-ng-c594099640] .info_contact[_ngcontent-ng-c594099640] {
+    display: grid;
+    gap: 68px;
+    .horaire_contact {
+      flex: 1;
+      display: flex;
+      p {
+        width: 168px;
+      }
+      .adresse_contact, .horaire_bloc_contact {
+        height: 155px;
+      }
+    }
+}
+main[_ngcontent-ng-c594099640] .info_contact[_ngcontent-ng-c594099640] .infos_visite_contact[_ngcontent-ng-c594099640] .tarif_contact[_ngcontent-ng-c594099640] div[_ngcontent-ng-c594099640], main[_ngcontent-ng-c594099640] .info_contact[_ngcontent-ng-c594099640] .infos_visite_contact[_ngcontent-ng-c594099640] .info_contact_centre[_ngcontent-ng-c594099640] div[_ngcontent-ng-c594099640], main[_ngcontent-ng-c594099640] .info_contact[_ngcontent-ng-c594099640] .infos_visite_contact[_ngcontent-ng-c594099640] .nous_rendre_visite[_ngcontent-ng-c594099640] div[_ngcontent-ng-c594099640] {
+  gap: 20px;
+}
+main[_ngcontent-ng-c594099640] .info_contact[_ngcontent-ng-c594099640] .infos_visite_contact[_ngcontent-ng-c594099640] .nous_rendre_visite[_ngcontent-ng-c594099640] h3[_ngcontent-ng-c594099640] {
+  font-size: 22px;
+}
+}
+

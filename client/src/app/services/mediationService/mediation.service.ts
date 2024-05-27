@@ -23,7 +23,7 @@ export class MediationService {
   createMediation(newMediationData: any): Observable<any> {
     const formData = new FormData();
     for (const key in newMediationData) {
-      if (newMediationData.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(newMediationData, key))  {
         formData.append(key, newMediationData[key]);
       }
     }

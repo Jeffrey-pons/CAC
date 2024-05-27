@@ -43,19 +43,40 @@ main {
                     margin-bottom: 10px;
                     padding: 10px;
                     p{
-                        text-align: center;
-                        font-family: $fontTitle;
-                        cursor: pointer;
-                        color: rgba(75, 74, 74, 0.777);
-                        padding: 3px 38px;
-                        font-size: 16px;
-                        transition: all 0.5s ease;
+                      color: black;
+                      font-size: 17px;
+                      font-family: $fontTitle;
+                      font-weight: 600;
+                    background-image: linear-gradient(
+                      to right,
+                      #ffcc00,
+                      #ffcc00 50%,
+                      #000 50%
+                    );
+                    background-size: 200% 100%;
+                    background-position: -100%;
+                    display: inline-block;
+                    padding: 5px 0;
+                    position: relative;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    transition: all 0.3s ease-in-out;
+                    }
+                    p:before {
+                      background: #ffcc00;
+                      display: block;
+                      position: absolute;
+                      bottom: -2px;
+                      left: 0;
+                      width: 0;
+                      height: 1px;
+                      transition: all 0.3s ease-in-out;
                     }
                     p:hover {
-                      color: black;
-                      transition: all 0.3s ease;
-                      cursor: url('../../../assets/img/bulle_img.png') -500 60, pointer;
-
+                      background-position: 0;
+                    }
+                    p:hover::before {
+                      width: 100%;
                     }
                     img {
                         display: none;
@@ -138,4 +159,25 @@ main {
 }
 .close-btn:hover {
   background-color: rgb(128, 128, 128);
+}
+
+// MEDIA QUERYS
+@media screen and (max-width:950px) {
+  main {
+    .aboutus {
+      gap: 38px;
+      display: grid;
+    }
+    .center-aboutus {
+      display: grid;
+      .activity-center-aboutus {
+        order: 2;
+        text-align: center;
+      }
+      .img-center-aboutus {
+        order: 1;
+        justify-items: center;
+      }
+    }
+  }
 }

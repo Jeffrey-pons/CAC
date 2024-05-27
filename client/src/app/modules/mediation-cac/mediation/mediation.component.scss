@@ -59,3 +59,23 @@ main {
   }
 
 }
+
+@media screen and (max-width: 800px) {
+  main .section_mediation_cac {
+    padding: 30px 20px 30px 20px;
+
+}
+}
+
+@media screen and (max-width: 700px) {
+  main .mediation_cac {
+    padding-bottom: 62px;
+    display: grid;
+    gap: 26px;
+}
+main[_ngcontent-ng-c995796220] .section_mediation_cac[_ngcontent-ng-c995796220] .type_mediation_cac[_ngcontent-ng-c995796220] {
+  display: grid;
+  gap: 56px;
+}
+}
+
