@@ -7,7 +7,9 @@
 </div>
   <section class="actu-section">
     <ng-container *ngFor="let new of news; let i = index" >
-      <div *ngIf="i === 0" class="first-news" (click)="navigateToDetail(new._id, new.title)">
+      <div *ngIf="i === 0" class="first-news"
+      (click)="navigateToDetail(new._id, new.title)"
+      (keyup.enter)="navigateToDetail(new._id, new.title)" tabindex="0" role="button">
         <div >
         <img [src]="new.image[0]" alt="Image de la nouvelle">
       </div>
@@ -19,7 +21,9 @@
           </div>
       </div>
       </div>
-      <div *ngIf="i !== 0" class="news-card" (click)="navigateToDetail(new._id, new.title)">
+      <div *ngIf="i !== 0" class="news-card"
+      (click)="navigateToDetail(new._id, new.title)"
+      (keyup.enter)="navigateToDetail(new._id, new.title)" tabindex="0" role="button">
         <div class="card">
         <img [src]="new.image[0]" alt="Image de la nouvelle">
         <h2>{{ new.title }}</h2>

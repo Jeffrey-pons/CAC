@@ -20,6 +20,7 @@ export class ArchiveComponent implements OnInit {
   isKeywordFilterApplied: boolean = false;
   pages: { [year: number]: number } = {};
   page: number = 1;
+  uniqueYears: number[] = [];
 
   constructor(
     private archivesService: ArchivesService,
@@ -40,9 +41,9 @@ export class ArchiveComponent implements OnInit {
             this.allArchives = response.ArchivesData.slice();
             this.applyFilters();
             if (this.allArchives) {
-                const uniqueYears = Array.from(new Set(this.allArchives.map(archive => archive.date)));
+                this.uniqueYears = Array.from(new Set(this.allArchives.map(archive => archive.date))).sort((a, b) => b - a);
                 this.pages = {};
-                uniqueYears.forEach(year => {
+                this.uniqueYears.forEach(year => {
                   this.applyFilters();
                     this.pages[year] = 1;
                 });
@@ -54,11 +55,11 @@ export class ArchiveComponent implements OnInit {
     );
 }
 
-showYearHeader(currentYear: number): boolean {
+showYearHeader(currentYear: number, index: number): boolean {
   if (this.yearFilter !== '') {
-    return true;
+    return index === 0; // Show header only for the first item in the filtered list
   }
-  const showHeader = currentYear !== this.previousYear && this.archives.some(archive => archive.date === currentYear);
+  const showHeader = currentYear !== this.previousYear;
   this.previousYear = currentYear;
   return showHeader;
 }

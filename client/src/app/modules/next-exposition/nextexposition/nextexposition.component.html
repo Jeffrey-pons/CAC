@@ -8,7 +8,7 @@
   <section class="NextExpo_Container">
     <div class="nextExpo_Article">
       <div *ngFor="let expo of nextExpositions" >
-        <div class="next-expo-card" (click)="navigateToDetail(expo._id, expo.name)" >
+        <div class="next-expo-card" (click)="navigateToDetail(expo._id, expo.name)" (keyup.enter)="navigateToDetail(expo._id, expo.name)" tabindex="0" role="button">
           <div class="next-expo-card-content">
             <div class="dateOfExpo">
               <p>{{ expo.dateOfExpo }}</p>

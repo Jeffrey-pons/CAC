@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CalendarOptions } from 'fullcalendar';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { OnClickService } from '../../../utils/onClick.utils';
 
 @Component({
   selector: 'app-nextexposition',
@@ -40,7 +41,8 @@ export class NextexpositionComponent implements OnInit {
     private nextExpoService: NextExpoServiceService,
     private el: ElementRef,
     private router: Router,
-    private idService: IdService
+    private idService: IdService,
+    private onClickService: OnClickService,
   ) { }
 
   ngOnInit(): void {

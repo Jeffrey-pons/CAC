@@ -63,9 +63,9 @@ p {
     }
 
     .pre-2019 {
-      display: flex;
+      display: list-item;
       align-items: center;
-      gap: 38px;
+      padding: 10px 0px;
     }
     .pre-2019-flex {
       display: flex;
@@ -131,8 +131,9 @@ p {
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
   }
-  .post-2019 {
-  }
+  .year-header {
+    grid-column: 1 / -1;
+}
   .card {
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
@@ -158,6 +159,9 @@ p {
   .archive {
     .archive-container {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .pre-2019-container {
+      padding: 0px 24px;
     }
   }
 }

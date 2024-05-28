@@ -17,7 +17,11 @@
   </section>
   <section class="containerTwo_collectionPermanente">
 
-    <div class="card" *ngFor="let artwork of artworks| paginate: { itemsPerPage: 10, currentPage: page }" (click)="navigateToDetail(artwork._id, artwork.artist)">
+    <div class="card" *ngFor="let artwork of artworks| paginate: { itemsPerPage: 10, currentPage: page }"
+    (click)="navigateToDetail(artwork._id, artwork.artist)"
+    (keyup.enter)="navigateToDetail(artwork._id, artwork.artist)"
+         tabindex="0"
+         role="button">
       <img src="http://localhost:5000/{{ artwork.image }}"alt="image-collection-permanente">
       <div class="card-content">
         <h3>{{ artwork.artist }}</h3>
