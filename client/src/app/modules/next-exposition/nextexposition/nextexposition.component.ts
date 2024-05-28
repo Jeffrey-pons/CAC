@@ -19,13 +19,12 @@ export class NextexpositionComponent implements OnInit {
   allSameYear: boolean = false;
   currentMonth: number = 0;
   currentYear: number = 2024;
+  highlightedDate: string | null = null;
+
   calendarOptions: CalendarOptions= {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
-    events: [
-      { title: 'event 1', date: '2024-01-01' },
-      { title: 'event 2', date: '2024-01-02' }
-    ],
+    events: [],
     eventColor: '#378006',
     headerToolbar: {
       left: 'prev',
@@ -36,6 +35,7 @@ export class NextexpositionComponent implements OnInit {
     locale: 'fr',
     showNonCurrentDates: false,
     eventDidMount: this.handleEventMount.bind(this),
+    eventContent: this.highlightEventContent.bind(this)
   };
   constructor(
     private nextExpoService: NextExpoServiceService,
@@ -69,25 +69,44 @@ export class NextexpositionComponent implements OnInit {
   }
 
   updateCalendar() {
+    console.log('Updating calendar events with highlighted date:', this.highlightedDate);
     this.calendarOptions.events = this.nextExpositions.map(expo => ({
       title: expo.name,
       start: expo.dateOfExpo,
+      backgroundColor: expo.dateOfExpo === this.highlightedDate ? 'yellow' : '',
     }));
+  }
+
+  highlightExpoDate(dateOfExpo: string) {
+    console.log('Mouse enter on expo date:', dateOfExpo);
+    this.highlightedDate = dateOfExpo;
+    this.updateCalendar();
+  }
+
+  removeHighlightExpoDate() {
+    console.log('Mouse leave from expo date');
+    this.highlightedDate = null;
+    this.updateCalendar();
   }
 
   handleEventMount(arg: any) {
     const event = arg.event;
-    const eventDate = new Date(event.start);
-    const highlightedDates = [
-        '2024-01-13', '2024-04-24', '2024-04-27', '2024-07-20',
-        '2024-06-15', '2024-09-20', '2024-11-09', '2024-12-15',
-        '2023-08-04', '2024-04-05', '2024-07-22', '2024-09-30'
-    ];
-
-    if (highlightedDates.some(date => date === eventDate.toISOString().slice(0, 10))) {
-        event.backgroundColor = 'red'; // Choisissez la couleur souhaitée
+    const eventDate = new Date(event.start).toISOString().slice(0, 10);
+    console.log('Event mounted with date:', eventDate, 'highlighted date:', this.highlightedDate);
+    if (eventDate === this.highlightedDate) {
+      arg.el.style.backgroundColor = 'yellow';
+    } else {
+      arg.el.style.backgroundColor = '';
     }
-}
+  }
+
+  highlightEventContent(arg: any) {
+    const eventDate = new Date(arg.event.start).toISOString().slice(0, 10);
+    if (eventDate === this.highlightedDate) {
+      return { html: `<div style="background-color: yellow">${arg.event.title}</div>` };
+    }
+    return { html: arg.event.title };
+  }
 
   isExpoEvent(event: any): boolean {
     const eventDate = new Date(event.start);
