@@ -1,5 +1,8 @@
 @import '../../../../styles/variables.scss';
 main {
+  .highlighted-date {
+    background-color: yellow !important;
+  }
   .bloc-separation {
     padding: 0px 0px 10px 0px;
 }
@@ -125,4 +128,8 @@ main {
     }
   }
 }
+}
+
+.fc-dom-110 {
+  background-color: yellow;
 }

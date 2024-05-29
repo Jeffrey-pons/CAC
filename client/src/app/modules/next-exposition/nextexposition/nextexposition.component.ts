@@ -12,7 +12,7 @@ import { OnClickService } from '../../../utils/onClick.utils';
 @Component({
   selector: 'app-nextexposition',
   templateUrl: './nextexposition.component.html',
-  styleUrl: './nextexposition.component.scss',
+  styleUrls: ['./nextexposition.component.scss'],
 })
 export class NextexpositionComponent implements OnInit {
   nextExpositions: NextExpo[] = [];
@@ -20,8 +20,9 @@ export class NextexpositionComponent implements OnInit {
   currentMonth: number = 0;
   currentYear: number = 2024;
   highlightedDate: string | null = null;
+  calendarApi: any;
 
-  calendarOptions: CalendarOptions= {
+  calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     events: [],
@@ -34,9 +35,9 @@ export class NextexpositionComponent implements OnInit {
     firstDay: 1,
     locale: 'fr',
     showNonCurrentDates: false,
-    eventDidMount: this.handleEventMount.bind(this),
-    eventContent: this.highlightEventContent.bind(this)
+    datesSet: this.handleDatesSet.bind(this),
   };
+
   constructor(
     private nextExpoService: NextExpoServiceService,
     private el: ElementRef,
@@ -55,11 +56,16 @@ export class NextexpositionComponent implements OnInit {
         }));
 
         this.allSameYear = this.nextExpositions.every((expo, i, arr) =>
-        i === 0 || expo.titleDate === arr[i - 1].titleDate
-      );
-      this.updateCalendar();
+          i === 0 || expo.titleDate === arr[i - 1].titleDate
+        );
+        this.updateCalendar();
       }
     });
+  }
+
+  handleDatesSet(calendar: any) {
+    this.calendarApi = calendar.view.calendar;
+    console.log('handleDatesSet called');
   }
 
   navigateToDetail(nextExpoId: string, name: string) {
@@ -70,17 +76,79 @@ export class NextexpositionComponent implements OnInit {
 
   updateCalendar() {
     console.log('Updating calendar events with highlighted date:', this.highlightedDate);
-    this.calendarOptions.events = this.nextExpositions.map(expo => ({
+    const events = this.nextExpositions.map(expo => ({
       title: expo.name,
       start: expo.dateOfExpo,
-      backgroundColor: expo.dateOfExpo === this.highlightedDate ? 'yellow' : '',
+      classNames: 'highlighted-day',
     }));
+
+    // Add background events for highlighted dates
+    const backgroundEvents = this.nextExpositions.map(expo => ({
+      start: expo.dateOfExpo,
+      end: expo.dateOfExpo,
+      display: 'background-color',
+      className: 'fc-highlighted-day'
+    }));
+
+    if (this.calendarApi) {
+      this.calendarApi.removeAllEvents();
+      this.calendarApi.addEventSource([...events, ...backgroundEvents]);
+    }
+    if (this.highlightedDate && this.calendarApi) {
+      this.calendarApi.gotoDate(this.highlightedDate);
+    }
   }
 
   highlightExpoDate(dateOfExpo: string) {
     console.log('Mouse enter on expo date:', dateOfExpo);
-    this.highlightedDate = dateOfExpo;
-    this.updateCalendar();
+
+    const individualDates: NextExpo[] = [];
+
+    if (dateOfExpo.includes('Du')) {
+      const dateRange = dateOfExpo.split(' au ');
+      if (dateRange.length === 2) {
+        const startDate = this.convertToISODate(dateRange[0].replace('Du ', '').trim());
+        const endDate = this.convertToISODate(dateRange[1].trim());
+
+        if (startDate && endDate) {
+          const currentDate = new Date(startDate);
+          const end = new Date(endDate);
+
+          while (currentDate <= end) {
+            individualDates.push({
+              _id: 'dummy',
+              titleDate: 'dummy',
+              image: 'dummy',
+              name: 'dummy',
+              dateOfExpo: currentDate.toISOString().split('T')[0],
+              description: 'dummy',
+              type: 'dummy'
+            });
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+        }
+      }
+    } else {
+      const date = this.convertToISODate(dateOfExpo.trim());
+      if (date) {
+        individualDates.push({
+          _id: 'dummy',
+          titleDate: 'dummy',
+          image: 'dummy',
+          name: 'dummy',
+          dateOfExpo: date,
+          description: 'dummy',
+          type: 'dummy'
+        });
+      }
+    }
+
+    const newHighlightedDate = individualDates.length > 0 ? individualDates[0].dateOfExpo : null;
+    console.log('New highlighted date:', newHighlightedDate);
+    if (newHighlightedDate !== this.highlightedDate) {
+      this.highlightedDate = newHighlightedDate;
+      this.updateCalendar();
+    }
   }
 
   removeHighlightExpoDate() {
@@ -89,50 +157,80 @@ export class NextexpositionComponent implements OnInit {
     this.updateCalendar();
   }
 
-  handleEventMount(arg: any) {
-    const event = arg.event;
-    const eventDate = new Date(event.start).toISOString().slice(0, 10);
-    console.log('Event mounted with date:', eventDate, 'highlighted date:', this.highlightedDate);
-    if (eventDate === this.highlightedDate) {
-      arg.el.style.backgroundColor = 'yellow';
-    } else {
-      arg.el.style.backgroundColor = '';
-    }
-  }
-
-  highlightEventContent(arg: any) {
-    const eventDate = new Date(arg.event.start).toISOString().slice(0, 10);
-    if (eventDate === this.highlightedDate) {
-      return { html: `<div style="background-color: yellow">${arg.event.title}</div>` };
-    }
-    return { html: arg.event.title };
-  }
-
-  isExpoEvent(event: any): boolean {
-    const eventDate = new Date(event.start);
-    return this.nextExpositions.some(expo => {
-      const expoStartDate = new Date(expo.dateOfExpo);
-      const expoEndDate = new Date(expo.dateOfExpo);
-      return eventDate >= expoStartDate && eventDate <= expoEndDate;
-    });
-  }
   generateIndividualDates(expoData: NextExpo[]): NextExpo[] {
     const individualDates: NextExpo[] = [];
     expoData.forEach(expo => {
       if (expo.dateOfExpo.includes('Du')) {
-        const dates = expo.dateOfExpo.match(/\d+\s\w+/g);
-        if (dates) {
-          dates.forEach(date => {
-            individualDates.push({
-              ...expo,
-              dateOfExpo: date.trim(),
-            });
-          });
+        const dateRange = expo.dateOfExpo.split(' au ');
+        if (dateRange.length === 2) {
+          const startDate = this.convertToISODate(dateRange[0].replace('Du ', '').trim());
+          const endDate = this.convertToISODate(dateRange[1].trim());
+
+          if (startDate && endDate) {
+            const currentDate = new Date(startDate);
+            const end = new Date(endDate);
+
+            while (currentDate <= end) {
+              individualDates.push({
+                ...expo,
+                dateOfExpo: currentDate.toISOString().split('T')[0],
+              });
+              currentDate.setDate(currentDate.getDate() + 1);
+            }
+          } else {
+            console.error('Invalid date range:', expo.dateOfExpo);
+          }
         }
       } else {
-        individualDates.push(expo);
+        const date = this.convertToISODate(expo.dateOfExpo.trim());
+        if (date) {
+          individualDates.push({
+            ...expo,
+            dateOfExpo: date,
+          });
+        } else {
+          console.error('Invalid date:', expo.dateOfExpo);
+        }
       }
     });
     return individualDates;
+  }
+
+  convertToISODate(dateString: string): string | null {
+    const months: { [key: string]: string } = {
+      "janvier": "01",
+      "février": "02",
+      "mars": "03",
+      "avril": "04",
+      "mai": "05",
+      "juin": "06",
+      "juillet": "07",
+      "août": "08",
+      "septembre": "09",
+      "octobre": "10",
+      "novembre": "11",
+      "décembre": "12"
+    };
+
+    const dateRegex = /(\d+)\s+([a-zéû]+)(?:\s+(\d+))?/i;
+    const match = dateString.match(dateRegex);
+
+    if (!match) {
+      console.error(`Invalid date format: ${dateString}`);
+      return null;
+    }
+
+    const day = match[1].padStart(2, '0');
+    const monthName = match[2].toLowerCase();
+    const year = match[3] || this.currentYear.toString();
+
+    const month = months[monthName];
+    if (!month) {
+      console.error(`Invalid month: ${monthName}`);
+      return null;
+    }
+
+    const isoDate = `${year}-${month}-${day}`;
+    return isoDate;
   }
 }

@@ -11,7 +11,7 @@ export interface NextExpo {
 }
 
 export interface NextExpoResponse {
-  nextExpoData: NextExpo;
+  nextExpoData: NextExpo[];
 
 }
 

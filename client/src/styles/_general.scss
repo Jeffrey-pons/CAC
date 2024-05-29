@@ -425,7 +425,10 @@ main {
 }
 
 .highlighted-date {
-  background-color: yellow;
+  background-color: yellow!important;
+  padding: 4px;
+  position: relative;
+  z-index: 4;
 }
 .fade-out {
   opacity: 0;
