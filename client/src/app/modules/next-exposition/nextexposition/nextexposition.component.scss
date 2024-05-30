@@ -16,7 +16,7 @@ main {
     .NextExpo_Container {
         h2 {
           transition: color 0.3s ease;
-            padding-bottom: 10px;
+            padding-top: 10px;
         }
         .nextExpo_Article {
             text-align: center;
@@ -67,7 +67,7 @@ main {
       text-transform: uppercase;
       width: 205px;
       position: fixed;
-      top: 257px;
+      top: 232px;
       right: 188px;
       .soutien-model-detail {
         cursor: pointer;
@@ -128,8 +128,7 @@ main {
     }
   }
 }
+
 }
 
-.fc-dom-110 {
-  background-color: yellow;
-}
+

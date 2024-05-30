@@ -170,6 +170,9 @@ main {
     }
     .center-aboutus {
       display: grid;
+      .image-container {
+        width: 90%;
+      }
       .activity-center-aboutus {
         order: 2;
         text-align: center;

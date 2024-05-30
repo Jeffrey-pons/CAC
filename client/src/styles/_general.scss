@@ -424,11 +424,23 @@ main {
   margin: 0px;
 }
 
-.highlighted-date {
-  background-color: yellow!important;
-  padding: 4px;
-  position: relative;
-  z-index: 4;
+// Provisoire (date exposition à venir en surbrillance
+.fc {
+  .fc-daygrid-day-number[aria-label="13 janvier 2024"],
+  .fc-daygrid-day-number[aria-label="27 avril 2024"],
+  .fc-daygrid-day-number[aria-label="15 juin 2024"],
+  .fc-daygrid-day-number[aria-label="20 septembre 2024"],
+  .fc-daygrid-day-number[aria-label="9 novembre 2024"],
+  .fc-daygrid-day-number[aria-label="15 décembre 2024"],
+  .fc-daygrid-day-number[aria-label="4 août 2023"],
+  .fc-daygrid-day-number[aria-label="5 avril 2024"],
+  .fc-daygrid-day-number[aria-label="22 juillet 2024"]
+  {
+    background-color: rgba(255,220,40,.35);
+    padding: 4px;
+    position: relative;
+    z-index: 4;
+  }
 }
 .fade-out {
   opacity: 0;

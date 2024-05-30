@@ -4,7 +4,7 @@ import { NextExpoServiceService } from '../../../services/nextExpoService/next-e
 import { OnInit } from '@angular/core';
 import { NextExpo, NextExpoResponse } from '../../../interfaces/nextExpo.interface';
 import { Router } from '@angular/router';
-import { CalendarOptions } from 'fullcalendar';
+import { CalendarOptions, Calendar } from 'fullcalendar';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { OnClickService } from '../../../utils/onClick.utils';
@@ -37,7 +37,6 @@ export class NextexpositionComponent implements OnInit {
     showNonCurrentDates: false,
     datesSet: this.handleDatesSet.bind(this),
   };
-
   constructor(
     private nextExpoService: NextExpoServiceService,
     private el: ElementRef,
@@ -65,7 +64,6 @@ export class NextexpositionComponent implements OnInit {
 
   handleDatesSet(calendar: any) {
     this.calendarApi = calendar.view.calendar;
-    console.log('handleDatesSet called');
   }
 
   navigateToDetail(nextExpoId: string, name: string) {
@@ -75,19 +73,17 @@ export class NextexpositionComponent implements OnInit {
   }
 
   updateCalendar() {
-    console.log('Updating calendar events with highlighted date:', this.highlightedDate);
     const events = this.nextExpositions.map(expo => ({
       title: expo.name,
       start: expo.dateOfExpo,
-      classNames: 'highlighted-day',
+      classNames: 'highlighted-date',
     }));
 
-    // Add background events for highlighted dates
     const backgroundEvents = this.nextExpositions.map(expo => ({
       start: expo.dateOfExpo,
       end: expo.dateOfExpo,
-      display: 'background-color',
-      className: 'fc-highlighted-day'
+      display: 'background',
+      classNames: 'fc-daygrid-day-number'
     }));
 
     if (this.calendarApi) {
@@ -100,8 +96,6 @@ export class NextexpositionComponent implements OnInit {
   }
 
   highlightExpoDate(dateOfExpo: string) {
-    console.log('Mouse enter on expo date:', dateOfExpo);
-
     const individualDates: NextExpo[] = [];
 
     if (dateOfExpo.includes('Du')) {
@@ -144,7 +138,6 @@ export class NextexpositionComponent implements OnInit {
     }
 
     const newHighlightedDate = individualDates.length > 0 ? individualDates[0].dateOfExpo : null;
-    console.log('New highlighted date:', newHighlightedDate);
     if (newHighlightedDate !== this.highlightedDate) {
       this.highlightedDate = newHighlightedDate;
       this.updateCalendar();
@@ -152,7 +145,6 @@ export class NextexpositionComponent implements OnInit {
   }
 
   removeHighlightExpoDate() {
-    console.log('Mouse leave from expo date');
     this.highlightedDate = null;
     this.updateCalendar();
   }
